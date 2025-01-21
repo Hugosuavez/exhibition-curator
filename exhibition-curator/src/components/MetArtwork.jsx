@@ -1,5 +1,6 @@
 import { fetchArtwork } from "../utils/api-calls"
 import { useQuery } from "@tanstack/react-query"
+import {ArtworkCard} from "./ArtworkCard"
 
 export const MetArtwork = () => {
 
@@ -16,7 +17,7 @@ export const MetArtwork = () => {
         <div className="artwork-list">
           {/* Loop through the objectIDs and fetch artwork details */}
           {data.objectIDs.slice(0,50).map((id) => (
-            <p key={id}>{id}</p>
+            <ArtworkCard key={id} id={id} />
           ))}
         </div>
       )}
