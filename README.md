@@ -1,1 +1,1 @@
-# exhibition-curator
+# Exhibition Curator
