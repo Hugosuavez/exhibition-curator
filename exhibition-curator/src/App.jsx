@@ -9,7 +9,7 @@ function App() {
     <>
       <div>
         <h1>Exhibition Curation Platform</h1>
-        <MetArtwork/>
+        <MetArtwork/> 
       </div>
     </>
   )
