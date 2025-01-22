@@ -4,7 +4,7 @@ const metApi = axios.create({
     baseURL: "https://collectionapi.metmuseum.org/public/collection/v1"
 });
 
-export const fetchArtwork = () => {
+export const fetchMetArtwork = () => {
     return metApi
     .get("/objects")
     .then((response) => {
@@ -12,10 +12,11 @@ export const fetchArtwork = () => {
     })
 }
 
-export const fetchArtworkDetails = (id) => {
+export const fetchMetArtworkDetails = (id) => {
     return metApi
     .get(`/objects/${id}`)
     .then((response) => {
         return response.data
     })
 }
+
