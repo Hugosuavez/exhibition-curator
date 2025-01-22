@@ -6,11 +6,13 @@ const metApi = axios.create({
 
 export const fetchMetArtwork = () => {
     return metApi
-    .get("/objects")
-    .then((response) => {
-        return response.data;
-    })
-}
+      .get("/objects") // Fetch the full list of objectIDs
+      .then((response) => response.data) // Return the data
+      .catch((error) => {
+        console.error("Error fetching MET artworks:", error);
+        throw error;
+      });
+  };
 
 export const fetchMetArtworkDetails = (id) => {
     return metApi
