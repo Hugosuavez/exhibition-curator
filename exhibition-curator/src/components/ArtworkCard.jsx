@@ -1,4 +1,4 @@
-import { fetchArtworkDetails } from "../utils/api-calls";
+import { fetchMetArtworkDetails } from "../utils/met-api-calls";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg"
@@ -7,7 +7,7 @@ import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg"
 export const ArtworkCard = ({ id }) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["artwork-details", id], // Query key
-    queryFn: () => fetchArtworkDetails(id), // Fetcher function
+    queryFn: () => fetchMetArtworkDetails(id), // Fetcher function
   });
 
   // Handle loading state
