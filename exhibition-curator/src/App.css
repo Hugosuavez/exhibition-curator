@@ -40,3 +40,105 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Main container to structure the layout */
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* Content Wrapper: Flexbox for Departments and Main Content */
+.content-wrapper {
+  display: flex;
+  gap: 20px; /* Space between departments and main content */
+  margin-top: 20px;
+}
+
+/* Sidebar for Departments */
+.departments-sidebar {
+  flex: 0 0 200px; /* Fixed width for the sidebar */
+  background-color: #f4f4f4; /* Light background for contrast */
+  padding: 10px;
+  border-radius: 8px;
+  max-height: 80vh; /* Prevent overflow */
+  overflow-y: auto; /* Add scrolling for large lists */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/*Header in the Departments Sidebar */
+.departments-sidebar h3 {
+  color: rgb(8, 8, 8);
+
+}
+
+/* Buttons in the Departments Sidebar */
+.departments-sidebar button {
+  display: block; /* Make buttons full-width */
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #007acc; /* Blue background */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.departments-sidebar button:hover {
+  background-color: #005fa3; /* Darker blue on hover */
+}
+
+/* Main Content */
+.artworks-content {
+  flex: 1; /* Take up the remaining space */
+  display: flex;
+  flex-direction: column;
+}
+
+.artwork-list {
+  display: flex;
+  flex-wrap: wrap; /* Allow artworks to wrap on smaller screens */
+  gap: 20px; /* Space between artwork cards */
+}
+
+/* Pagination Controls */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.pagination-controls button {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.artwork-image {
+  display: block; /* Ensure the image is treated as a block for proper spacing */
+  max-width: 100%; /* Restrict image width to the container's width */
+  max-height: 400px; /* Limit the maximum height for better layout control */
+  border-radius: 10px; /* Rounded corners */
+  object-fit: cover; /* Ensure the image scales and crops appropriately */
+  margin: 0 auto; /* Center the image horizontally if within a container */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for a polished look */
+}
+
+.artwork-card {
+  border:#005fa3 solid;
+  padding: 100px,
+}

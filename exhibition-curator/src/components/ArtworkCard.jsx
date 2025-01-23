@@ -9,7 +9,6 @@ export const ArtworkCard = ({ id }) => {
     queryKey: ["artwork-details", id], // Query key
     queryFn: () => fetchMetArtworkDetails(id), // Fetcher function
   });
-
   // Handle loading state
   if (isLoading) return <p>Loading artwork...</p>;
 
@@ -18,11 +17,7 @@ export const ArtworkCard = ({ id }) => {
 
   return (
     <>
-      <article key={data.objectID}>
-        <img
-          src={data.primaryImageSmall || NoImagePlaceholder}
-          alt={data.title || "No title available"}
-        />
+      <article key={data.objectID} className="artwork-card">
         <h2>{data.title || "Untitled"}</h2>
         <p>
           {data.artistDisplayName || "Unknown Artist"} |{" "}

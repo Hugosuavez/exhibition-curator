@@ -4,9 +4,11 @@ const metApi = axios.create({
     baseURL: "https://collectionapi.metmuseum.org/public/collection/v1"
 });
 
-export const fetchMetArtwork = () => {
+export const fetchMetArtwork = (departmentId) => {
+  const params = departmentId ? { departmentIds: departmentId } : {};
+
     return metApi
-      .get("/objects") // Fetch the full list of objectIDs
+      .get("/objects", { params }) // Fetch the list of objectIDs
       .then((response) => response.data) // Return the data
       .catch((error) => {
         console.error("Error fetching MET artworks:", error);
@@ -20,5 +22,13 @@ export const fetchMetArtworkDetails = (id) => {
     .then((response) => {
         return response.data
     })
+}
+
+export const fetchMetDepartments = () => {
+  return metApi
+          .get(`/departments`)
+          .then((response) => {
+            return response.data
+          })
 }
 
