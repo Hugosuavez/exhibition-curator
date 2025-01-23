@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchMetArtworkDetails } from "../utils/met-api-calls";
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
 
-export const ArtworkDetails = () => {
+export const MetArtworkDetails = () => {
   // Get the objectID from the route parameters
   const { objectID } = useParams();
 

@@ -28,3 +28,17 @@ const harvardApi = axios.create({
         throw error; // Rethrow the error so it can be handled by the caller
       });
   };
+
+  export const fetchHarvardArtworkDetails = (id) => {
+    return harvardApi
+      .get(`/object/${id}`, {
+        params: {
+          apikey: import.meta.env.VITE_HARVARD_API_KEY, // Use your API key
+        },
+      })
+      .then((response) => response.data)
+      .catch((error) => {
+        console.error("Error fetching Harvard artwork details:", error);
+        throw error;
+      });
+  };

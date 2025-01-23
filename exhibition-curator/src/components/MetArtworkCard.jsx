@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg"
 
 
-export const ArtworkCard = ({ id }) => {
+export const MetArtworkCard = ({ id }) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["artwork-details", id], // Query key
     queryFn: () => fetchMetArtworkDetails(id), // Fetcher function
@@ -25,7 +25,7 @@ export const ArtworkCard = ({ id }) => {
           {data.artistNationality || "Unknown Nationality"}
         </p>
 
-        <Link to={`/artwork-details/${data.objectID}`}>
+        <Link to={`/met-artwork-details/${data.objectID}`}>
           View Artwork Details
         </Link>
       </article>

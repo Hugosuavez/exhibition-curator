@@ -1,6 +1,6 @@
 import { fetchMetArtwork } from "../utils/met-api-calls";
 import { useQuery } from "@tanstack/react-query";
-import { ArtworkCard } from "./ArtworkCard";
+import { MetArtworkCard } from "./MetArtworkCard";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { MetDepartments } from "./MetDepartments";
@@ -60,7 +60,7 @@ export const MetArtwork = () => {
               <div className="artwork-list">
                 {/* Loop through the objectIDs and fetch artwork details */}
                 {currentObjectIDs.map((id) => (
-                  <ArtworkCard key={id} id={id} />
+                  <MetArtworkCard key={id} id={id} />
                 ))}
               </div>
   
