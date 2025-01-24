@@ -2,18 +2,14 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchHarvardArtworkDetails } from "../utils/harvard-api-calls";
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
-import { Link, useLocation,useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export const HarvardArtworkDetails = () => {
   // Get the objectID from the route parameters
   const [searchParams] = useSearchParams();
-  const page = searchParams.get("page"); // e.g., "2"
-  const classification = searchParams.get("classification"); // e.g., "electronics"
   const { objectID } = useParams();
 
-  // const location = useLocation();
-  // const { classification, currentPage } = location.state || {}; // Retrieve state
-  console.log("query carried to details:",classification, page, objectID)
+ 
   // Fetch details for the Harvard artwork with the given objectID
   const { data, isLoading, error } = useQuery({
     queryKey: ["harvard-artwork-details", objectID], // Unique query key
