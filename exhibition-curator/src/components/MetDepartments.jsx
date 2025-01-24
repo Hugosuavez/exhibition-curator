@@ -2,10 +2,11 @@ import { fetchMetDepartments } from "../utils/met-api-calls";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
-export const MetDepartments = ({setDepartmentId}) => {
+export const MetDepartments = ({setDepartmentId, setCurrentPage}) => {
 
   const handleDepartment = (departmentId) => {
     setDepartmentId(departmentId)
+    setCurrentPage(1)
   }
 
   const { data, isLoading, error } = useQuery({

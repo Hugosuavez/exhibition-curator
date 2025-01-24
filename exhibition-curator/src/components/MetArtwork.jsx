@@ -15,6 +15,7 @@ export const MetArtwork = () => {
     queryKey: ["met-artworks", departmentId], 
     queryFn: () => fetchMetArtwork(departmentId),
   });
+  
    // Calculate the start and end indices for slicing
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -52,7 +53,7 @@ export const MetArtwork = () => {
           <div className="content-wrapper">
             {/* Left Sidebar for Departments */}
             <aside className="departments-sidebar">
-              <MetDepartments setDepartmentId={setDepartmentId}/>
+              <MetDepartments setDepartmentId={setDepartmentId} setCurrentPage={setCurrentPage}/>
             </aside>
   
             {/* Main Content */}

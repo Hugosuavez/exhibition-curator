@@ -9,19 +9,18 @@ const harvardApi = axios.create({
   });
 
 
-  export const fetchHarvardArtwork = (url = null, classification = null) => {
+  export const fetchHarvardArtwork = (classification = null, page = 1) => {
     // Use the provided URL or default to the "/object" endpoint
-    const requestUrl = url || "/object";
-  
+    const requestUrl = "/object";
+    
     return harvardApi
       .get(requestUrl, {
-        params: url
-          ? undefined // Skip params if a URL is provided (e.g., pagination URLs)
-          : {
+        params: {
               apikey: import.meta.env.VITE_HARVARD_API_KEY, // API key
               size: 10, // Limit the number of results
               hasimage: 1, // Ensure only results with images
               ...(classification && { classification }), // Add classification filter if provided
+              page: page
             },
       })
       .then((response) => {
