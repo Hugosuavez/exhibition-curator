@@ -1,10 +1,12 @@
 import { fetchMetArtworkDetails } from "../utils/met-api-calls";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg"
 
 
 export const MetArtworkCard = ({ id }) => {
+  const [searchParams] = useSearchParams(); // Manage query params
+
+  
   const { data, isLoading, error } = useQuery({
     queryKey: ["artwork-details", id], // Query key
     queryFn: () => fetchMetArtworkDetails(id), // Fetcher function
@@ -25,7 +27,7 @@ export const MetArtworkCard = ({ id }) => {
           {data.artistNationality || "Unknown Nationality"}
         </p>
 
-        <Link to={`/met-artwork-details/${data.objectID}`}>
+        <Link to={`/met-artwork-details/${data.objectID}?${searchParams.toString()}`}>
           View Artwork Details
         </Link>
       </article>

@@ -3,11 +3,12 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMetArtworkDetails } from "../utils/met-api-calls";
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export const MetArtworkDetails = () => {
   // Get the objectID from the route parameters
   const { objectID } = useParams();
+  const [searchParams] = useSearchParams(); // Manage query params
 
   // Fetch details for the artwork with the given objectID
   const { data, isLoading, error } = useQuery({
@@ -23,7 +24,7 @@ export const MetArtworkDetails = () => {
 
   return (
     <div className="artwork-details-container">
-      <Link to="/met">Back</Link>
+      <Link to={`/met?${searchParams.toString()}`}>Back</Link>
       <h1>{data.title}</h1>
       <div className="artwork-image-container">
         <img src={imageUrl} alt={data.title || "No title available"} className="artwork-image" />

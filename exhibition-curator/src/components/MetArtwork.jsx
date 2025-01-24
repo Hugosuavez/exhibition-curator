@@ -1,14 +1,21 @@
 import { fetchMetArtwork } from "../utils/met-api-calls";
 import { useQuery } from "@tanstack/react-query";
 import { MetArtworkCard } from "./MetArtworkCard";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import { MetDepartments } from "./MetDepartments";
 
 export const MetArtwork = () => {
-  const [departmentId, setDepartmentId] = useState(null); // Track the current page (starting at 1)
 
-  const [currentPage, setCurrentPage] = useState(1); // Track the current page (starting at 1)
+  const [searchParams, setSearchParams] = useSearchParams(); // Manage query params
+ // Read query parameters for classification and page
+ const departmentId = searchParams.get("departmentId") || null;
+ const currentPage = parseInt(searchParams.get("page") || 1, 10);
+
+
+  // const [departmentId, setDepartmentId] = useState(null); // Track the current page (starting at 1)
+
+  // const [currentPage, setCurrentPage] = useState(1); // Track the current page (starting at 1)
   const itemsPerPage = 10; // Number of items per page
 
   const { data, isLoading, error } = useQuery({
@@ -32,13 +39,19 @@ export const MetArtwork = () => {
 
   const handleNext = () => {
     if (currentPage < totalPages) {
-      setCurrentPage((prevPage) => prevPage + 1); // Move to the next page
+      setSearchParams({
+        departmentId,
+        page: currentPage + 1,
+      }); // Move to the next page
     }
   };
 
   const handlePrev = () => {
     if (currentPage > 1) {
-      setCurrentPage((prevPage) => prevPage - 1); // Move to the previous page
+      setSearchParams({
+        departmentId,
+        page: currentPage - 1,
+      }); // Move to the previous page
     }
   };
 
@@ -53,7 +66,7 @@ export const MetArtwork = () => {
           <div className="content-wrapper">
             {/* Left Sidebar for Departments */}
             <aside className="departments-sidebar">
-              <MetDepartments setDepartmentId={setDepartmentId} setCurrentPage={setCurrentPage}/>
+              <MetDepartments />
             </aside>
   
             {/* Main Content */}

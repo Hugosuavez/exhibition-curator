@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchHarvardArtwork } from "../utils/harvard-api-calls";
-import { Link, useNavigate,useSearchParams, useLocation } from "react-router-dom";
+import { Link, useNavigate,useSearchParams } from "react-router-dom";
 import { HarvardDepartments } from "./HarvardDepartments";
 
 
@@ -8,15 +8,11 @@ export const HarvardArtwork = () => {
 
   const [searchParams, setSearchParams] = useSearchParams(); // Manage query params
   const navigate = useNavigate();
-  const location = useLocation();
 
- 
   // Read query parameters for classification and page
   const classification = searchParams.get("classification") || null;
   const currentPage = parseInt(searchParams.get("page") || 1, 10);
 
-  // const currentUrl = searchParams.get("url") || null; // Read the API-provided URL if available
-  console.log("carried back to list:", classification, currentPage);
   const { data, isLoading, error } = useQuery({
     queryKey: ["harvard-artworks", classification, currentPage],
     queryFn: () => fetchHarvardArtwork(classification, currentPage),
@@ -30,24 +26,20 @@ export const HarvardArtwork = () => {
 
  // Update query parameters for next/prev navigation
  const handleNext = () => {
-  if (data?.info?.next) {
-    console.log(data.info.next)
     setSearchParams({
       classification,
       page: currentPage + 1,
     });
-  }
+  
 };
 
 const handlePrev = () => {
-  if (data?.info?.prev) {
     setSearchParams({
       classification,
       page: currentPage - 1,
     });
-  }
+  
 };
-
 
   const handleDetailsClick = (artwork) => {
     navigate(`/harvard-artwork-details/${artwork.objectid}?${searchParams.toString()}`);

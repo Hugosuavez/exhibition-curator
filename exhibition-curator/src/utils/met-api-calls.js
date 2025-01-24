@@ -5,10 +5,13 @@ const metApi = axios.create({
 });
 
 export const fetchMetArtwork = (departmentId) => {
-  const params = departmentId ? { departmentIds: departmentId } : {};
 
     return metApi
-      .get("/objects", { params }) // Fetch the list of objectIDs
+      .get("/objects", { 
+        params: {
+          departmentIds: departmentId
+        }
+       }) // Fetch the list of objectIDs
       .then((response) => response.data) // Return the data
       .catch((error) => {
         console.error("Error fetching MET artworks:", error);
