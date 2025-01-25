@@ -19,7 +19,7 @@ const harvardApi = axios.create({
               apikey: import.meta.env.VITE_HARVARD_API_KEY, // API key
               size: 10, // Limit the number of results
               hasimage: 1, // Ensure only results with images
-              ...(classification && { classification }), // Add classification filter if provided
+              ...(classification ? { classification } : {}), // Add classification filter if provided
               page: page
             },
       })

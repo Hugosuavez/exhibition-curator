@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchHarvardArtwork } from "../utils/harvard-api-calls";
 import { Link, useNavigate,useSearchParams } from "react-router-dom";
 import { HarvardDepartments } from "./HarvardDepartments";
+import { useState, useEffect } from "react";
 
 
 export const HarvardArtwork = () => {
@@ -10,7 +11,22 @@ export const HarvardArtwork = () => {
   const navigate = useNavigate();
 
   // Read query parameters for classification and page
-  const classification = searchParams.get("classification") || null;
+  // const classification = searchParams.get("classification") || null;
+
+ const [classification, setClassification] = useState(() => {
+  const rawClassification = searchParams.get("classification");
+  return rawClassification ? parseInt(rawClassification, 10) : null;
+});
+
+ // Sync `departmentId` with searchParams when they change
+ useEffect(() => {
+  const rawClassification = searchParams.get("classification");
+  setClassification(rawClassification ? parseInt(rawClassification, 10) : null);
+}, [searchParams]); // Dependency array ensures this runs when searchParams change
+
+
+
+
   const currentPage = parseInt(searchParams.get("page") || 1, 10);
 
   const { data, isLoading, error } = useQuery({

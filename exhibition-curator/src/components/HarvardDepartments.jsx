@@ -14,7 +14,6 @@ export const HarvardDepartments = () => {
 
   const handleClassification = (classification) => {
     setSearchParams({ classification, page: 1 }); // Reset to page 1 for new classification
-
   }
 
   if (isLoading) return <p>Loading classifications...</p>;
@@ -25,7 +24,7 @@ export const HarvardDepartments = () => {
       {data?.records.map((classification) => (
         <button
           key={classification.id} // Ensure unique keys
-          onClick={() => handleClassification(classification.name)} // Pass classification name to parent
+          onClick={() => handleClassification(classification.id)} // Pass classification name to parent
         >
           {classification.name}
         </button>
