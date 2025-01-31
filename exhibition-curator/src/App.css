@@ -243,3 +243,17 @@
   text-decoration: none;
   color: white;
 }
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin-top: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
