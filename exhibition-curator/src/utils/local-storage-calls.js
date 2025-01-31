@@ -6,6 +6,10 @@ export const getExhibitions = () => {
   return data ? JSON.parse(data) : [];
 };
 
+const getExhibitionById = (exhibitionId) => {
+  const exhibitions = JSON.parse(localStorage.getItem("exhibitions")) || [];
+  return exhibitions.find((exh) => exh.id === exhibitionId) || null;
+};
 
 // Save exhibitions to local storage
 export const saveExhibitions = (exhibitions) => {
