@@ -1,17 +1,25 @@
 import { fetchMetDepartments } from "../utils/met-api-calls";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
-export const MetDepartments = ({setDepartmentId}) => {
+export const MetDepartments = ({setDepartmentId, setCurrentPage}) => {
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleDepartment = (departmentId) => {
-    setDepartmentId(departmentId)
-  }
-
+  
   const { data, isLoading, error } = useQuery({
     queryKey: ["met-departments"],
     queryFn: () => fetchMetDepartments(),
   });
+
+
+  const handleDepartment = (departmentId) => {
+    setSearchParams({ departmentId, page: 1 }); // Reset to page 1 for new classification
+
+    // setDepartmentId(departmentId)
+    // setCurrentPage(1)
+  }
+
+
   return (
     <>
     <h3>Departments</h3>

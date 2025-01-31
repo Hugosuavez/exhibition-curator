@@ -1,20 +1,39 @@
 import { fetchMetArtwork } from "../utils/met-api-calls";
 import { useQuery } from "@tanstack/react-query";
-import { ArtworkCard } from "./ArtworkCard";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { MetArtworkCard } from "./MetArtworkCard";
+import { Link, useSearchParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { MetDepartments } from "./MetDepartments";
 
 export const MetArtwork = () => {
-  const [departmentId, setDepartmentId] = useState(null); // Track the current page (starting at 1)
 
-  const [currentPage, setCurrentPage] = useState(1); // Track the current page (starting at 1)
+  const [searchParams, setSearchParams] = useSearchParams(); // Manage query params
+ // Read query parameters for classification and page
+//  const departmentId = searchParams.get("departmentId") || null;
+ const currentPage = parseInt(searchParams.get("page") || 1, 10);
+
+ const [departmentId, setDepartmentId] = useState(() => {
+  const rawDepartmentId = searchParams.get("departmentId");
+  return rawDepartmentId ? parseInt(rawDepartmentId, 10) : null;
+});
+
+ // Sync `departmentId` with searchParams when they change
+ useEffect(() => {
+  const rawDepartmentId = searchParams.get("departmentId");
+  setDepartmentId(rawDepartmentId ? parseInt(rawDepartmentId, 10) : null);
+}, [searchParams]); // Dependency array ensures this runs when searchParams change
+
+
+  // const [departmentId, setDepartmentId] = useState(null); // Track the current page (starting at 1)
+
+  // const [currentPage, setCurrentPage] = useState(1); // Track the current page (starting at 1)
   const itemsPerPage = 10; // Number of items per page
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["met-artworks", departmentId], 
     queryFn: () => fetchMetArtwork(departmentId),
   });
+  
    // Calculate the start and end indices for slicing
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -31,13 +50,19 @@ export const MetArtwork = () => {
 
   const handleNext = () => {
     if (currentPage < totalPages) {
-      setCurrentPage((prevPage) => prevPage + 1); // Move to the next page
+      setSearchParams({
+        departmentId,
+        page: currentPage + 1,
+      }); // Move to the next page
     }
   };
 
   const handlePrev = () => {
     if (currentPage > 1) {
-      setCurrentPage((prevPage) => prevPage - 1); // Move to the previous page
+      setSearchParams({
+        departmentId,
+        page: currentPage - 1,
+      }); // Move to the previous page
     }
   };
 
@@ -52,7 +77,7 @@ export const MetArtwork = () => {
           <div className="content-wrapper">
             {/* Left Sidebar for Departments */}
             <aside className="departments-sidebar">
-              <MetDepartments setDepartmentId={setDepartmentId}/>
+              <MetDepartments />
             </aside>
   
             {/* Main Content */}
@@ -60,7 +85,7 @@ export const MetArtwork = () => {
               <div className="artwork-list">
                 {/* Loop through the objectIDs and fetch artwork details */}
                 {currentObjectIDs.map((id) => (
-                  <ArtworkCard key={id} id={id} />
+                  <MetArtworkCard key={id} id={id} />
                 ))}
               </div>
   
