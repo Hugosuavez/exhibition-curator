@@ -26,7 +26,7 @@ export const MetArtworkCard = ({ id, openModal }) => {
           {data.department || "Unknown Department"} |{" "}
           {data.artistNationality || "Unknown Nationality"}
         </p>
-        <button onClick={() => openModal(data.objectID)}>Add to Exhibition</button>
+        <button onClick={() => openModal(data)}>Add to Exhibition</button>
         <Link to={`/met-artwork-details/${data.objectID}?${searchParams.toString()}`}>
           View Artwork Details
         </Link>

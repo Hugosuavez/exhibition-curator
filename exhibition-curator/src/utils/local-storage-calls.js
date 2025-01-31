@@ -19,36 +19,40 @@ export const saveExhibitions = (exhibitions) => {
 // Create a new exhibition
 export const createExhibition = (name) => {
   const exhibitions = getExhibitions();
-  const newExhibition = { id: Date.now(), name, artworkIds: [] };
+  const newExhibition = { id: Date.now(), name, artworks: [] };
   saveExhibitions([...exhibitions, newExhibition]);
   return newExhibition;
 };
 
 // Add artwork to an exhibition
-export const addArtworkToExhibition = (exhibitionId, artworkId) => {
+export const addArtworkToExhibition = (exhibitionId, artwork) => {
+  console.log(artwork);
   const exhibitions = getExhibitions();
   const updatedExhibitions = exhibitions.map((exhibition) =>
     exhibition.id === exhibitionId
-      ? { ...exhibition, artworkIds: [...exhibition.artworkIds, artworkId] }
+      ? { ...exhibition, artworks: [...exhibition.artworks, artwork] }
       : exhibition
   );
   saveExhibitions(updatedExhibitions);
 };
 
-// Remove artwork from an exhibition
 export const removeArtworkFromExhibition = (exhibitionId, artworkId) => {
   const exhibitions = getExhibitions();
+
   const updatedExhibitions = exhibitions.map((exhibition) =>
-    exhibition.id === exhibitionId
+    String(exhibition.id) === String(exhibitionId)
       ? {
           ...exhibition,
-          artworkIds: exhibition.artworkIds.filter((id) => id !== artworkId),
+          artworks: exhibition.artworks.filter((artwork) => {
+            const currentArtworkId = artwork.objectID || artwork.objectid;
+            return String(currentArtworkId) !== String(artworkId); // Convert both to strings for comparison
+          }),
         }
       : exhibition
   );
+
   saveExhibitions(updatedExhibitions);
 };
-
 // Delete an exhibition
 export const deleteExhibition = (exhibitionId) => {
   const exhibitions = getExhibitions().filter((exhibition) => exhibition.id !== exhibitionId);

@@ -9,14 +9,11 @@ import { AddArtModal } from "./AddArtModal";
 
 export const MetArtwork = () => {
 
-
-
-  const [selectedArtworkId, setSelectedArtworkId] = useState(null);
+  const [selectedArtwork, setSelectedArtwork] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = (artworkId) => {
-    console.log(artworkId);
-    setSelectedArtworkId(artworkId);
+  const openModal = (artwork) => {
+    setSelectedArtwork(artwork);
     setIsModalOpen(true);
   };
 
@@ -121,7 +118,7 @@ export const MetArtwork = () => {
       <AddArtModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        artworkId={selectedArtworkId}
+        artwork={selectedArtwork}
       />
             </main>
           </div>

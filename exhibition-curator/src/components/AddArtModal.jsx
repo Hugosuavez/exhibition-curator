@@ -2,7 +2,8 @@ import { useState } from "react";
 import Modal from "./Modal";
 import { getExhibitions, createExhibition, addArtworkToExhibition } from "../utils/local-storage-calls";
 
-export const AddArtModal = ({ isOpen, onClose, artworkId }) => {
+export const AddArtModal = ({ isOpen, onClose, artwork }) => {
+  console.log("in addart", artwork)
   const [exhibitions, setExhibitions] = useState(getExhibitions());
   const [newExhibitionName, setNewExhibitionName] = useState("");
   const [selectedExhibition, setSelectedExhibition] = useState("");
@@ -15,8 +16,9 @@ export const AddArtModal = ({ isOpen, onClose, artworkId }) => {
   };
 
   const handleAddToExhibition = () => {
+    console.log("in handleadd", artwork)
     if (!selectedExhibition) return;
-    addArtworkToExhibition(Number(selectedExhibition), artworkId);
+    addArtworkToExhibition(Number(selectedExhibition), artwork);
     onClose(); // Close modal after adding
   };
 

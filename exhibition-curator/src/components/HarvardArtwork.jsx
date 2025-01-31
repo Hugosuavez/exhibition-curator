@@ -3,9 +3,23 @@ import { fetchHarvardArtwork } from "../utils/harvard-api-calls";
 import { Link, useNavigate,useSearchParams } from "react-router-dom";
 import { HarvardDepartments } from "./HarvardDepartments";
 import { useState, useEffect } from "react";
-
+import { AddArtModal } from "./AddArtModal";
 
 export const HarvardArtwork = () => {
+
+
+  const [selectedArtwork, setSelectedArtwork] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (artwork) => {
+    console.log(artwork);
+    setSelectedArtwork(artwork);
+    setIsModalOpen(true);
+  };
+
+
+
+
 
   const [searchParams, setSearchParams] = useSearchParams(); // Manage query params
   const navigate = useNavigate();
@@ -88,6 +102,7 @@ const handlePrev = () => {
                         {record.department || "Unknown Department"} |{" "}
                         {record.culture || "Unknown Nationality"}
                       </p>
+                      <button onClick={() => openModal(record)}>Add to Exhibition</button>
                       <button onClick={() => handleDetailsClick(record)}>
                       View Details
                       </button>
@@ -107,8 +122,15 @@ const handlePrev = () => {
                 Next
               </button>
             </div>
+             {/* Modal */}
+                  <AddArtModal
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    artwork={selectedArtwork}
+                  />
           </div>
         )}
+
           </main>
         </div>
       </div>

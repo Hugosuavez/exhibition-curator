@@ -7,12 +7,14 @@ export const ExhibitionPage = () => {
     const [exhibition, setExhibition] = useState(null);
 
 
+  const fetchExhibition = () => {
+    const exhibitions = JSON.parse(localStorage.getItem("userExhibitions")) || [];
+    const selectedExhibition = exhibitions.find((exh) => String(exh.id) === id);
+    setExhibition(selectedExhibition);
+  };
 
     useEffect(() => {
-      const exhibitions = JSON.parse(localStorage.getItem("userExhibitions")) || [];
-      const selectedExhibition = exhibitions.find((exh) => String(exh.id) === id);
-      setExhibition(selectedExhibition);
-      console.log(selectedExhibition);
+      fetchExhibition();
     }, [id]);
 
     if (!exhibition) return <p>Exhibition not found!</p>;
@@ -21,7 +23,7 @@ export const ExhibitionPage = () => {
       <div>
         <h1>{exhibition.name}</h1>
         <h2>Artworks in this Exhibition:</h2>
-        <ArtworkCarousel artworks={exhibition.artworkIds} />
+        <ArtworkCarousel artworks={exhibition.artworks} updateExhibition={fetchExhibition}/>
       </div>
     );
   };
