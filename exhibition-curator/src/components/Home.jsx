@@ -22,7 +22,12 @@ export const Home = () => {
     <>
     <h1>Exhibition Curation Platform</h1>
     <h2>Your Exhibitions</h2>
-    <ExhibitionCarousel exhibitions={exhibitions} onDelete={handleDeleteExhibition} />
+    {exhibitions.length > 0 ? 
+    <ExhibitionCarousel exhibitions={exhibitions} onDelete={handleDeleteExhibition} /> : 
+    <p>Start browsing to create exhibition</p>
+    
+  }
+
     <br />
     <h2>Browse Art</h2>
     <Link to="/met">Metropolitan Museum of Art</Link>

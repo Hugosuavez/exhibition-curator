@@ -1,9 +1,13 @@
 import { useState } from "react";
 import Modal from "./Modal";
-import { getExhibitions, createExhibition, addArtworkToExhibition } from "../utils/local-storage-calls";
+import {
+  getExhibitions,
+  createExhibition,
+  addArtworkToExhibition,
+} from "../utils/local-storage-calls";
 
 export const AddArtModal = ({ isOpen, onClose, artwork }) => {
-  console.log("in addart", artwork)
+  console.log("in addart", artwork);
   const [exhibitions, setExhibitions] = useState(getExhibitions());
   const [newExhibitionName, setNewExhibitionName] = useState("");
   const [selectedExhibition, setSelectedExhibition] = useState("");
@@ -16,7 +20,7 @@ export const AddArtModal = ({ isOpen, onClose, artwork }) => {
   };
 
   const handleAddToExhibition = () => {
-    console.log("in handleadd", artwork)
+    console.log("in handleadd", artwork);
     if (!selectedExhibition) return;
     addArtworkToExhibition(Number(selectedExhibition), artwork);
     onClose(); // Close modal after adding
@@ -27,7 +31,10 @@ export const AddArtModal = ({ isOpen, onClose, artwork }) => {
       <h2>Add Artwork to Exhibition</h2>
 
       <h3>Select an Existing Exhibition</h3>
-      <select onChange={(e) => setSelectedExhibition(e.target.value)} value={selectedExhibition}>
+      <select
+        onChange={(e) => setSelectedExhibition(e.target.value)}
+        value={selectedExhibition}
+      >
         <option value="">-- Select Exhibition --</option>
         {exhibitions.map((exhibition) => (
           <option key={exhibition.id} value={exhibition.id}>
@@ -35,7 +42,9 @@ export const AddArtModal = ({ isOpen, onClose, artwork }) => {
           </option>
         ))}
       </select>
-      <button onClick={handleAddToExhibition} disabled={!selectedExhibition}>Add to Exhibition</button>
+      <button onClick={handleAddToExhibition} disabled={!selectedExhibition}>
+        Add to Exhibition
+      </button>
 
       <h3>Create New Exhibition</h3>
       <input
@@ -48,4 +57,3 @@ export const AddArtModal = ({ isOpen, onClose, artwork }) => {
     </Modal>
   );
 };
-

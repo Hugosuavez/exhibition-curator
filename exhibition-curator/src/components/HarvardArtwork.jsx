@@ -10,15 +10,13 @@ export const HarvardArtwork = () => {
 
   const [selectedArtwork, setSelectedArtwork] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [department, setDepartment] = useState(null);
 
   const openModal = (artwork) => {
     console.log(artwork);
     setSelectedArtwork(artwork);
     setIsModalOpen(true);
   };
-
-
-
 
 
   const [searchParams, setSearchParams] = useSearchParams(); // Manage query params
@@ -28,13 +26,13 @@ export const HarvardArtwork = () => {
   // const classification = searchParams.get("classification") || null;
 
  const [classification, setClassification] = useState(() => {
-  const rawClassification = searchParams.get("classification");
+  const rawClassification = searchParams.get("classificationId");
   return rawClassification ? parseInt(rawClassification, 10) : null;
 });
 
  // Sync `departmentId` with searchParams when they change
  useEffect(() => {
-  const rawClassification = searchParams.get("classification");
+  const rawClassification = searchParams.get("classificationId");
   setClassification(rawClassification ? parseInt(rawClassification, 10) : null);
 }, [searchParams]); // Dependency array ensures this runs when searchParams change
 
@@ -84,9 +82,10 @@ const handlePrev = () => {
         <div className="content-wrapper">
         {/* Sidebar for departments */}
         <aside className="departments-sidebar">
-          <HarvardDepartments />
+          <HarvardDepartments setDepartment={setDepartment}/>
         </aside>
         <main className="artworks-content">
+        {department && <h3>{department}</h3>}
         {isLoading && <p>Loading artworks...</p>}
         {error && <p>Error fetching artworks</p>}
         {data?.records && (

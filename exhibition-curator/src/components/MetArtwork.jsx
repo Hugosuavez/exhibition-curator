@@ -18,6 +18,7 @@ export const MetArtwork = () => {
   };
 
 
+const [department, setDepartment] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams(); // Manage query params
  // Read query parameters for classification and page
@@ -89,11 +90,12 @@ export const MetArtwork = () => {
           <div className="content-wrapper">
             {/* Left Sidebar for Departments */}
             <aside className="departments-sidebar">
-              <MetDepartments />
+              <MetDepartments setDepartment={setDepartment}/>
             </aside>
   
             {/* Main Content */}
             <main className="artworks-content">
+              {department && <h3>{department}</h3>}
               <div className="artwork-list">
                 {/* Loop through the objectIDs and fetch artwork details */}
                 {currentObjectIDs.map((id) => (
