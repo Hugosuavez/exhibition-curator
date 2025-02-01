@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ArtworkCarousel } from "./ArtworkCarousel";
-
+import { Link } from "react-router-dom";
 export const ExhibitionPage = () => {
   const { id } = useParams();
   const [exhibition, setExhibition] = useState(null);
@@ -21,6 +21,7 @@ export const ExhibitionPage = () => {
 
   return (
     <div>
+      <Link to="/">Home</Link>
       <h1>{exhibition.name}</h1>
       <h2>Artworks in this Exhibition:</h2>
       <ArtworkCarousel

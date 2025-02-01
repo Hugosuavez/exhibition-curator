@@ -1,5 +1,7 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -40,12 +42,27 @@
 .read-the-docs {
   color: #888;
 }
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+img, video, iframe, .artwork-image {
+  max-width: 100%;
+  height: auto;
+}
+
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
 
 /* Main container to structure the layout */
 .container {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  max-width: 100%;
 }
 
 /* Content Wrapper: Flexbox for Departments and Main Content */
@@ -53,6 +70,8 @@
   display: flex;
   gap: 20px; /* Space between departments and main content */
   margin-top: 20px;
+  flex-wrap: wrap; /* Ensures it wraps instead of expanding */
+  width: 100%;
 }
 
 /* Sidebar for Departments */
@@ -69,7 +88,6 @@
 /*Header in the Departments Sidebar */
 .departments-sidebar h3 {
   color: rgb(8, 8, 8);
-
 }
 
 /* Buttons in the Departments Sidebar */
@@ -217,26 +235,79 @@
 
 /* Carousel CSS*/
 
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100vh; /* Full width */
+  max-width: 100%; /* Prevent overflow */
+  margin: auto;
+  overflow: hidden;
+  padding: 10px;
+}
+
 .carousel {
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 10px;
+  scrollbar-width: none;
+  padding: 10px;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
 }
 
 .carousel-item {
-  flex: 0 0 auto;
-  margin-right: 20px;
-  width: 200px;
-  height: 100px;
+  flex: 0 0 85%; /* Almost full width on small screens */
+  max-width: 85%;
   background-color: #3498db;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.carousel-item-content {
   color: white;
   font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
   text-align: center;
+  padding: 15px;
+}
+
+.artwork-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* 📌 Navigation Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+  z-index: 2;
+}
+
+.left-btn {
+  left: 5px;
+}
+
+.right-btn {
+  right: 5px;
+}
+
+.carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .exhibition-link {
@@ -256,4 +327,57 @@
 
 .delete-button:hover {
   background-color: darkred;
+}
+
+/* 🔹 Tablets (641px - 1023px) */
+@media (min-width: 641px) {
+  .carousel-container {
+    width: 90%; /* Slightly wider */
+  }
+
+  .carousel {
+    gap: 15px;
+  }
+
+  .carousel-item {
+    flex: 0 0 60%; /* Smaller items */
+    max-width: 60%;
+    font-size: 18px;
+  }
+
+  .artwork-image {
+    height: 180px;
+  }
+
+  .carousel-btn {
+    font-size: 20px;
+    padding: 10px 15px;
+  }
+}
+
+
+/* Desktops (1024px+) */
+@media (min-width: 1024px) {
+  .carousel-container {
+    width: 80%; /* More space */
+  }
+
+  .carousel {
+    gap: 20px;
+  }
+
+  .carousel-item {
+    flex: 0 0 40%; /* Smaller, multiple visible at once */
+    max-width: 40%;
+    font-size: 20px;
+  }
+
+  .artwork-image {
+    height: 200px;
+  }
+
+  .carousel-btn {
+    font-size: 24px;
+    padding: 12px 18px;
+  }
 }
