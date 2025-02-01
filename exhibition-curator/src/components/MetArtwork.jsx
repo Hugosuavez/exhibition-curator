@@ -4,8 +4,21 @@ import { MetArtworkCard } from "./MetArtworkCard";
 import { Link, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { MetDepartments } from "./MetDepartments";
+import { AddArtModal } from "./AddArtModal";
+
 
 export const MetArtwork = () => {
+
+  const [selectedArtwork, setSelectedArtwork] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (artwork) => {
+    setSelectedArtwork(artwork);
+    setIsModalOpen(true);
+  };
+
+
+const [department, setDepartment] = useState(null);
 
   const [searchParams, setSearchParams] = useSearchParams(); // Manage query params
  // Read query parameters for classification and page
@@ -77,15 +90,17 @@ export const MetArtwork = () => {
           <div className="content-wrapper">
             {/* Left Sidebar for Departments */}
             <aside className="departments-sidebar">
-              <MetDepartments />
+              <MetDepartments setDepartment={setDepartment}/>
             </aside>
   
             {/* Main Content */}
             <main className="artworks-content">
+              {department && <h3>{department}</h3>}
               <div className="artwork-list">
                 {/* Loop through the objectIDs and fetch artwork details */}
                 {currentObjectIDs.map((id) => (
-                  <MetArtworkCard key={id} id={id} />
+                  <MetArtworkCard key={id} id={id} openModal={openModal}
+                  />
                 ))}
               </div>
   
@@ -101,6 +116,12 @@ export const MetArtwork = () => {
                   Next
                 </button>
               </div>
+              {/* Modal */}
+      <AddArtModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        artwork={selectedArtwork}
+      />
             </main>
           </div>
         </>

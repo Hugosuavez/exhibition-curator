@@ -3,7 +3,7 @@ import { fetchHarvardClassifications } from "../utils/harvard-api-calls";
 import { useSearchParams } from "react-router-dom";
 
 
-export const HarvardDepartments = () => {
+export const HarvardDepartments = ({setDepartment}) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Fetch classifications
@@ -13,7 +13,9 @@ export const HarvardDepartments = () => {
   });
 
   const handleClassification = (classification) => {
-    setSearchParams({ classification, page: 1 }); // Reset to page 1 for new classification
+    const classificationId = classification.id;
+    setSearchParams({ classificationId, page: 1 }); // Reset to page 1 for new classification
+    setDepartment(classification.name);
   }
 
   if (isLoading) return <p>Loading classifications...</p>;
@@ -24,7 +26,7 @@ export const HarvardDepartments = () => {
       {data?.records.map((classification) => (
         <button
           key={classification.id} // Ensure unique keys
-          onClick={() => handleClassification(classification.id)} // Pass classification name to parent
+          onClick={() => handleClassification(classification)} // Pass classification name to parent
         >
           {classification.name}
         </button>

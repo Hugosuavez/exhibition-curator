@@ -2,7 +2,7 @@ import { fetchMetDepartments } from "../utils/met-api-calls";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
 
-export const MetDepartments = ({setDepartmentId, setCurrentPage}) => {
+export const MetDepartments = ({setDepartment, setCurrentPage}) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   
@@ -12,9 +12,10 @@ export const MetDepartments = ({setDepartmentId, setCurrentPage}) => {
   });
 
 
-  const handleDepartment = (departmentId) => {
+  const handleDepartment = (department) => {
+    const departmentId = department.departmentId
     setSearchParams({ departmentId, page: 1 }); // Reset to page 1 for new classification
-
+    setDepartment(department.displayName)
     // setDepartmentId(departmentId)
     // setCurrentPage(1)
   }
@@ -28,7 +29,7 @@ export const MetDepartments = ({setDepartmentId, setCurrentPage}) => {
       {data?.departments && (data.departments.map((department) => (
             <button
             key={department.departmentId} // Add a unique key for each button
-            onClick={() => handleDepartment(department.departmentId)} // Pass the department name to the handler
+            onClick={() => handleDepartment(department)} // Pass the department name to the handler
           >
             {department.displayName} {/* Display the department name */}
           </button>
