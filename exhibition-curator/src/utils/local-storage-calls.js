@@ -53,6 +53,7 @@ export const removeArtworkFromExhibition = (exhibitionId, artworkId) => {
 
   saveExhibitions(updatedExhibitions);
 };
+
 // Delete an exhibition
 export const deleteExhibition = (exhibitionId) => {
   const exhibitions = getExhibitions().filter((exhibition) => exhibition.id !== exhibitionId);
