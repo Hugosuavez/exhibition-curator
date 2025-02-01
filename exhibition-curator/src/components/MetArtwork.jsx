@@ -70,6 +70,15 @@ export const MetArtwork = () => {
     }
   };
 
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  // Function to toggle the sidebar open/closed
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
+
+
   return (
     <div className="container">
       {isLoading && <p>Loading artworks...</p>}
@@ -78,9 +87,14 @@ export const MetArtwork = () => {
         <>
           <Link to="/">Home</Link>
           <h1>Metropolitan Museum of Art</h1>
+            {/* Sidebar Toggle Button */}
+            <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
+              {isSidebarOpen ? "Close Departments" : "Search Departments"}
+            </button>
           <div className="content-wrapper">
+
             {/* Left Sidebar for Departments */}
-            <aside className="departments-sidebar">
+            <aside className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}>
               <MetDepartments setDepartment={setDepartment} />
             </aside>
 
