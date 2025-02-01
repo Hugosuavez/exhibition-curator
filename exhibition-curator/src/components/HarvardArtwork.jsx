@@ -67,14 +67,26 @@ export const HarvardArtwork = () => {
     );
   };
 
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  // Function to toggle the sidebar open/closed
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
+
   return (
     <>
       <div className="container">
         <Link to="/">Home</Link>
         <h1>Harvard Artworks</h1>
+        {/* Sidebar Toggle Button */}
+        <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
+              {isSidebarOpen ? "Close Departments" : "Search Departments"}
+            </button>
         <div className="content-wrapper">
           {/* Sidebar for departments */}
-          <aside className="departments-sidebar">
+          <aside className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}>
             <HarvardDepartments setDepartment={setDepartment} />
           </aside>
           <main className="artworks-content">
@@ -82,7 +94,7 @@ export const HarvardArtwork = () => {
             {isLoading && <p>Loading artworks...</p>}
             {error && <p>Error fetching artworks</p>}
             {data?.records && (
-              <div>
+              <div className="artwork-list">
                 <ul>
                   {data.records.map((record) => (
                     <li key={record.objectid}>
