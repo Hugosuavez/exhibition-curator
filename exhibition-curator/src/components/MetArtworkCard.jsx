@@ -2,11 +2,9 @@ import { fetchMetArtworkDetails } from "../utils/met-api-calls";
 import { Link, useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
-
 export const MetArtworkCard = ({ id, openModal }) => {
   const [searchParams] = useSearchParams(); // Manage query params
 
-  
   const { data, isLoading, error } = useQuery({
     queryKey: ["artwork-details", id], // Query key
     queryFn: () => fetchMetArtworkDetails(id), // Fetcher function
@@ -27,7 +25,11 @@ export const MetArtworkCard = ({ id, openModal }) => {
           {data.artistNationality || "Unknown Nationality"}
         </p>
         <button onClick={() => openModal(data)}>Add to Exhibition</button>
-        <Link to={`/met-artwork-details/${data.objectID}?${searchParams.toString()}`}>
+        <Link
+          to={`/met-artwork-details/${
+            data.objectID
+          }?${searchParams.toString()}`}
+        >
           View Artwork Details
         </Link>
       </article>
