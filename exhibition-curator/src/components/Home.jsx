@@ -21,7 +21,7 @@ export const Home = () => {
   };
 
   return (
-    <>
+    <main className="container">
       <h1>Exhibition Curation Platform</h1>
       <h2>Your Exhibitions</h2>
       {exhibitions.length > 0 ? (
@@ -38,6 +38,6 @@ export const Home = () => {
       <Link to="/met">Metropolitan Museum of Art</Link>
       <br />
       <Link to="/harvard">Harvard Art Museums</Link>
-    </>
+    </main>
   );
 };
