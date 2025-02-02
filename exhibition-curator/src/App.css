@@ -260,6 +260,10 @@
   padding: 15px;
 }
 
+.exhibition-link:hover {
+  color:#c7b3b3
+}
+
 .carousel-artwork-image {
   width: 100%;
   height: 300px;
