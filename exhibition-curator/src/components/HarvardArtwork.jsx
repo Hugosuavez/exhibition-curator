@@ -92,7 +92,7 @@ export const HarvardArtwork = () => {
             {isLoading && <p>Loading artworks...</p>}
             {error && <p>Error fetching artworks</p>}
             {data?.records && (
-              <div className="artwork-list">
+              <div className="artwork-content">
                   {data.records.map((record) => (
                     <li key={record.objectid} className="artwork-card">
                           <h2>{record.title || "Untitled"}</h2>

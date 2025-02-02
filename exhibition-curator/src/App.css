@@ -141,13 +141,14 @@ html, body {
   flex: 1; /* Take up the remaining space */
   display: flex;
   flex-direction: column;
-}
-
-.artwork-list {
-  display: flex;
-  flex-wrap: wrap; /* Allow artworks to wrap on smaller screens */
   gap: 20px; /* Space between artwork cards */
 }
+
+/* .artwork-list {
+  display: flex;
+  flex-wrap: wrap; /* Allow artworks to wrap on smaller screens *//*
+  gap: 20px; /* Space between artwork cards *//*
+} */
 
 .unordered {
   list-style-type: none;
