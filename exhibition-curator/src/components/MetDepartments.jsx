@@ -21,6 +21,7 @@ export const MetDepartments = ({ setDepartment }) => {
       <h3>Departments</h3>
       {isLoading && <p>Loading departments...</p>}
       {error && <p>Error fetching departments</p>}
+      <section>
       {data?.departments &&
         data.departments.map((department) => (
           <button
@@ -30,6 +31,7 @@ export const MetDepartments = ({ setDepartment }) => {
             {department.displayName} {/* Display the department name */}
           </button>
         ))}
+        </section>
     </>
   );
 };
