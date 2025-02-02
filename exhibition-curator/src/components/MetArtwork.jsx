@@ -101,12 +101,10 @@ export const MetArtwork = () => {
             {/* Main Content */}
             <main className="artworks-content">
               {department && <h3>{department}</h3>}
-              <div className="artwork-list">
                 {/* Loop through the objectIDs and fetch artwork details */}
                 {currentObjectIDs.map((id) => (
                   <MetArtworkCard key={id} id={id} openModal={openModal} />
                 ))}
-              </div>
 
               {/* Pagination Controls */}
               <div className="pagination-controls">

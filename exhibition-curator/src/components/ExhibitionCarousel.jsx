@@ -1,10 +1,26 @@
 import { Link } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export const ExhibitionCarousel = ({ exhibitions, onDelete }) => {
 
-  const carouselRef = useRef(null);
-  const scrollAmount = 220; // Adjust scrolling amount per click
+ const carouselRef = useRef(null);
+  const [scrollAmount, setScrollAmount] = useState(0);
+  
+  useEffect(() => {
+    const updateScrollAmount = () => {
+      if (carouselRef.current) {
+        const firstItem = carouselRef.current.querySelector(".carousel-item");
+        if (firstItem) {
+          setScrollAmount(firstItem.clientWidth + 10); // Get width of one item
+        }
+      }
+    };
+  
+    updateScrollAmount(); // Set on mount
+    window.addEventListener("resize", updateScrollAmount); // Update on resize
+  
+    return () => window.removeEventListener("resize", updateScrollAmount);
+  }, []);
 
   const scrollLeft = () => {
     carouselRef.current.scrollBy({ left: -scrollAmount, behavior: "smooth" });
@@ -13,9 +29,6 @@ export const ExhibitionCarousel = ({ exhibitions, onDelete }) => {
   const scrollRight = () => {
     carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
   };
-
-
-
   return (
     <div className="carousel-container">
       <button className="carousel-btn left-btn" onClick={scrollLeft}>

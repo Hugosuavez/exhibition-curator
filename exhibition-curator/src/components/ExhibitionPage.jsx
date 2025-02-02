@@ -20,10 +20,9 @@ export const ExhibitionPage = () => {
   if (!exhibition) return <p>Exhibition not found!</p>;
 
   return (
-    <div>
+    <div className="exhibition-container">
       <Link to="/">Home</Link>
-      <h1>{exhibition.name}</h1>
-      <h2>Artworks in this Exhibition:</h2>
+      <h2>{exhibition.name}</h2>
       <ArtworkCarousel
         artworks={exhibition.artworks}
         updateExhibition={fetchExhibition}

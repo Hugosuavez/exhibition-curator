@@ -7,7 +7,6 @@ import {
 } from "../utils/local-storage-calls";
 
 export const AddArtModal = ({ isOpen, onClose, artwork }) => {
-  console.log("in addart", artwork);
   const [exhibitions, setExhibitions] = useState(getExhibitions());
   const [newExhibitionName, setNewExhibitionName] = useState("");
   const [selectedExhibition, setSelectedExhibition] = useState("");
