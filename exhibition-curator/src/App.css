@@ -47,10 +47,10 @@ html, body {
   overflow-x: hidden;
 }
 
-img, video, iframe, .artwork-image {
+/* img, video, iframe, .artwork-image {
   max-width: 100%;
   height: auto;
-}
+} */
 
 * {
   box-sizing: border-box;
@@ -64,6 +64,7 @@ img, video, iframe, .artwork-image {
   padding: 20px;
   max-width: 100%;
 }
+
 
 /* Content Wrapper: Flexbox for Departments and Main Content */
 .content-wrapper {
@@ -140,12 +141,17 @@ img, video, iframe, .artwork-image {
   flex: 1; /* Take up the remaining space */
   display: flex;
   flex-direction: column;
+  gap: 20px; /* Space between artwork cards */
 }
 
-.artwork-list {
+/* .artwork-list {
   display: flex;
-  flex-wrap: wrap; /* Allow artworks to wrap on smaller screens */
-  gap: 20px; /* Space between artwork cards */
+  flex-wrap: wrap; /* Allow artworks to wrap on smaller screens *//*
+  gap: 20px; /* Space between artwork cards *//*
+} */
+
+.unordered {
+  list-style-type: none;
 }
 
 /* Pagination Controls */
@@ -184,7 +190,8 @@ img, video, iframe, .artwork-image {
 
 .artwork-card {
   border:#005fa3 solid;
-  padding: 100px,
+  padding: 1px;
+  list-style-type: none;
 }
 
 .artwork-details-container {
@@ -196,16 +203,13 @@ img, video, iframe, .artwork-image {
   color: #dbdbdb;
 }
 
+.artwork-title {
+  min-height: 50px;
+}
+
 .artwork-image-container {
   text-align: center;
   margin-bottom: 20px;
-}
-
-.artwork-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .artwork-info {
@@ -292,11 +296,11 @@ img, video, iframe, .artwork-image {
 
 .carousel-item {
   flex: 0 0 85%; /* Almost full width on small screens */
-  max-width: 85%;
-  background-color: #3498db;
+  min-width: 100%;
+  background-color: #494949;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: top;
   align-items: center;
   color: white;
   font-size: 16px;
@@ -306,10 +310,11 @@ img, video, iframe, .artwork-image {
   padding: 15px;
 }
 
-.artwork-image {
+.carousel-artwork-image {
   width: 100%;
-  height: 150px;
-  object-fit: cover;
+  height: 300px;
+  border-radius: 10px; /* Rounded corners */
+  object-fit: contain; /* Ensures the full image is shown without cropping */
   border-radius: 5px;
 }
 
@@ -416,7 +421,9 @@ img, video, iframe, .artwork-image {
   }
 
   .artwork-image {
-    height: 200px;
+    height: 500px;
+    object-fit: contain; /* Ensures the full image is shown without cropping */
+
   }
 
   .carousel-btn {

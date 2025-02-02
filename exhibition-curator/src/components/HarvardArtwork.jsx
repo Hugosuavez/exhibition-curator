@@ -18,7 +18,6 @@ export const HarvardArtwork = () => {
   });
 
   const openModal = (artwork) => {
-    console.log(artwork);
     setSelectedArtwork(artwork);
     setIsModalOpen(true);
   };
@@ -74,7 +73,6 @@ export const HarvardArtwork = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen((prev) => !prev);
   };
-
   return (
     <>
       <div className="container">
@@ -94,12 +92,9 @@ export const HarvardArtwork = () => {
             {isLoading && <p>Loading artworks...</p>}
             {error && <p>Error fetching artworks</p>}
             {data?.records && (
-              <div className="artwork-list">
-                <ul>
+              <div className="artwork-content">
                   {data.records.map((record) => (
-                    <li key={record.objectid}>
-                      <>
-                        <article className="artwork-card">
+                    <li key={record.objectid} className="artwork-card">
                           <h2>{record.title || "Untitled"}</h2>
                           <p>
                             {record.century || "Unknown Artist"} |{" "}
@@ -112,11 +107,8 @@ export const HarvardArtwork = () => {
                           <button onClick={() => handleDetailsClick(record)}>
                             View Details
                           </button>
-                        </article>
-                      </>
                     </li>
                   ))}
-                </ul>
                 <div className="pagination-controls">
                   <button onClick={handlePrev} disabled={!data.info.prev}>
                     Previous

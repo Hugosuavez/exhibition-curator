@@ -26,7 +26,6 @@ export const createExhibition = (name) => {
 
 // Add artwork to an exhibition
 export const addArtworkToExhibition = (exhibitionId, artwork) => {
-  console.log(artwork);
   const exhibitions = getExhibitions();
   const updatedExhibitions = exhibitions.map((exhibition) =>
     exhibition.id === exhibitionId
