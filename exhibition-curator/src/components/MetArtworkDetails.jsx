@@ -7,7 +7,7 @@ import { Link, useSearchParams } from "react-router-dom";
 export const MetArtworkDetails = () => {
   // Get the objectID from the route parameters
   const { objectID } = useParams();
-  const [searchParams] = useSearchParams(); 
+  const [searchParams] = useSearchParams();
 
   // Fetch details for the artwork with the given objectID
   const { data, isLoading, error } = useQuery({

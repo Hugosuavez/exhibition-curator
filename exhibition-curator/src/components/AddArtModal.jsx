@@ -12,8 +12,6 @@ export const AddArtModal = ({ isOpen, onClose, artwork }) => {
   const [selectedExhibition, setSelectedExhibition] = useState("");
   const [errorMessage, setErrorMessage] = useState(""); // Error state
 
-
-
   const handleCreateExhibition = () => {
     if (newExhibitionName.trim() === "") {
       setErrorMessage("Please enter a name for the exhibition."); // Set error
@@ -23,7 +21,6 @@ export const AddArtModal = ({ isOpen, onClose, artwork }) => {
     setExhibitions([...exhibitions, newExhibition]);
     setNewExhibitionName("");
     setErrorMessage(""); // Clear error after successful creation
-
   };
 
   const handleAddToExhibition = () => {
@@ -35,7 +32,6 @@ export const AddArtModal = ({ isOpen, onClose, artwork }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <h2>Add Artwork to Exhibition</h2>
-
       <h3>Select an Existing Exhibition</h3>
       <select
         onChange={(e) => setSelectedExhibition(e.target.value)}
@@ -58,12 +54,13 @@ export const AddArtModal = ({ isOpen, onClose, artwork }) => {
         placeholder="Exhibition Name"
         value={newExhibitionName}
         onChange={(e) => {
-          setNewExhibitionName(e.target.value)
+          setNewExhibitionName(e.target.value);
           setErrorMessage(""); // Clear error when user types
         }}
         required
       />
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} {/* Display error message */}
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}{" "}
+      {/* Display error message */}
       <button onClick={handleCreateExhibition}>Create</button>
     </Modal>
   );

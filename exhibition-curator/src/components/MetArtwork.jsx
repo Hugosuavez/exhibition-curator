@@ -70,14 +70,12 @@ export const MetArtwork = () => {
     }
   };
 
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Function to toggle the sidebar open/closed
   const toggleSidebar = () => {
     setIsSidebarOpen((prev) => !prev);
   };
-
 
   return (
     <main className="container">
@@ -87,24 +85,28 @@ export const MetArtwork = () => {
         <>
           <Link to="/">Home</Link>
           <h1>Metropolitan Museum of Art</h1>
-            {/* Sidebar Toggle Button */}
-            <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
-              {isSidebarOpen ? "Close Departments" : "Search Departments"}
-            </button>
+          {/* Sidebar Toggle Button */}
+          <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
+            {isSidebarOpen ? "Close Departments" : "Search Departments"}
+          </button>
           <section className="content-wrapper">
-
             {/* Left Sidebar for Departments */}
-            <aside className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}>
-              <MetDepartments setDepartment={setDepartment} setIsSidebarOpen={setIsSidebarOpen}/>
+            <aside
+              className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}
+            >
+              <MetDepartments
+                setDepartment={setDepartment}
+                setIsSidebarOpen={setIsSidebarOpen}
+              />
             </aside>
 
             {/* Main Content */}
             <main className="artworks-content">
               {department && <h3>{department}</h3>}
-                {/* Loop through the objectIDs and fetch artwork details */}
-                {currentObjectIDs.map((id) => (
-                  <MetArtworkCard key={id} id={id} openModal={openModal} />
-                ))}
+              {/* Loop through the objectIDs and fetch artwork details */}
+              {currentObjectIDs.map((id) => (
+                <MetArtworkCard key={id} id={id} openModal={openModal} />
+              ))}
 
               {/* Pagination Controls */}
               <section className="pagination-controls">

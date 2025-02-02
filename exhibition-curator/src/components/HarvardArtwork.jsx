@@ -66,7 +66,6 @@ export const HarvardArtwork = () => {
     );
   };
 
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Function to toggle the sidebar open/closed
@@ -80,12 +79,17 @@ export const HarvardArtwork = () => {
         <h1>Harvard Artworks</h1>
         {/* Sidebar Toggle Button */}
         <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
-              {isSidebarOpen ? "Close Departments" : "Search Departments"}
-            </button>
+          {isSidebarOpen ? "Close Departments" : "Search Departments"}
+        </button>
         <section className="content-wrapper">
           {/* Sidebar for departments */}
-          <aside className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}>
-            <HarvardDepartments setDepartment={setDepartment} setIsSidebarOpen={setIsSidebarOpen}/>
+          <aside
+            className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}
+          >
+            <HarvardDepartments
+              setDepartment={setDepartment}
+              setIsSidebarOpen={setIsSidebarOpen}
+            />
           </aside>
           <main className="artworks-content">
             {department && <h3>{department}</h3>}
@@ -93,22 +97,22 @@ export const HarvardArtwork = () => {
             {error && <p>Error fetching artworks</p>}
             {data?.records && (
               <article className="artwork-content">
-                  {data.records.map((record) => (
-                    <li key={record.objectid} className="artwork-card">
-                          <h2>{record.title || "Untitled"}</h2>
-                          <p>
-                            {record.century || "Unknown Artist"} |{" "}
-                            {record.department || "Unknown Department"} |{" "}
-                            {record.culture || "Unknown Nationality"}
-                          </p>
-                          <button onClick={() => openModal(record)}>
-                            Add to Exhibition
-                          </button>
-                          <button onClick={() => handleDetailsClick(record)}>
-                            View Details
-                          </button>
-                    </li>
-                  ))}
+                {data.records.map((record) => (
+                  <li key={record.objectid} className="artwork-card">
+                    <h2>{record.title || "Untitled"}</h2>
+                    <p>
+                      {record.century || "Unknown Artist"} |{" "}
+                      {record.department || "Unknown Department"} |{" "}
+                      {record.culture || "Unknown Nationality"}
+                    </p>
+                    <button onClick={() => openModal(record)}>
+                      Add to Exhibition
+                    </button>
+                    <button onClick={() => handleDetailsClick(record)}>
+                      View Details
+                    </button>
+                  </li>
+                ))}
                 <section className="pagination-controls">
                   <button onClick={handlePrev} disabled={!data.info.prev}>
                     Previous

@@ -10,7 +10,7 @@ export const ExhibitionPage = () => {
     const exhibitions =
       JSON.parse(localStorage.getItem("userExhibitions")) || [];
     const selectedExhibition = exhibitions.find((exh) => String(exh.id) === id);
-    setLoading(false)
+    setLoading(false);
     setExhibition(selectedExhibition);
   };
 
@@ -18,7 +18,7 @@ export const ExhibitionPage = () => {
     fetchExhibition();
   }, [id]);
 
-  if(loading) return <p>Loading...</p>
+  if (loading) return <p>Loading...</p>;
   if (!exhibition) return <p>Exhibition not found!</p>;
 
   return (

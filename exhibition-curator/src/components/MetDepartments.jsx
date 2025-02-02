@@ -10,15 +10,14 @@ export const MetDepartments = ({ setDepartment, setIsSidebarOpen }) => {
     queryFn: () => fetchMetDepartments(),
   });
 
-
   const handleAll = () => {
     setDepartment("");
     setIsSidebarOpen((prev) => !prev);
     navigate("/met");
-  }
+  };
 
   const handleDepartment = (department) => {
-    if(!department)return;
+    if (!department) return;
     const departmentId = department.departmentId;
     setSearchParams({ departmentId, page: 1 }); // Reset to page 1 for new classification
     setDepartment(department.displayName);
@@ -31,22 +30,19 @@ export const MetDepartments = ({ setDepartment, setIsSidebarOpen }) => {
       {isLoading && <p>Loading departments...</p>}
       {error && <p>Error fetching departments</p>}
       <section>
-      <button
-            key={"all"} 
-            onClick={() => handleAll()} 
-          >
-            All
-          </button>
-      {data?.departments &&
-        data.departments.map((department) => (
-          <button
-            key={department.departmentId} // Add a unique key for each button
-            onClick={() => handleDepartment(department)} // Pass the department name to the handler
-          >
-            {department.displayName} {/* Display the department name */}
-          </button>
-        ))}
-        </section>
+        <button key={"all"} onClick={() => handleAll()}>
+          All
+        </button>
+        {data?.departments &&
+          data.departments.map((department) => (
+            <button
+              key={department.departmentId} // Add a unique key for each button
+              onClick={() => handleDepartment(department)} // Pass the department name to the handler
+            >
+              {department.displayName} {/* Display the department name */}
+            </button>
+          ))}
+      </section>
     </>
   );
 };

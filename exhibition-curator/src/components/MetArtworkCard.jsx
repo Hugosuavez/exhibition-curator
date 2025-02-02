@@ -11,13 +11,11 @@ export const MetArtworkCard = ({ id, openModal }) => {
     queryFn: () => fetchMetArtworkDetails(id), // Fetcher function
   });
 
-
   const handleDetailsClick = (artwork) => {
     navigate(
       `/met-artwork-details/${artwork.objectID}?${searchParams.toString()}`
     );
   };
-
 
   // Handle loading state
   if (isLoading) return <p>Loading artwork...</p>;
@@ -26,20 +24,15 @@ export const MetArtworkCard = ({ id, openModal }) => {
   if (error) return <p>Error fetching artwork: {error.message}</p>;
 
   return (
-    
-      <li key={data.objectID} className="artwork-card">
-        <h2>{data.title || "Untitled"}</h2>
-        <p>
-          {data.artistDisplayName || "Unknown Artist"} |{" "}
-          {data.department || "Unknown Department"} |{" "}
-          {data.artistNationality || "Unknown Nationality"}
-        </p>
-        <button onClick={() => openModal(data)}>Add to Exhibition</button>
-        <button onClick={() => handleDetailsClick(data)}>
-                            View Details
-                          </button>
-       
-      </li>
-    
+    <li key={data.objectID} className="artwork-card">
+      <h2>{data.title || "Untitled"}</h2>
+      <p>
+        {data.artistDisplayName || "Unknown Artist"} |{" "}
+        {data.department || "Unknown Department"} |{" "}
+        {data.artistNationality || "Unknown Nationality"}
+      </p>
+      <button onClick={() => openModal(data)}>Add to Exhibition</button>
+      <button onClick={() => handleDetailsClick(data)}>View Details</button>
+    </li>
   );
 };
