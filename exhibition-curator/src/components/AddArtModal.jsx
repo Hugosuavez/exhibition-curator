@@ -10,12 +10,20 @@ export const AddArtModal = ({ isOpen, onClose, artwork }) => {
   const [exhibitions, setExhibitions] = useState(getExhibitions());
   const [newExhibitionName, setNewExhibitionName] = useState("");
   const [selectedExhibition, setSelectedExhibition] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // Error state
+
+
 
   const handleCreateExhibition = () => {
-    if (newExhibitionName.trim() === "") return; //note to self - add better response here
+    if (newExhibitionName.trim() === "") {
+      setErrorMessage("Please enter a name for the exhibition."); // Set error
+      return;
+    }
     const newExhibition = createExhibition(newExhibitionName);
     setExhibitions([...exhibitions, newExhibition]);
     setNewExhibitionName("");
+    setErrorMessage(""); // Clear error after successful creation
+
   };
 
   const handleAddToExhibition = () => {
@@ -49,8 +57,13 @@ export const AddArtModal = ({ isOpen, onClose, artwork }) => {
         type="text"
         placeholder="Exhibition Name"
         value={newExhibitionName}
-        onChange={(e) => setNewExhibitionName(e.target.value)}
+        onChange={(e) => {
+          setNewExhibitionName(e.target.value)
+          setErrorMessage(""); // Clear error when user types
+        }}
+        required
       />
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>} {/* Display error message */}
       <button onClick={handleCreateExhibition}>Create</button>
     </Modal>
   );
