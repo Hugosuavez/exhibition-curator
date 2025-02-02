@@ -36,7 +36,6 @@ export const ArtworkCarousel = ({ artworks, updateExhibition }) => {
   };
 
   const handleRemove = (artworkId) => {
-    console.log("hello");
     removeArtworkFromExhibition(exhibitionId, artworkId);
     updateExhibition(); // Refresh exhibition after removal
   };
@@ -48,7 +47,6 @@ export const ArtworkCarousel = ({ artworks, updateExhibition }) => {
       </button>
       <div className="carousel" ref={carouselRef}>
         {artworks.map((artwork, index) => {
-          console.log(artwork)
           // Determine image source
           const imageUrl =
             artwork.primaryImage || artwork.primaryImageSmall || artwork.primaryimageurl || NoImagePlaceholder;
@@ -78,7 +76,7 @@ export const ArtworkCarousel = ({ artworks, updateExhibition }) => {
                     <img
                       src={imageUrl}
                       alt={normalizedArtwork.title}
-                      className="artwork-image"
+                      className="carousel-artwork-image"
                     />
                   </div>
                   <div className="artwork-info">

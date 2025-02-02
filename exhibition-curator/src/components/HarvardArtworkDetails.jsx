@@ -20,7 +20,7 @@ export const HarvardArtworkDetails = () => {
 
   // Use the image if available; fallback to the placeholder
   const imageUrl = data?.primaryimageurl || NoImagePlaceholder;
-
+  console.log(data);
   return (
     <div className="artwork-details-container">
       <Link to={`/harvard?${searchParams.toString()}`}>Back to Collection</Link>

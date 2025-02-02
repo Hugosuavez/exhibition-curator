@@ -19,7 +19,6 @@ export const AddArtModal = ({ isOpen, onClose, artwork }) => {
   };
 
   const handleAddToExhibition = () => {
-    console.log("in handleadd", artwork);
     if (!selectedExhibition) return;
     addArtworkToExhibition(Number(selectedExhibition), artwork);
     onClose(); // Close modal after adding

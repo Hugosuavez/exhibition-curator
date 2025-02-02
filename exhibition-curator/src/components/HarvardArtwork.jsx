@@ -18,7 +18,6 @@ export const HarvardArtwork = () => {
   });
 
   const openModal = (artwork) => {
-    console.log(artwork);
     setSelectedArtwork(artwork);
     setIsModalOpen(true);
   };
