@@ -5,11 +5,12 @@ import { Link } from "react-router-dom";
 export const ExhibitionPage = () => {
   const { id } = useParams();
   const [exhibition, setExhibition] = useState(null);
-
+  const [loading, setLoading] = useState(true);
   const fetchExhibition = () => {
     const exhibitions =
       JSON.parse(localStorage.getItem("userExhibitions")) || [];
     const selectedExhibition = exhibitions.find((exh) => String(exh.id) === id);
+    setLoading(false)
     setExhibition(selectedExhibition);
   };
 
@@ -17,7 +18,7 @@ export const ExhibitionPage = () => {
     fetchExhibition();
   }, [id]);
 
-  
+  if(loading) return <p>Loading...</p>
   if (!exhibition) return <p>Exhibition not found!</p>;
 
   return (
