@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { removeArtworkFromExhibition } from "../utils/local-storage-calls"; // Import the function
-import { Link } from "react-router-dom";
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
 
 // Component for displaying the artworks carousel

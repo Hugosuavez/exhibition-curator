@@ -14,7 +14,7 @@ export const HarvardDepartments = ({ setDepartment }) => {
   const handleClassification = (classification) => {
     const classificationId = classification.id;
     setSearchParams({ classificationId, page: 1 }); // Reset to page 1 for new classification
-    setDepartment(classification.name);
+    classification.name == "(not assigned)" ? setDepartment("") : setDepartment(classification.name);
   };
 
   if (isLoading) return <p>Loading classifications...</p>;
@@ -27,7 +27,7 @@ export const HarvardDepartments = ({ setDepartment }) => {
           key={classification.id} // Ensure unique keys
           onClick={() => handleClassification(classification)} // Pass classification name to parent
         >
-          {classification.name}
+          {classification.name == "(not assigned)" ? "All" : classification.name}
         </button>
       ))}
     </section>

@@ -51,7 +51,7 @@ export const AddArtModal = ({ isOpen, onClose, artwork }) => {
       <button onClick={handleAddToExhibition} disabled={!selectedExhibition}>
         Add to Exhibition
       </button>
-
+      <p>OR</p>
       <h3>Create New Exhibition</h3>
       <input
         type="text"
