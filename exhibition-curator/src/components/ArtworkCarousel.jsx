@@ -41,11 +41,11 @@ export const ArtworkCarousel = ({ artworks, updateExhibition }) => {
   };
 
   return (
-    <div className="carousel-container">
+    <main className="carousel-container">
       <button className="carousel-btn left-btn" onClick={scrollLeft}>
         &#8249;
       </button>
-      <div className="carousel" ref={carouselRef}>
+      <section className="carousel" ref={carouselRef}>
         {artworks.map((artwork, index) => {
           // Determine image source
           const imageUrl =
@@ -68,18 +68,17 @@ export const ArtworkCarousel = ({ artworks, updateExhibition }) => {
           };
   
           return (
-            <div key={index} className="carousel-item">
-              <div className="carousel-item-content">
-                <div className="artwork-details-container">
+            <article key={index} className="carousel-item">
+                <section className="artwork-details-container">
                   <h3 className="artwork-title">{normalizedArtwork.title}</h3>
-                  <div className="artwork-image-container">
+                  <section className="artwork-image-container">
                     <img
                       src={imageUrl}
                       alt={normalizedArtwork.title}
                       className="carousel-artwork-image"
                     />
-                  </div>
-                  <div className="artwork-info">
+                  </section>
+                  <section className="artwork-info">
                     <p><strong>Artist:</strong> {normalizedArtwork.artist}</p>
                     <p><strong>Department:</strong> {normalizedArtwork.department}</p>
                     <p><strong>Culture:</strong> {normalizedArtwork.culture}</p>
@@ -97,20 +96,19 @@ export const ArtworkCarousel = ({ artworks, updateExhibition }) => {
                         </a>
                       </p>
                     )}
-                  </div>
-                </div>
-              </div>
+                  </section>
+                </section>
               {/* Remove Button */}
               <button onClick={() => handleRemove(normalizedArtwork.id)}>
                 Remove from Exhibition
               </button>
-            </div>
+            </article>
           );
         })}
-      </div>
+      </section>
       <button className="carousel-btn right-btn" onClick={scrollRight}>
         &#8250;
       </button>
-    </div>
+    </main>
   );
 };

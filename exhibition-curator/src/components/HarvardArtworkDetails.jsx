@@ -22,17 +22,17 @@ export const HarvardArtworkDetails = () => {
   const imageUrl = data?.primaryimageurl || NoImagePlaceholder;
   console.log(data);
   return (
-    <div className="artwork-details-container">
+    <main className="artwork-details-container">
       <Link to={`/harvard?${searchParams.toString()}`}>Back to Collection</Link>
       <h1>{data.title || "Untitled"}</h1>
-      <div className="artwork-image-container">
+      <section className="artwork-image-container">
         <img
           src={imageUrl}
           alt={data.title || "No title available"}
           className="artwork-image"
         />
-      </div>
-      <div className="artwork-info">
+      </section>
+      <section className="artwork-info">
         <p>
           <strong>Accession Method:</strong> {data.accessionmethod || "Unknown"}
         </p>
@@ -79,7 +79,7 @@ export const HarvardArtworkDetails = () => {
             </a>
           </p>
         )}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };

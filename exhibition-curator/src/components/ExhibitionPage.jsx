@@ -17,16 +17,17 @@ export const ExhibitionPage = () => {
     fetchExhibition();
   }, [id]);
 
+  
   if (!exhibition) return <p>Exhibition not found!</p>;
 
   return (
-    <div className="exhibition-container">
+    <main className="exhibition-container">
       <Link to="/">Home</Link>
       <h2>{exhibition.name}</h2>
       <ArtworkCarousel
         artworks={exhibition.artworks}
         updateExhibition={fetchExhibition}
       />
-    </div>
+    </main>
   );
 };

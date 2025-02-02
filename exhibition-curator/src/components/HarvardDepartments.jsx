@@ -21,7 +21,7 @@ export const HarvardDepartments = ({ setDepartment }) => {
   if (error) return <p>Error fetching classifications: {error.message}</p>;
 
   return (
-    <div>
+    <section>
       {data?.records.map((classification) => (
         <button
           key={classification.id} // Ensure unique keys
@@ -30,6 +30,6 @@ export const HarvardDepartments = ({ setDepartment }) => {
           {classification.name}
         </button>
       ))}
-    </div>
+    </section>
   );
 };
