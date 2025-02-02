@@ -24,7 +24,7 @@ export const MetArtworkDetails = () => {
 
   return (
     <div className="artwork-details-container">
-      <Link to={`/met?${searchParams.toString()}`}>Back</Link>
+      <Link to={`/met?${searchParams.toString()}`}>Back to collection</Link>
       <h1>{data.title}</h1>
       <div className="artwork-image-container">
         <img
