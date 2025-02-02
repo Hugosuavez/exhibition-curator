@@ -23,17 +23,17 @@ export const MetArtworkDetails = () => {
     data.primaryImage || data.primaryImageSmall || NoImagePlaceholder;
 
   return (
-    <div className="artwork-details-container">
+    <article className="artwork-details-container">
       <Link to={`/met?${searchParams.toString()}`}>Back to collection</Link>
       <h1>{data.title}</h1>
-      <div className="artwork-image-container">
+      <section className="artwork-image-container">
         <img
           src={imageUrl}
           alt={data.title || "No title available"}
           className="artwork-image"
         />
-      </div>
-      <div className="artwork-info">
+      </section>
+      <section className="artwork-info">
         <p>
           <strong>Artist:</strong> {data.artistDisplayName || "Unknown"}
         </p>
@@ -60,7 +60,7 @@ export const MetArtworkDetails = () => {
             </a>
           </p>
         )}
-      </div>
-    </div>
+      </section>
+    </article>
   );
 };

@@ -30,17 +30,15 @@ export const ExhibitionCarousel = ({ exhibitions, onDelete }) => {
     carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
   };
   return (
-    <div className="carousel-container">
+    <main className="carousel-container">
       <button className="carousel-btn left-btn" onClick={scrollLeft}>
         &#8249;
       </button>
-    <div className="carousel" ref={carouselRef}>
+    <section className="carousel" ref={carouselRef}>
       {exhibitions.map((exhibition) => (
-        <div key={exhibition.id} className="carousel-item">
+        <article key={exhibition.id} className="carousel-item">
           <Link to={`/exhibition/${exhibition.id}`} className="exhibition-link">
-            <div className="carousel-item-content">
               <h3>{exhibition.name}</h3>
-            </div>
           </Link>
           {/* Delete Button */}
           <button
@@ -49,12 +47,12 @@ export const ExhibitionCarousel = ({ exhibitions, onDelete }) => {
           >
             Delete
           </button>
-        </div>
+        </article>
       ))}
-    </div>
+    </section>
       <button className="carousel-btn right-btn" onClick={scrollRight}>
         &#8250;
       </button>
-    </div>
+    </main>
   );
 };

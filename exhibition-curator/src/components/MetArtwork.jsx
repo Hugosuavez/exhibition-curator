@@ -80,7 +80,7 @@ export const MetArtwork = () => {
 
 
   return (
-    <div className="container">
+    <main className="container">
       {isLoading && <p>Loading artworks...</p>}
       {error && <p>Error fetching artworks: {error.message}</p>}
       {data && data.objectIDs && (
@@ -91,7 +91,7 @@ export const MetArtwork = () => {
             <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
               {isSidebarOpen ? "Close Departments" : "Search Departments"}
             </button>
-          <div className="content-wrapper">
+          <section className="content-wrapper">
 
             {/* Left Sidebar for Departments */}
             <aside className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}>
@@ -107,7 +107,7 @@ export const MetArtwork = () => {
                 ))}
 
               {/* Pagination Controls */}
-              <div className="pagination-controls">
+              <section className="pagination-controls">
                 <button onClick={handlePrev} disabled={currentPage === 1}>
                   Previous
                 </button>
@@ -120,7 +120,7 @@ export const MetArtwork = () => {
                 >
                   Next
                 </button>
-              </div>
+              </section>
               {/* Modal */}
               <AddArtModal
                 isOpen={isModalOpen}
@@ -128,9 +128,9 @@ export const MetArtwork = () => {
                 artwork={selectedArtwork}
               />
             </main>
-          </div>
+          </section>
         </>
       )}
-    </div>
+    </main>
   );
 };

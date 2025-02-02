@@ -75,14 +75,14 @@ export const HarvardArtwork = () => {
   };
   return (
     <>
-      <div className="container">
+      <main className="container">
         <Link to="/">Home</Link>
         <h1>Harvard Artworks</h1>
         {/* Sidebar Toggle Button */}
         <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
               {isSidebarOpen ? "Close Departments" : "Search Departments"}
             </button>
-        <div className="content-wrapper">
+        <section className="content-wrapper">
           {/* Sidebar for departments */}
           <aside className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}>
             <HarvardDepartments setDepartment={setDepartment} />
@@ -92,7 +92,7 @@ export const HarvardArtwork = () => {
             {isLoading && <p>Loading artworks...</p>}
             {error && <p>Error fetching artworks</p>}
             {data?.records && (
-              <div className="artwork-content">
+              <article className="artwork-content">
                   {data.records.map((record) => (
                     <li key={record.objectid} className="artwork-card">
                           <h2>{record.title || "Untitled"}</h2>
@@ -109,7 +109,7 @@ export const HarvardArtwork = () => {
                           </button>
                     </li>
                   ))}
-                <div className="pagination-controls">
+                <section className="pagination-controls">
                   <button onClick={handlePrev} disabled={!data.info.prev}>
                     Previous
                   </button>
@@ -119,18 +119,18 @@ export const HarvardArtwork = () => {
                   <button onClick={handleNext} disabled={!data.info.next}>
                     Next
                   </button>
-                </div>
+                </section>
                 {/* Modal */}
                 <AddArtModal
                   isOpen={isModalOpen}
                   onClose={() => setIsModalOpen(false)}
                   artwork={selectedArtwork}
                 />
-              </div>
+              </article>
             )}
           </main>
-        </div>
-      </div>
+        </section>
+      </main>
     </>
   );
 };
