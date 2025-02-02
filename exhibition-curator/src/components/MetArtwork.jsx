@@ -95,7 +95,7 @@ export const MetArtwork = () => {
 
             {/* Left Sidebar for Departments */}
             <aside className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}>
-              <MetDepartments setDepartment={setDepartment} />
+              <MetDepartments setDepartment={setDepartment} setIsSidebarOpen={setIsSidebarOpen}/>
             </aside>
 
             {/* Main Content */}

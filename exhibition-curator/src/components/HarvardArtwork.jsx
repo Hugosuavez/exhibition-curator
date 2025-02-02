@@ -85,7 +85,7 @@ export const HarvardArtwork = () => {
         <section className="content-wrapper">
           {/* Sidebar for departments */}
           <aside className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}>
-            <HarvardDepartments setDepartment={setDepartment} />
+            <HarvardDepartments setDepartment={setDepartment} setIsSidebarOpen={setIsSidebarOpen}/>
           </aside>
           <main className="artworks-content">
             {department && <h3>{department}</h3>}

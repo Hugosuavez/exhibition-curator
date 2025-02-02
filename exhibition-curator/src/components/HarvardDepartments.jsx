@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchHarvardClassifications } from "../utils/harvard-api-calls";
 import { useSearchParams } from "react-router-dom";
 
-export const HarvardDepartments = ({ setDepartment }) => {
+export const HarvardDepartments = ({ setDepartment, setIsSidebarOpen }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Fetch classifications
@@ -15,6 +15,7 @@ export const HarvardDepartments = ({ setDepartment }) => {
     const classificationId = classification.id;
     setSearchParams({ classificationId, page: 1 }); // Reset to page 1 for new classification
     classification.name == "(not assigned)" ? setDepartment("") : setDepartment(classification.name);
+    setIsSidebarOpen((prev) => !prev);
   };
 
   if (isLoading) return <p>Loading classifications...</p>;

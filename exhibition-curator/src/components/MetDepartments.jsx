@@ -2,7 +2,7 @@ import { fetchMetDepartments } from "../utils/met-api-calls";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams, useNavigate } from "react-router-dom";
 
-export const MetDepartments = ({ setDepartment }) => {
+export const MetDepartments = ({ setDepartment, setIsSidebarOpen }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const { data, isLoading, error } = useQuery({
@@ -13,6 +13,7 @@ export const MetDepartments = ({ setDepartment }) => {
 
   const handleAll = () => {
     setDepartment("");
+    setIsSidebarOpen((prev) => !prev);
     navigate("/met");
   }
 
@@ -21,6 +22,7 @@ export const MetDepartments = ({ setDepartment }) => {
     const departmentId = department.departmentId;
     setSearchParams({ departmentId, page: 1 }); // Reset to page 1 for new classification
     setDepartment(department.displayName);
+    setIsSidebarOpen((prev) => !prev);
   };
 
   return (
