@@ -53,19 +53,30 @@ return rawDepartmentId && !isNaN(rawDepartmentId) ? parseInt(rawDepartmentId, 10
 
   const handleNext = () => {
     if (currentPage < totalPages) {
+      if(departmentId){
       setSearchParams({
         departmentId,
         page: currentPage + 1,
-      }); // Move to the next page
+      });} else {
+        setSearchParams({
+          page: currentPage + 1,
+        });
+      }
     }
   };
 
   const handlePrev = () => {
     if (currentPage > 1) {
-      setSearchParams({
-        departmentId,
-        page: currentPage - 1,
-      }); // Move to the previous page
+      if(departmentId){
+    setSearchParams({
+          departmentId,
+          page: currentPage - 1,
+        }); 
+      } else {
+        setSearchParams({
+          page: currentPage - 1,
+        }); 
+      }
     }
   };
 

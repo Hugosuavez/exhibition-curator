@@ -22,6 +22,8 @@ export const MetArtworkDetails = () => {
   const imageUrl =
     data.primaryImage || data.primaryImageSmall || NoImagePlaceholder;
 
+  
+
   return (
     <article className="artwork-details-container">
       <Link to={`/met?${searchParams.toString()}`}>Back to collection</Link>
