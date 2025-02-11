@@ -80,6 +80,36 @@ return rawDepartmentId && !isNaN(rawDepartmentId) ? parseInt(rawDepartmentId, 10
     }
   };
 
+  const handleFirst = () => {
+    if (currentPage > 1) {
+      if(departmentId){
+    setSearchParams({
+          departmentId,
+          page: 1,
+        }); 
+      } else {
+        setSearchParams({
+          page: 1,
+        }); 
+      }
+    }
+  }
+
+  const handleLast = () => {
+    if (currentPage < totalPages) {
+      if(departmentId){
+    setSearchParams({
+          departmentId,
+          page: totalPages,
+        }); 
+      } else {
+        setSearchParams({
+          page: totalPages,
+        }); 
+      }
+    }
+  }
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Function to toggle the sidebar open/closed
@@ -120,6 +150,9 @@ return rawDepartmentId && !isNaN(rawDepartmentId) ? parseInt(rawDepartmentId, 10
 
               {/* Pagination Controls */}
               <section className="pagination-controls">
+                <button onClick={handleFirst} disabled={currentPage === 1}>
+                    &laquo; First
+                </button>
                 <button onClick={handlePrev} disabled={currentPage === 1}>
                   Previous
                 </button>
@@ -131,6 +164,9 @@ return rawDepartmentId && !isNaN(rawDepartmentId) ? parseInt(rawDepartmentId, 10
                   disabled={currentPage === totalPages}
                 >
                   Next
+                </button>
+                <button onClick={handleLast} disabled={currentPage === totalPages}>
+                Last &raquo;
                 </button>
               </section>
               {/* Modal */}

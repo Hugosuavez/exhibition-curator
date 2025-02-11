@@ -45,20 +45,65 @@ export const HarvardArtwork = () => {
     ? Math.ceil(data.info.totalrecords / itemsPerPage)
     : 0;
 
-  // Update query parameters for next/prev navigation
-  const handleNext = () => {
-    setSearchParams({
-      classification,
-      page: currentPage + 1,
-    });
-  };
-
-  const handlePrev = () => {
-    setSearchParams({
-      classification,
-      page: currentPage - 1,
-    });
-  };
+    const handleNext = () => {
+      if (currentPage < totalPages) {
+        if(classification){
+        setSearchParams({
+          classification,
+          page: currentPage + 1,
+        });} else {
+          setSearchParams({
+            page: currentPage + 1,
+          });
+        }
+      }
+    };
+  
+    const handlePrev = () => {
+      if (currentPage > 1) {
+        if(classification){
+      setSearchParams({
+        classification,
+            page: currentPage - 1,
+          }); 
+        } else {
+          setSearchParams({
+            page: currentPage - 1,
+          }); 
+        }
+      }
+    };
+  
+    const handleFirst = () => {
+      if (currentPage > 1) {
+        if(classification){
+      setSearchParams({
+        classification,
+            page: 1,
+          }); 
+        } else {
+          setSearchParams({
+            page: 1,
+          }); 
+        }
+      }
+    }
+  
+    const handleLast = () => {
+      if (currentPage < totalPages) {
+        if(classification){
+      setSearchParams({
+        classification,
+            page: totalPages,
+          }); 
+        } else {
+          setSearchParams({
+            page: totalPages,
+          }); 
+        }
+      }
+    }
+  
 
   const handleDetailsClick = (artwork) => {
     navigate(
@@ -114,15 +159,24 @@ export const HarvardArtwork = () => {
                   </li>
                 ))}
                 <section className="pagination-controls">
-                  <button onClick={handlePrev} disabled={!data.info.prev}>
-                    Previous
-                  </button>
-                  <span>
-                    Page {currentPage} of {totalPages}
-                  </span>
-                  <button onClick={handleNext} disabled={!data.info.next}>
-                    Next
-                  </button>
+                <button onClick={handleFirst} disabled={currentPage === 1}>
+                    &laquo; First
+                </button>
+                <button onClick={handlePrev} disabled={currentPage === 1}>
+                  Previous
+                </button>
+                <span>
+                  Page {currentPage} of {totalPages}
+                </span>
+                <button
+                  onClick={handleNext}
+                  disabled={currentPage === totalPages}
+                >
+                  Next
+                </button>
+                <button onClick={handleLast} disabled={currentPage === totalPages}>
+                Last &raquo;
+                </button>
                 </section>
                 {/* Modal */}
                 <AddArtModal
