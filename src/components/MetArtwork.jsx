@@ -17,8 +17,8 @@ export const MetArtwork = () => {
 
   const [departmentId, setDepartmentId] = useState(() => {
     const rawDepartmentId = searchParams.get("departmentId");
-    return rawDepartmentId ? parseInt(rawDepartmentId, 10) : null;
-  });
+return rawDepartmentId && !isNaN(rawDepartmentId) ? parseInt(rawDepartmentId, 10) : null; 
+ });
 
   const openModal = (artwork) => {
     setSelectedArtwork(artwork);
@@ -28,8 +28,7 @@ export const MetArtwork = () => {
   // Sync `departmentId` with searchParams when they change
   useEffect(() => {
     const rawDepartmentId = searchParams.get("departmentId");
-    setDepartmentId(rawDepartmentId ? parseInt(rawDepartmentId, 10) : null);
-  }, [searchParams]); // Dependency array ensures this runs when searchParams change
+    setDepartmentId(rawDepartmentId && !isNaN(rawDepartmentId) ? parseInt(rawDepartmentId, 10) : null);  }, [searchParams]); // Dependency array ensures this runs when searchParams change
 
   const itemsPerPage = 10; // Number of items per page
 

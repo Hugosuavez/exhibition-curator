@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useSearchParams, useNavigate } from "react-router-dom";
 
 export const MetDepartments = ({ setDepartment, setIsSidebarOpen }) => {
+  
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const { data, isLoading, error } = useQuery({
