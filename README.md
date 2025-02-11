@@ -2,6 +2,9 @@
 
 A web application that allows users to curate exhibitions by selecting artwork from **The Met Museum** and **Harvard Art Museums** APIs. Users can browse, search, and organize artworks into custom exhibitions.
 
+## Visit the hosted application
+https://github.com/Hugosuavez/exhibition-curator
+
 ## Features
 
 - Search and browse artwork from **The Met Museum** and **Harvard Art Museums** APIs.
