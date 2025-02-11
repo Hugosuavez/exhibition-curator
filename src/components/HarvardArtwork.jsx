@@ -4,6 +4,7 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { HarvardDepartments } from "./HarvardDepartments";
 import { useState, useEffect } from "react";
 import { AddArtModal } from "./AddArtModal";
+import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
 
 export const HarvardArtwork = () => {
   const [selectedArtwork, setSelectedArtwork] = useState(null);
@@ -31,7 +32,7 @@ export const HarvardArtwork = () => {
   }, [searchParams]); // Dependency array ensures this runs when searchParams change
 
   const currentPage = parseInt(searchParams.get("page") || 1, 10);
-
+  
   const { data, isLoading, error } = useQuery({
     queryKey: ["harvard-artworks", classification, currentPage],
     queryFn: () => fetchHarvardArtwork(classification, currentPage),
@@ -58,7 +59,7 @@ export const HarvardArtwork = () => {
         }
       }
     };
-  
+    
     const handlePrev = () => {
       if (currentPage > 1) {
         if(classification){
@@ -73,7 +74,7 @@ export const HarvardArtwork = () => {
         }
       }
     };
-  
+    
     const handleFirst = () => {
       if (currentPage > 1) {
         if(classification){
@@ -117,6 +118,9 @@ export const HarvardArtwork = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen((prev) => !prev);
   };
+    
+  
+  console.log(data?.records);
   return (
     <>
       <main className="container">
@@ -142,9 +146,16 @@ export const HarvardArtwork = () => {
             {error && <p>Error fetching artworks</p>}
             {data?.records && (
               <article className="artwork-content">
-                {data.records.map((record) => (
-                  <li key={record.objectid} className="artwork-card">
+                {data.records.map((record) => {
+                  const imageUrl = record?.primaryimageurl || NoImagePlaceholder;
+                  
+                  return (<li key={record.objectid} className="artwork-card">
                     <h2>{record.title || "Untitled"}</h2>
+                    <img
+          src={imageUrl}
+          alt={data.title || "No title available"}
+          className="artwork-image"
+        />
                     <p>
                       {record.century || "Unknown Artist"} |{" "}
                       {record.department || "Unknown Department"} |{" "}
@@ -157,7 +168,7 @@ export const HarvardArtwork = () => {
                       View Details
                     </button>
                   </li>
-                ))}
+                )})}
                 <section className="pagination-controls">
                 <button onClick={handleFirst} disabled={currentPage === 1}>
                     &laquo; First
