@@ -6,7 +6,7 @@ export const getExhibitions = () => {
   return data ? JSON.parse(data) : [];
 };
 
-const getExhibitionById = (exhibitionId) => {
+export const getExhibitionById = (exhibitionId) => {
   const exhibitions = JSON.parse(localStorage.getItem("exhibitions")) || [];
   return exhibitions.find((exh) => exh.id === exhibitionId) || null;
 };

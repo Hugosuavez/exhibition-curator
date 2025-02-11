@@ -11,6 +11,8 @@ export const HarvardArtwork = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [department, setDepartment] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams(); // Manage query params
+  const [errorMessage, setErrorMessage] = useState(""); // Error state
+
   const navigate = useNavigate();
 
   const [classification, setClassification] = useState(() => {
@@ -105,7 +107,6 @@ export const HarvardArtwork = () => {
       }
     }
   
-
   const handleDetailsClick = (artwork) => {
     navigate(
       `/harvard-artwork-details/${artwork.objectid}?${searchParams.toString()}`
@@ -119,8 +120,6 @@ export const HarvardArtwork = () => {
     setIsSidebarOpen((prev) => !prev);
   };
     
-  
-  console.log(data?.records);
   return (
     <>
       <main className="container">
@@ -192,8 +191,12 @@ export const HarvardArtwork = () => {
                 {/* Modal */}
                 <AddArtModal
                   isOpen={isModalOpen}
-                  onClose={() => setIsModalOpen(false)}
+                  onClose={() => {
+                    setErrorMessage(""); // Clear error after successful creation
+                    setIsModalOpen(false)}}
                   artwork={selectedArtwork}
+                  setErrorMessage={setErrorMessage}
+                  errorMessage={errorMessage}
                 />
               </article>
             )}

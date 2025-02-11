@@ -14,6 +14,7 @@ export const MetArtwork = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const currentPage = parseInt(searchParams.get("page") || 1, 10);
+  const [errorMessage, setErrorMessage] = useState(""); // Error state
 
   const [departmentId, setDepartmentId] = useState(() => {
     const rawDepartmentId = searchParams.get("departmentId");
@@ -172,8 +173,12 @@ return rawDepartmentId && !isNaN(rawDepartmentId) ? parseInt(rawDepartmentId, 10
               {/* Modal */}
               <AddArtModal
                 isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
+                onClose={() => {
+                  setErrorMessage(""); // Clear error after successful creation
+                  setIsModalOpen(false)}}
                 artwork={selectedArtwork}
+                setErrorMessage={setErrorMessage}
+                errorMessage={errorMessage}
               />
             </main>
           </section>

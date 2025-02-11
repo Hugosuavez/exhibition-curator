@@ -23,7 +23,6 @@ export const MetArtworkCard = ({ id, openModal }) => {
 
   // Handle error state
   if (error) return <p>Error fetching artwork: {error.message}</p>;
-  console.log(data);
 const imageUrl =
     data.primaryImage || data.primaryImageSmall || NoImagePlaceholder;
   return (
