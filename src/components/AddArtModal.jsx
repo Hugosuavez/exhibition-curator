@@ -6,10 +6,15 @@ import {
   addArtworkToExhibition,
 } from "../utils/local-storage-calls";
 
-export const AddArtModal = ({ isOpen, onClose, artwork, setErrorMessage, errorMessage }) => {
+export const AddArtModal = ({ isOpen, artwork, setErrorMessage, errorMessage, setIsModalOpen }) => {
   const [exhibitions, setExhibitions] = useState(getExhibitions());
   const [newExhibitionName, setNewExhibitionName] = useState("");
   const [selectedExhibition, setSelectedExhibition] = useState("");
+
+  const onClose = () => {
+    setErrorMessage("");
+    setIsModalOpen(false);
+  }
 
   const handleCreateExhibition = () => {
     if (newExhibitionName.trim() === "") {
@@ -28,26 +33,28 @@ export const AddArtModal = ({ isOpen, onClose, artwork, setErrorMessage, errorMe
 
     if (!selectedExhibition) return;
 
-    let parsedExhibition = JSON.parse(selectedExhibition);
-    console.log(parsedExhibition.artworks);
-    let foundMetArt = parsedExhibition.artworks.find(
-      (art) => art.objectID === artwork.objectID
+    const parsedExhibition = JSON.parse(selectedExhibition);
+
+   
+    // console.log(foundMetArt, 'before')
+    const foundMetArt = parsedExhibition.artworks.find(
+      (art) => art.objectID !== undefined && art.objectID === artwork.objectID
+    );
+   
+    const foundHarvardArt = parsedExhibition.artworks.find(
+      (art) => art.objectid !== undefined && art.objectid === artwork.objectid
     );
     
-    let foundHarvardArt = parsedExhibition.artworks.find(
-      (art) => art.objectid === artwork.objectid
-    );
-  
     if (foundMetArt || foundHarvardArt) {
       setErrorMessage("Selected artwork already added to exhibition");
       return;
     }
-  
+    
     addArtworkToExhibition(parsedExhibition.id, artwork);
-  
+    
     // 🔥 Fetch the updated exhibitions list from local storage
     setExhibitions(getExhibitions());
-  
+    
     onClose(); // Close modal after adding
   };
 

@@ -173,9 +173,7 @@ return rawDepartmentId && !isNaN(rawDepartmentId) ? parseInt(rawDepartmentId, 10
               {/* Modal */}
               <AddArtModal
                 isOpen={isModalOpen}
-                onClose={() => {
-                  setErrorMessage(""); // Clear error after successful creation
-                  setIsModalOpen(false)}}
+                setIsModalOpen={setIsModalOpen}
                 artwork={selectedArtwork}
                 setErrorMessage={setErrorMessage}
                 errorMessage={errorMessage}
