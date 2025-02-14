@@ -5,6 +5,9 @@ import {
   createExhibition,
   addArtworkToExhibition,
 } from "../utils/local-storage-calls";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 export const AddArtModal = ({ isOpen, artwork, setErrorMessage, errorMessage, setIsModalOpen }) => {
   const [exhibitions, setExhibitions] = useState(getExhibitions());
@@ -23,6 +26,8 @@ export const AddArtModal = ({ isOpen, artwork, setErrorMessage, errorMessage, se
     }
     const newExhibition = createExhibition(newExhibitionName);
     setExhibitions([...exhibitions, newExhibition]);
+    toast.success("Exhibition added successfully!");
+
     setNewExhibitionName("");
     setErrorMessage(""); // Clear error after successful creation
   };
@@ -54,7 +59,7 @@ export const AddArtModal = ({ isOpen, artwork, setErrorMessage, errorMessage, se
     
     // 🔥 Fetch the updated exhibitions list from local storage
     setExhibitions(getExhibitions());
-    
+    toast.success("Artwork added successfully!");
     onClose(); // Close modal after adding
   };
 
