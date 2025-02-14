@@ -47,7 +47,7 @@ export const Home = () => {
         updateSlidesPerView(updatedExhibitions.length);
         return updatedExhibitions;
     }
-    ); //update state
+    ); 
   };
 
   return (
@@ -59,7 +59,6 @@ export const Home = () => {
           exhibitions={exhibitions}
           onDelete={handleDeleteExhibition}
           slidesPerView={slidesPerView}
-          updateSlidesPerView={updateSlidesPerView}
         />
       ) : (
         <p>Start browsing to create exhibition</p>

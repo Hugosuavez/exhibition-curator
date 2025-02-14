@@ -1,34 +1,23 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-
-import { removeArtworkFromExhibition } from "../utils/local-storage-calls"; 
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
 
-export const ArtworkCarousel = ({ artworks, updateExhibition }) => {
-  const { id: exhibitionId } = useParams();
-
-  const handleRemove = (artworkId) => {
-    removeArtworkFromExhibition(exhibitionId, artworkId);
-    updateExhibition();
-  };
+export const ArtworkCarousel = ({ artworks, handleRemove, slidesPerView }) => {
 
   return (
     <main className="carousel-container">
       <Swiper
+        key={slidesPerView} // forces re-render when slides-per-view updates
         modules={[Navigation]}
         navigation
         spaceBetween={20}
         slidesPerView={1}
-        breakpoints={{
-          640: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-        }}
-        className="carousel"
+        autoHeight={true}
+        loop={false}
+       
       >
         {artworks.map((artwork, index) => {
           const imageUrl =
