@@ -17,11 +17,6 @@ export const ExhibitionCarousel = ({ exhibitions, onDelete, slidesPerView }) => 
       slidesPerView={slidesPerView} 
       autoHeight={true}
       loop={false}
-      // breakpoints={{
-      //   640: { slidesPerView: slidesPerView },
-      //   768: { slidesPerView: slidesPerView },
-      //   1024: { slidesPerView: slidesPerView },
-      // }}
     >
       {exhibitions.map((exhibition) => (
         <SwiperSlide key={exhibition.id}>
