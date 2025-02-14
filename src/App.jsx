@@ -6,6 +6,7 @@ import { HarvardArtwork } from './components/HarvardArtwork';
 import { MetArtworkDetails } from './components/MetArtworkDetails';
 import { HarvardArtworkDetails } from './components/HarvardArtworkDetails';
 import { ExhibitionPage } from './components/ExhibitionPage';
+import { ToastContainer } from "react-toastify";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
   return (
     <>
       <div>
+        <ToastContainer position="top-right" autoClose={3000} />
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/met" element={<MetArtwork/> }/>
