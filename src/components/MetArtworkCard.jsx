@@ -1,6 +1,7 @@
 import { fetchMetArtworkDetails } from "../utils/met-api-calls";
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
 
 export const MetArtworkCard = ({ id, openModal }) => {
   const [searchParams] = useSearchParams(); // Manage query params
@@ -22,10 +23,16 @@ export const MetArtworkCard = ({ id, openModal }) => {
 
   // Handle error state
   if (error) return <p>Error fetching artwork: {error.message}</p>;
-
+const imageUrl =
+    data.primaryImage || data.primaryImageSmall || NoImagePlaceholder;
   return (
     <li key={data.objectID} className="artwork-card">
       <h2>{data.title || "Untitled"}</h2>
+      <img
+          src={imageUrl}
+          alt={data.title || "No title available"}
+          className="artwork-image"
+        />
       <p>
         {data.artistDisplayName || "Unknown Artist"} |{" "}
         {data.department || "Unknown Department"} |{" "}

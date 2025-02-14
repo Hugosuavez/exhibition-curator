@@ -12,7 +12,7 @@ const queryClient = new QueryClient();
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-        <BrowserRouter basename="/exhibition-curator">
+        <BrowserRouter basename="/exhibition-curator/">
           <App />
         </BrowserRouter>
     </QueryClientProvider>
