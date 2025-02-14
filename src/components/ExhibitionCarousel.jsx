@@ -4,23 +4,25 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useEffect } from "react";
 
 
-export const ExhibitionCarousel = ({ exhibitions, onDelete }) => {
+export const ExhibitionCarousel = ({ exhibitions, onDelete, slidesPerView, updateSlidesPerView }) => {
  
   return (
     <main className="carousel-container">
     <Swiper
+    key={slidesPerView} // forces re-render when slides-per-view updates
       modules={[Navigation]}
       navigation
       spaceBetween={20}
-      slidesPerView={1} 
+      slidesPerView={slidesPerView} 
       autoHeight={true}
       loop={false}
       breakpoints={{
-        640: { slidesPerView: 1 },
-        768: { slidesPerView: Math.min(2, exhibitions.length) },
-        1024: { slidesPerView: Math.min(3, exhibitions.length) },
+        640: { slidesPerView: slidesPerView },
+        768: { slidesPerView: slidesPerView },
+        1024: { slidesPerView: slidesPerView },
       }}
     >
       {exhibitions.map((exhibition) => (
