@@ -41,7 +41,6 @@ export const AddArtModal = ({ isOpen, artwork, setErrorMessage, errorMessage, se
     const parsedExhibition = JSON.parse(selectedExhibition);
 
    
-    // console.log(foundMetArt, 'before')
     const foundMetArt = parsedExhibition.artworks.find(
       (art) => art.objectID !== undefined && art.objectID === artwork.objectID
     );
