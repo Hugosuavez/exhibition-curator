@@ -1,12 +1,25 @@
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-
-export const HarvardArtworkCard = ({record}) => {
+export const HarvardArtworkCard = ({record, setSelectedArtwork, setIsModalOpen}) => {
         const imageUrl = record?.primaryimageurl || NoImagePlaceholder;
         const regex = /^\[.*\]$/;
         const title = regex.test(record.title) ? record.title.slice(1, -1) : record.title;
-        console.log(title, 'formatted')
-        console.log(record.title, 'unformatted')          
+        const navigate = useNavigate();
+        const [searchParams, setSearchParams] = useSearchParams(); // Manage query params
+
+        const openModal = (artwork) => {
+          setSelectedArtwork(artwork);
+          setIsModalOpen(true);
+        };
+        
+
+        const handleDetailsClick = (artwork) => {
+          navigate(
+            `/harvard-artwork-details/${artwork.objectid}?${searchParams.toString()}`
+          );
+        };
+      
                   return (<li key={record.objectid} className="artwork-card">
                     <h2>{title || "Untitled"}</h2>
                     <img

@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ExhibitionCarousel } from "./ExhibitionCarousel";
 import { deleteExhibition } from "../utils/local-storage-calls";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export const Home = () => {
   const [exhibitions, setExhibitions] = useState([]);
   const [slidesPerView, setSlidesPerView] = useState(1); // Default to 1
@@ -48,6 +51,8 @@ export const Home = () => {
         return updatedExhibitions;
     }
     ); 
+        toast.success("Exhibition deleted!");
+    
   };
 
   return (

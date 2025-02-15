@@ -5,6 +5,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { MetDepartments } from "./MetDepartments";
 import { AddArtModal } from "./AddArtModal";
+import { Pagination } from "./Pagination";
 
 export const MetArtwork = () => {
   const [selectedArtwork, setSelectedArtwork] = useState(null);
@@ -12,31 +13,32 @@ export const MetArtwork = () => {
 
   const [department, setDepartment] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
-
-  const currentPage = parseInt(searchParams.get("page") || 1, 10);
+  
   const [errorMessage, setErrorMessage] = useState(""); // Error state
-
+  
   const [departmentId, setDepartmentId] = useState(() => {
     const rawDepartmentId = searchParams.get("departmentId");
-return rawDepartmentId && !isNaN(rawDepartmentId) ? parseInt(rawDepartmentId, 10) : null; 
- });
-
+    return rawDepartmentId && !isNaN(rawDepartmentId) ? parseInt(rawDepartmentId, 10) : null; 
+  });
+  
   const openModal = (artwork) => {
     setSelectedArtwork(artwork);
     setIsModalOpen(true);
   };
-
+  
   // Sync `departmentId` with searchParams when they change
   useEffect(() => {
     const rawDepartmentId = searchParams.get("departmentId");
     setDepartmentId(rawDepartmentId && !isNaN(rawDepartmentId) ? parseInt(rawDepartmentId, 10) : null);  }, [searchParams]); // Dependency array ensures this runs when searchParams change
-
-  const itemsPerPage = 10; // Number of items per page
-
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["met-artworks", departmentId],
-    queryFn: () => fetchMetArtwork(departmentId),
-  });
+    
+    
+    const { data, isLoading, error } = useQuery({
+      queryKey: ["met-artworks", departmentId],
+      queryFn: () => fetchMetArtwork(departmentId),
+    });
+    
+    const currentPage = parseInt(searchParams.get("page") || 1, 10);
+    const itemsPerPage = 10; // Number of items per page
 
   // Calculate the start and end indices for slicing
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -51,65 +53,6 @@ return rawDepartmentId && !isNaN(rawDepartmentId) ? parseInt(rawDepartmentId, 10
   const totalPages = data?.objectIDs
     ? Math.ceil(data.objectIDs.length / itemsPerPage)
     : 0;
-
-  const handleNext = () => {
-    if (currentPage < totalPages) {
-      if(departmentId){
-      setSearchParams({
-        departmentId,
-        page: currentPage + 1,
-      });} else {
-        setSearchParams({
-          page: currentPage + 1,
-        });
-      }
-    }
-  };
-
-  const handlePrev = () => {
-    if (currentPage > 1) {
-      if(departmentId){
-    setSearchParams({
-          departmentId,
-          page: currentPage - 1,
-        }); 
-      } else {
-        setSearchParams({
-          page: currentPage - 1,
-        }); 
-      }
-    }
-  };
-
-  const handleFirst = () => {
-    if (currentPage > 1) {
-      if(departmentId){
-    setSearchParams({
-          departmentId,
-          page: 1,
-        }); 
-      } else {
-        setSearchParams({
-          page: 1,
-        }); 
-      }
-    }
-  }
-
-  const handleLast = () => {
-    if (currentPage < totalPages) {
-      if(departmentId){
-    setSearchParams({
-          departmentId,
-          page: totalPages,
-        }); 
-      } else {
-        setSearchParams({
-          page: totalPages,
-        }); 
-      }
-    }
-  }
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -150,26 +93,8 @@ return rawDepartmentId && !isNaN(rawDepartmentId) ? parseInt(rawDepartmentId, 10
               ))}
 
               {/* Pagination Controls */}
-              <section className="pagination-controls">
-                <button onClick={handleFirst} disabled={currentPage === 1}>
-                    &laquo; First
-                </button>
-                <button onClick={handlePrev} disabled={currentPage === 1}>
-                  Previous
-                </button>
-                <span>
-                  Page {currentPage} of {totalPages}
-                </span>
-                <button
-                  onClick={handleNext}
-                  disabled={currentPage === totalPages}
-                >
-                  Next
-                </button>
-                <button onClick={handleLast} disabled={currentPage === totalPages}>
-                Last &raquo;
-                </button>
-              </section>
+              <Pagination currentPage={currentPage} totalPages={totalPages} departmentId={departmentId}/>
+             
               {/* Modal */}
               <AddArtModal
                 isOpen={isModalOpen}
