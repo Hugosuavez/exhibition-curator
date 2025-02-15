@@ -5,6 +5,7 @@ import { HarvardDepartments } from "./HarvardDepartments";
 import { useState, useEffect } from "react";
 import { AddArtModal } from "./AddArtModal";
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
+import { HarvardArtworkCard } from "./HarvardArtworkCard";
 
 export const HarvardArtwork = () => {
   const [selectedArtwork, setSelectedArtwork] = useState(null);
@@ -146,29 +147,8 @@ export const HarvardArtwork = () => {
             {data?.records && (
               <article className="artwork-content">
                 {data.records.map((record) => {
-                  console.log(record.classification);
-                  const imageUrl = record?.primaryimageurl || NoImagePlaceholder;
-                  
-                  return (<li key={record.objectid} className="artwork-card">
-                    <h2>{record.title || "Untitled"}</h2>
-                    <img
-          src={imageUrl}
-          alt={data.title || "No title available"}
-          className="artwork-image"
-        />
-                    <p>
-                      {record.century || "Unknown Artist"} |{" "}
-                      {record.department || "Unknown Department"} |{" "}
-                      {record.culture || "Unknown Nationality"}
-                    </p>
-                    <button onClick={() => openModal(record)}>
-                      Add to Exhibition
-                    </button>
-                    <button onClick={() => handleDetailsClick(record)}>
-                      View Details
-                    </button>
-                  </li>
-                )})}
+                  return <HarvardArtworkCard record={record} key={record.objectid}/>
+                 })}
                 <section className="pagination-controls">
                 <button onClick={handleFirst} disabled={currentPage === 1}>
                     &laquo; First
