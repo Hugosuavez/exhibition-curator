@@ -2,7 +2,7 @@ import { fetchMetArtwork } from "../utils/met-api-calls";
 import { useQuery } from "@tanstack/react-query";
 import { MetArtworkCard } from "./MetArtworkCard";
 import { Link, useSearchParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { MetDepartments } from "./MetDepartments";
 import { AddArtModal } from "./AddArtModal";
 import { Pagination } from "./Pagination";
@@ -11,34 +11,25 @@ export const MetArtwork = () => {
   const [selectedArtwork, setSelectedArtwork] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const [department, setDepartment] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
-  
-  const [errorMessage, setErrorMessage] = useState(""); // Error state
-  
-  const [departmentId, setDepartmentId] = useState(() => {
-    const rawDepartmentId = searchParams.get("departmentId");
-    return rawDepartmentId && !isNaN(rawDepartmentId) ? parseInt(rawDepartmentId, 10) : null; 
-  });
-  
+
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const departmentId = searchParams.get("departmentId") || null;
+  const department = searchParams.get("department") || null;
+
   const openModal = (artwork) => {
     setSelectedArtwork(artwork);
     setIsModalOpen(true);
   };
-  
-  // Sync `departmentId` with searchParams when they change
-  useEffect(() => {
-    const rawDepartmentId = searchParams.get("departmentId");
-    setDepartmentId(rawDepartmentId && !isNaN(rawDepartmentId) ? parseInt(rawDepartmentId, 10) : null);  }, [searchParams]); // Dependency array ensures this runs when searchParams change
-    
-    
-    const { data, isLoading, error } = useQuery({
-      queryKey: ["met-artworks", departmentId],
-      queryFn: () => fetchMetArtwork(departmentId),
-    });
-    
-    const currentPage = parseInt(searchParams.get("page") || 1, 10);
-    const itemsPerPage = 10; // Number of items per page
+
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["met-artworks", departmentId],
+    queryFn: () => fetchMetArtwork(departmentId),
+  });
+
+  const currentPage = parseInt(searchParams.get("page") || 1, 10);
+  const itemsPerPage = 10; // Number of items per page
 
   // Calculate the start and end indices for slicing
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -79,7 +70,7 @@ export const MetArtwork = () => {
               className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}
             >
               <MetDepartments
-                setDepartment={setDepartment}
+                // setDepartment={setDepartment}
                 setIsSidebarOpen={setIsSidebarOpen}
               />
             </aside>
@@ -93,8 +84,12 @@ export const MetArtwork = () => {
               ))}
 
               {/* Pagination Controls */}
-              <Pagination currentPage={currentPage} totalPages={totalPages} departmentId={departmentId}/>
-             
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                departmentId={departmentId}
+              />
+
               {/* Modal */}
               <AddArtModal
                 isOpen={isModalOpen}

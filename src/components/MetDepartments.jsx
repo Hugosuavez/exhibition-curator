@@ -12,7 +12,7 @@ export const MetDepartments = ({ setDepartment, setIsSidebarOpen }) => {
   });
 
   const handleAll = () => {
-    setDepartment("");
+    setSearchParams({page: 1})
     setIsSidebarOpen((prev) => !prev);
     navigate("/met");
   };
@@ -20,8 +20,8 @@ export const MetDepartments = ({ setDepartment, setIsSidebarOpen }) => {
   const handleDepartment = (department) => {
     if (!department) return;
     const departmentId = department.departmentId;
-    setSearchParams({ departmentId, page: 1 }); // Reset to page 1 for new classification
-    setDepartment(department.displayName);
+    setSearchParams({ departmentId, page: 1, department: department.displayName }); // Reset to page 1 for new classification
+    // setDepartment(department.displayName);
     setIsSidebarOpen((prev) => !prev);
   };
 
