@@ -1,41 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchHarvardArtwork } from "../utils/harvard-api-calls";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { HarvardDepartments } from "./HarvardDepartments";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { AddArtModal } from "./AddArtModal";
-import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
 import { HarvardArtworkCard } from "./HarvardArtworkCard";
+import { Pagination } from "./Pagination";
 
 export const HarvardArtwork = () => {
   const [selectedArtwork, setSelectedArtwork] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [department, setDepartment] = useState(null);
-  const [searchParams, setSearchParams] = useSearchParams(); // Manage query params
-  const [errorMessage, setErrorMessage] = useState(""); // Error state
+  const [searchParams, setSearchParams] = useSearchParams(); 
+  const [errorMessage, setErrorMessage] = useState(""); 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const navigate = useNavigate();
-
-  const [classification, setClassification] = useState(() => {
-    const rawClassification = searchParams.get("classificationId");
-    return rawClassification ? parseInt(rawClassification, 10) : null;
-  });
-
-  const openModal = (artwork) => {
-    setSelectedArtwork(artwork);
-    setIsModalOpen(true);
-  };
-
-  // Sync `departmentId` with searchParams when they change
-  useEffect(() => {
-    const rawClassification = searchParams.get("classificationId");
-    setClassification(
-      rawClassification ? parseInt(rawClassification, 10) : null
-    );
-  }, [searchParams]); // Dependency array ensures this runs when searchParams change
-
+  const classification = searchParams.get("classificationId") || null;
   const currentPage = parseInt(searchParams.get("page") || 1, 10);
-  
+
   const { data, isLoading, error } = useQuery({
     queryKey: ["harvard-artworks", classification, currentPage],
     queryFn: () => fetchHarvardArtwork(classification, currentPage),
@@ -49,78 +31,12 @@ export const HarvardArtwork = () => {
     ? Math.ceil(data.info.totalrecords / itemsPerPage)
     : 0;
 
-    const handleNext = () => {
-      if (currentPage < totalPages) {
-        if(classification){
-        setSearchParams({
-          classification,
-          page: currentPage + 1,
-        });} else {
-          setSearchParams({
-            page: currentPage + 1,
-          });
-        }
-      }
-    };
-    
-    const handlePrev = () => {
-      if (currentPage > 1) {
-        if(classification){
-      setSearchParams({
-        classification,
-            page: currentPage - 1,
-          }); 
-        } else {
-          setSearchParams({
-            page: currentPage - 1,
-          }); 
-        }
-      }
-    };
-    
-    const handleFirst = () => {
-      if (currentPage > 1) {
-        if(classification){
-      setSearchParams({
-        classification,
-            page: 1,
-          }); 
-        } else {
-          setSearchParams({
-            page: 1,
-          }); 
-        }
-      }
-    }
-  
-    const handleLast = () => {
-      if (currentPage < totalPages) {
-        if(classification){
-      setSearchParams({
-        classification,
-            page: totalPages,
-          }); 
-        } else {
-          setSearchParams({
-            page: totalPages,
-          }); 
-        }
-      }
-    }
-  
-  const handleDetailsClick = (artwork) => {
-    navigate(
-      `/harvard-artwork-details/${artwork.objectid}?${searchParams.toString()}`
-    );
-  };
-
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Function to toggle the sidebar open/closed
   const toggleSidebar = () => {
     setIsSidebarOpen((prev) => !prev);
   };
-    
+
   return (
     <>
       <main className="container">
@@ -147,29 +63,20 @@ export const HarvardArtwork = () => {
             {data?.records && (
               <article className="artwork-content">
                 {data.records.map((record) => {
-                  return <HarvardArtworkCard record={record} key={record.objectid}/>
-                 })}
-                <section className="pagination-controls">
-                <button onClick={handleFirst} disabled={currentPage === 1}>
-                    &laquo; First
-                </button>
-                <button onClick={handlePrev} disabled={currentPage === 1}>
-                  Previous
-                </button>
-                <span>
-                  Page {currentPage} of {totalPages}
-                </span>
-                <button
-                  onClick={handleNext}
-                  disabled={currentPage === totalPages}
-                >
-                  Next
-                </button>
-                <button onClick={handleLast} disabled={currentPage === totalPages}>
-                Last &raquo;
-                </button>
-                </section>
-                {/* Modal */}
+                  return (
+                    <HarvardArtworkCard
+                      setIsModalOpen={setIsModalOpen}
+                      setSelectedArtwork={setSelectedArtwork}
+                      record={record}
+                      key={record.objectid}
+                    />
+                  );
+                })}
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  classification={classification}
+                />
                 <AddArtModal
                   isOpen={isModalOpen}
                   setIsModalOpen={setIsModalOpen}

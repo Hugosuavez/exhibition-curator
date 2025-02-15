@@ -24,7 +24,14 @@ export const AddArtModal = ({ isOpen, artwork, setErrorMessage, errorMessage, se
       setErrorMessage("Please enter a name for the exhibition."); // Set error
       return;
     }
+
+    const exhibitionFound = exhibitions.find((exh) => exh.name === newExhibitionName)
+    if(exhibitionFound){
+      setErrorMessage("Exhibition name taken!")
+      return;
+    }
     const newExhibition = createExhibition(newExhibitionName);
+    
     setExhibitions([...exhibitions, newExhibition]);
     toast.success("Exhibition added successfully!");
 

@@ -26,7 +26,6 @@ export const HarvardDepartments = ({ setDepartment, setIsSidebarOpen }) => {
   return (
     <section>
       {data?.records.map((classification) => {
-        console.log(data);
         return (<button
           key={classification.id} // Ensure unique keys
           onClick={() => handleClassification(classification)} // Pass classification name to parent
