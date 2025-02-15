@@ -48,7 +48,7 @@ const harvardApi = axios.create({
 
   export const fetchHarvardClassifications = () => {
     return harvardApi
-      .get(`/classification`, {
+      .get(`/classification?size=100`, {
         params: {
           apikey: import.meta.env.VITE_HARVARD_API_KEY, // Use your API key
         },

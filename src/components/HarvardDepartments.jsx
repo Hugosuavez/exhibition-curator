@@ -10,7 +10,7 @@ export const HarvardDepartments = ({ setDepartment, setIsSidebarOpen }) => {
     queryKey: ["harvard-classifications"],
     queryFn: fetchHarvardClassifications,
   });
-
+ 
   const handleClassification = (classification) => {
     const classificationId = classification.id;
     setSearchParams({ classificationId, page: 1 }); // Reset to page 1 for new classification
@@ -25,8 +25,9 @@ export const HarvardDepartments = ({ setDepartment, setIsSidebarOpen }) => {
 
   return (
     <section>
-      {data?.records.map((classification) => (
-        <button
+      {data?.records.map((classification) => {
+        console.log(data);
+        return (<button
           key={classification.id} // Ensure unique keys
           onClick={() => handleClassification(classification)} // Pass classification name to parent
         >
@@ -34,7 +35,7 @@ export const HarvardDepartments = ({ setDepartment, setIsSidebarOpen }) => {
             ? "All"
             : classification.name}
         </button>
-      ))}
+      )})}
     </section>
   );
 };

@@ -146,6 +146,7 @@ export const HarvardArtwork = () => {
             {data?.records && (
               <article className="artwork-content">
                 {data.records.map((record) => {
+                  console.log(record.classification);
                   const imageUrl = record?.primaryimageurl || NoImagePlaceholder;
                   
                   return (<li key={record.objectid} className="artwork-card">
