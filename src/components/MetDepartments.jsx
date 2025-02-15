@@ -2,7 +2,7 @@ import { fetchMetDepartments } from "../utils/met-api-calls";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams, useNavigate } from "react-router-dom";
 
-export const MetDepartments = ({ setDepartment, setIsSidebarOpen }) => {
+export const MetDepartments = ({ setDepartment, setIsSidebarOpen, isSidebarOpen }) => {
   
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ export const MetDepartments = ({ setDepartment, setIsSidebarOpen }) => {
     queryKey: ["met-departments"],
     queryFn: () => fetchMetDepartments(),
   });
-
+  
   const handleAll = () => {
     setSearchParams({page: 1})
     setIsSidebarOpen((prev) => !prev);
@@ -26,11 +26,11 @@ export const MetDepartments = ({ setDepartment, setIsSidebarOpen }) => {
   };
 
   return (
-    <>
+    <aside className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}>
       <h3>Departments</h3>
       {isLoading && <p>Loading departments...</p>}
       {error && <p>Error fetching departments</p>}
-      <section>
+      <section className={"dpmt-button-container"}>
         <button key={"all"} onClick={() => handleAll()}>
           All
         </button>
@@ -44,6 +44,6 @@ export const MetDepartments = ({ setDepartment, setIsSidebarOpen }) => {
             </button>
           ))}
       </section>
-    </>
+    </aside>
   );
 };

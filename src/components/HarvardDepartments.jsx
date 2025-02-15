@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchHarvardClassifications } from "../utils/harvard-api-calls";
 import { useSearchParams } from "react-router-dom";
 
-export const HarvardDepartments = ({ setDepartment, setIsSidebarOpen }) => {
+export const HarvardDepartments = ({ setDepartment, setIsSidebarOpen,isSidebarOpen }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   // Fetch classifications
@@ -25,21 +25,28 @@ export const HarvardDepartments = ({ setDepartment, setIsSidebarOpen }) => {
     setIsSidebarOpen((prev) => !prev);
   };
 
+  data?.records.sort((a, b) => a.name.localeCompare(b.name));
+  
+
   if (isLoading) return <p>Loading classifications...</p>;
   if (error) return <p>Error fetching classifications: {error.message}</p>;
 
   return (
-    <section>
-      {data?.records.map((classification) => {
-        return (<button
+    <aside className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}>
+
+      <h3>Departments</h3>
+      <section className={"dpmt-button-container-harv"}>
+          {data?.records.map((classification) => {
+          return (<button
           key={classification.id} // Ensure unique keys
           onClick={() => handleClassification(classification)} 
-        >
+          >
           {classification.name == "(not assigned)"
             ? "All"
             : classification.name}
-        </button>
-      )})}
-    </section>
+          </button>
+          )})}
+      </section>
+    </aside>
   );
 };
