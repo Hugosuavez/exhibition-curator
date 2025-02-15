@@ -17,6 +17,7 @@ export const MetArtwork = () => {
 
   const departmentId = searchParams.get("departmentId") || null;
   const department = searchParams.get("department") || null;
+  const currentPage = parseInt(searchParams.get("page") || 1, 10);
 
   const openModal = (artwork) => {
     setSelectedArtwork(artwork);
@@ -28,7 +29,6 @@ export const MetArtwork = () => {
     queryFn: () => fetchMetArtwork(departmentId),
   });
 
-  const currentPage = parseInt(searchParams.get("page") || 1, 10);
   const itemsPerPage = 10; // Number of items per page
 
   // Calculate the start and end indices for slicing

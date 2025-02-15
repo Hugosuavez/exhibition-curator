@@ -13,10 +13,15 @@ export const HarvardDepartments = ({ setDepartment, setIsSidebarOpen }) => {
  
   const handleClassification = (classification) => {
     const classificationId = classification.id;
-    setSearchParams({ classificationId, page: 1 }); // Reset to page 1 for new classification
-    classification.name == "(not assigned)"
-      ? setDepartment("")
-      : setDepartment(classification.name);
+
+    if(classification.name == "(not assigned)"){
+      setDepartment("")
+      setSearchParams({page: 1})
+    } else {
+      setSearchParams({ classificationId, page: 1 }); // Reset to page 1 for new classification
+      setDepartment(classification.name);
+    }
+
     setIsSidebarOpen((prev) => !prev);
   };
 
@@ -28,7 +33,7 @@ export const HarvardDepartments = ({ setDepartment, setIsSidebarOpen }) => {
       {data?.records.map((classification) => {
         return (<button
           key={classification.id} // Ensure unique keys
-          onClick={() => handleClassification(classification)} // Pass classification name to parent
+          onClick={() => handleClassification(classification)} 
         >
           {classification.name == "(not assigned)"
             ? "All"
