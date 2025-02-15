@@ -43,19 +43,16 @@ export const HarvardArtwork = () => {
         <Link to="/">Home</Link>
         <h1>Harvard Artworks</h1>
         {/* Sidebar Toggle Button */}
+        <section className="content-wrapper">
         <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
           {isSidebarOpen ? "Close Departments" : "Search Departments"}
         </button>
-        <section className="content-wrapper">
           {/* Sidebar for departments */}
-          <aside
-            className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}
-          >
             <HarvardDepartments
               setDepartment={setDepartment}
               setIsSidebarOpen={setIsSidebarOpen}
+              isSidebarOpen={isSidebarOpen}
             />
-          </aside>
           <main className="artworks-content">
             {department && <h3>{department}</h3>}
             {isLoading && <p>Loading artworks...</p>}

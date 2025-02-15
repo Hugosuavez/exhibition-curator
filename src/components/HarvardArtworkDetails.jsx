@@ -20,10 +20,13 @@ export const HarvardArtworkDetails = () => {
 
   // Use the image if available; fallback to the placeholder
   const imageUrl = data?.primaryimageurl || NoImagePlaceholder;
+
+  const regex = /^\[.*\]$/;
+  const title = data.title ? (regex.test(data.title) ? data.title.slice(1, -1) : data.title) : "Untitled";
   return (
     <main className="artwork-details-container">
       <Link to={`/harvard?${searchParams.toString()}`}>Back to Collection</Link>
-      <h1>{data.title || "Untitled"}</h1>
+      <h1>{title}</h1>
       <section className="artwork-image-container">
         <img
           src={imageUrl}

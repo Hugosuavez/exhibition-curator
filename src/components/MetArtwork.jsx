@@ -17,6 +17,7 @@ export const MetArtwork = () => {
 
   const departmentId = searchParams.get("departmentId") || null;
   const department = searchParams.get("department") || null;
+  const currentPage = parseInt(searchParams.get("page") || 1, 10);
 
   const openModal = (artwork) => {
     setSelectedArtwork(artwork);
@@ -27,13 +28,14 @@ export const MetArtwork = () => {
     queryKey: ["met-artworks", departmentId],
     queryFn: () => fetchMetArtwork(departmentId),
   });
-
-  const currentPage = parseInt(searchParams.get("page") || 1, 10);
+  
   const itemsPerPage = 10; // Number of items per page
 
   // Calculate the start and end indices for slicing
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
+
+  
 
   // Extract the subset of objectIDs for the current page
   const currentObjectIDs = data?.objectIDs
@@ -52,28 +54,28 @@ export const MetArtwork = () => {
     setIsSidebarOpen((prev) => !prev);
   };
 
-  return (
-    <main className="container">
+  return (<>
       {isLoading && <p>Loading artworks...</p>}
       {error && <p>Error fetching artworks: {error.message}</p>}
       {data && data.objectIDs && (
-        <>
+        <main className="container">
           <Link to="/">Home</Link>
           <h1>Metropolitan Museum of Art</h1>
           {/* Sidebar Toggle Button */}
+          <section className="content-wrapper">
           <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
             {isSidebarOpen ? "Close Departments" : "Search Departments"}
           </button>
-          <section className="content-wrapper">
             {/* Left Sidebar for Departments */}
-            <aside
-              className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}
-            >
+            {/* <aside
+              // className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}
+            > */}
               <MetDepartments
                 // setDepartment={setDepartment}
                 setIsSidebarOpen={setIsSidebarOpen}
+                isSidebarOpen={isSidebarOpen}
               />
-            </aside>
+            {/* </aside> */}
 
             {/* Main Content */}
             <main className="artworks-content">
@@ -100,8 +102,9 @@ export const MetArtwork = () => {
               />
             </main>
           </section>
-        </>
+        
+          </main>
       )}
-    </main>
+  </>
   );
 };

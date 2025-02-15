@@ -22,17 +22,30 @@
 
 /* Content Wrapper: Flexbox for Departments and Main Content */
 .content-wrapper {
-  display: flex;
   gap: 20px;
   margin-top: 20px;
   flex-wrap: wrap;
   width: 100%;
 }
 
+/* Sidebar Toggle Button */
+.toggle-sidebar-btn {
+  background-color: #333;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 20px;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
 /* Sidebar for Departments (Hidden by default on small screens) */
 .departments-sidebar {
   flex: 0 0 400px;
-
+  justify-content: center;
   padding: 10px;
   border-radius: 8px;
   max-height: 80vh;
@@ -43,35 +56,23 @@
 
 /* Open the sidebar when the 'open' class is added */
 .departments-sidebar.open {
-  display: block;
-}
-
-/* Sidebar Toggle Button */
-.toggle-sidebar-btn {
-  display: block;
-  max-width: 400px;
-  background-color: #333;
-
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 4px;
-  margin-bottom: 20px;
-}
-
-/* Main content */
-.artworks-content {
-  flex: 1; /* Take up remaining space */
-  padding: 20px;
+  display: flex;
+  margin-left: 2%;
 }
 
 /* Header in the Departments Sidebar */
 .departments-sidebar h3 {
   color: rgb(253, 253, 253);
+  display: none;
 }
-
+.dpmt-button-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.dpmt-button-container-harv{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 /* Buttons in the Departments Sidebar */
 .departments-sidebar button {
   display: block;
@@ -81,14 +82,15 @@
   color: rgb(255, 255, 255);
   border: none;
   border-radius: 4px;
-  text-align: left;
   cursor: pointer;
   font-size: 14px;
+  
 }
 
 .departments-sidebar button:hover {
   background-color: #333;
 }
+
 
 /* Main Content */
 .artworks-content {
@@ -96,6 +98,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding: 20px;
 }
 
 .unordered {
@@ -317,8 +320,20 @@
   background-color: rgb(255, 4, 4);
 }
 
-/* Tablets (641px - 1023px) */
-@media (min-width: 641px) {
+/* Very Small Screens (Under 420px)*/
+@media (max-width: 420px){
+  .dpmt-button-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .dpmt-button-container-harv{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Tablets (720px - 1023px) */
+@media (min-width: 720px) {
   .carousel-container {
     width: 90%;
   }
@@ -341,15 +356,27 @@
     font-size: 20px;
     padding: 10px 15px;
   }
+
   .departments-sidebar {
     display: block;
     flex: 0 0 200px;
   }
-
+  .departments-sidebar.open {
+    display: block;
+    flex: 0 0 200px;
+  }
+  .departments-sidebar h3 {
+    display: block;
+  }
   .toggle-sidebar-btn {
     display: none;
   }
-
+  .dpmt-button-container{
+    display: block;
+  }
+  .dpmt-button-container-harv{
+    display: block;
+  }
   .content-wrapper {
     display: flex;
   }
@@ -383,7 +410,7 @@
   .departments-sidebar {
     display: block;
   }
-
+  
   .toggle-sidebar-btn {
     display: none;
   }
