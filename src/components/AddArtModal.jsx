@@ -73,9 +73,11 @@ export const AddArtModal = ({ isOpen, artwork, setErrorMessage, errorMessage, se
     <Modal isOpen={isOpen} onClose={onClose}>
       <h2>Add Artwork to Exhibition</h2>
       <h3>Select an Existing Exhibition</h3>
+      <div className="modal-select-container">
       <select
         onChange={(e) => setSelectedExhibition(e.target.value)}
         value={selectedExhibition}
+        className="modal-select"
       >
         <option value="">-- Select Exhibition --</option>
         {exhibitions.map((exhibition) => (
@@ -87,9 +89,15 @@ export const AddArtModal = ({ isOpen, artwork, setErrorMessage, errorMessage, se
       <button onClick={handleAddToExhibition} disabled={!selectedExhibition}>
         Add to Exhibition
       </button>
-      <p>OR</p>
+      </div>
+      
+        <p>OR</p>
       <h3>Create New Exhibition</h3>
+      
+     
+      <div className="modal-select-container">
       <input
+        className="modal-select"
         type="text"
         placeholder="Exhibition Name"
         value={newExhibitionName}
@@ -97,11 +105,14 @@ export const AddArtModal = ({ isOpen, artwork, setErrorMessage, errorMessage, se
           setNewExhibitionName(e.target.value);
           setErrorMessage(""); // Clear error when user types
         }}
+        maxLength={20}
         required
       />
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}{" "}
+
       {/* Display error message */}
       <button onClick={handleCreateExhibition}>Create</button>
+      </div>
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}{" "}
     </Modal>
   );
 };

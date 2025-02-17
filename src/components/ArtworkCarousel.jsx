@@ -47,7 +47,7 @@ export const ArtworkCarousel = ({ artworks, handleRemove, slidesPerView }) => {
 
           return (
             <SwiperSlide key={index}>
-              <article className="carousel-item">
+              <article className="carousel-item-artwork">
                 <section className="artwork-details-container">
                   <h3 className="artwork-title">{normalizedArtwork.title}</h3>
                   <section className="artwork-image-container">

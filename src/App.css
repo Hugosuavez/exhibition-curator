@@ -101,9 +101,6 @@
   padding: 20px;
 }
 
-/* .unordered {
-  list-style-type: none;
-} */
 
 /* Pagination Controls */
 .pagination-controls {
@@ -129,7 +126,7 @@
   cursor: not-allowed;
 }
 
-.artwork-image {color
+.artwork-image {
   display: block;
   max-width: 100%;
   max-height: 400px;
@@ -140,11 +137,14 @@
 }
 
 .artwork-card {
-  
-  padding: 1px;
+  padding: 20px;
   background-color: #353535;
   box-shadow: 5px 5px 10px 2px rgb(0 0 0 / 0.8);
   list-style-type: none;
+}
+
+.artwork-card button {
+  margin: 5px
 }
 
 .artwork-details-container {
@@ -157,7 +157,7 @@
 }
 
 .artwork-title {
-  min-height: 50px;
+  font-size: 30px;
 }
 
 .artwork-image-container {
@@ -201,17 +201,32 @@
 
 .modal-content {
   background: rgb(230, 231, 219);
-  border: #333 solid;
+  box-shadow: 5px 5px 10px 2px rgb(0 0 0 / 0.8);
   color: #333;
   padding: 20px;
-  border-radius: 8px;
   position: relative;
-  width: 90%;
+  width: 75%;
 }
+.modal-select-container {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.modal-select {
+  text-align: center;
+  font-size: 14px;
+}
+.modal-select option {
+  text-align: center;
+  font-size: 10px;
+}
+
+
 
 .close-btn {
   position: absolute;
-  color: #333;
+  color: #818181;
   top: 10px;
   right: 10px;
   background: none;
@@ -220,12 +235,38 @@
   cursor: pointer;
 }
 
+.close-btn:hover {
+  color: #131212;
+}
+
 /* Carousel CSS*/
 
 .carousel-container {
   margin: auto;
   overflow: visible;
   padding: 10px;
+  max-height: 80vh;
+}
+.carousel-item-artwork {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  color: white;
+  background-color: #494949;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 5px 5px 10px 2px rgba(5, 5, 5, 0.8);
+}
+
+.carousel-artwork-image {
+  width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  object-fit: contain;
+  border-radius: 5px;
 }
 
 .carousel-item {
@@ -250,6 +291,14 @@
   background-color: rgb(255, 255, 255) !important;
 }
 
+.swiper .swiper-button .swiper-button-next
+.swiper-button-prev {
+  position: absolute;
+  top: 50%;  /* Keep them vertically centered */
+  transform: translateY(-50%); /* Ensure perfect centering */
+  z-index: 10; /* Keep them above the slides */
+}
+
 .exhibition-link {
   text-decoration: none;
   color: #d6caca;
@@ -259,7 +308,7 @@
 .delete-button {
   background-color: #494949;
   grid-row: 1;
-  justify-self: right;
+  justify-self: left;
   color: #b1a8a8;
   border: none;
   padding: 1px;
@@ -286,43 +335,9 @@
   color: white;
 }
 
-.carousel-artwork-image {
-  width: 100%;
-  height: 300px;
-  border-radius: 10px;
-  object-fit: contain;
-  border-radius: 5px;
+.exhibition-container {
+  max-height: 100%;
 }
-
-
-
-/* 📌 Navigation Buttons
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 5px;
-  z-index: 2;
-}
-
-.left-btn {
-  left: 5px;
-}
-
-.right-btn {
-  right: 5px;
-}
-
-.carousel-btn:hover {
-  background: rgba(0, 0, 0, 0.8);
-} */
-
 
 /* Very Small Screens (Under 420px)*/
 @media (max-width: 420px){
@@ -342,9 +357,10 @@
     width: 90%;
   }
 
-  /* .carousel {
-    gap: 15px;
-  } */
+  .modal-select {
+    
+    font-size: 26px;
+  }
 
   .carousel-item {
     flex: 0 0 60%;
@@ -352,9 +368,7 @@
     font-size: 18px;
   }
 
-  .artwork-image {
-    height: 180px;
-  }
+ 
 
   .carousel-btn {
     font-size: 20px;
@@ -384,6 +398,9 @@
   .content-wrapper {
     display: flex;
   }
+  .artwork-title {
+    font-size: 40px;
+  }
 }
 
 /* Desktops (1024px+) */
@@ -402,10 +419,6 @@
     font-size: 20px;
   }
 
-  .artwork-image {
-    height: 500px;
-    object-fit: contain;
-  }
 
   .carousel-btn {
     font-size: 24px;

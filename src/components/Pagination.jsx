@@ -18,18 +18,30 @@ export const Pagination = ({currentPage, totalPages, departmentId, classificatio
 
       const handleNext = () => {
         if (currentPage < totalPages) updatePage(currentPage + 1);
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 100); 
       };
       
       const handlePrev = () => {
         if (currentPage > 1) updatePage(currentPage - 1);
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 100); 
       };
       
       const handleFirst = () => {
         if (currentPage > 1) updatePage(1);
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 100);
       }
     
       const handleLast = () => {
         if (currentPage < totalPages) updatePage(totalPages);
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 100); 
       }
 
       return (

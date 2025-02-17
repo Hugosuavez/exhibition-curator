@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import { ArtworkCarousel } from "./ArtworkCarousel";
 import { Link } from "react-router-dom";
 import { removeArtworkFromExhibition } from "../utils/local-storage-calls"; 
+import { toast
 
+ } from "react-toastify";
 export const ExhibitionPage = () => {
   const { id } = useParams();
   const [exhibition, setExhibition] = useState(null); // Initially set to null
@@ -29,12 +31,17 @@ export const ExhibitionPage = () => {
       if (!prevExhibition) return prevExhibition;
 
       const updatedArtworks = prevExhibition.artworks.filter(
-        (art) => art.id !== artworkId
+        (art) => {
+          const currentArtworkId = art.objectID || art.objectid;
+          
+            return String(currentArtworkId) !== String(artworkId); // Convert both to strings for comparison
+            }
       );
-
+      
       const updatedExhibition = { ...prevExhibition, artworks: updatedArtworks };
       return updatedExhibition;
     });
+    toast.success("Art successfully removed!")
   };
 
   if (loading) return <p>Loading...</p>;
