@@ -243,7 +243,7 @@
   margin: auto;
   overflow: visible;
   padding: 10px;
-  max-height: 80vh;
+  
 }
 .carousel-item-artwork {
   display: flex;
@@ -288,15 +288,6 @@
 .swiper .swiper-pagination .swiper-pagination-bullet-active {
   background-color: rgb(255, 255, 255) !important;
 }
-
-.swiper .swiper-button .swiper-button-next
-.swiper-button-prev {
-  position: absolute;
-  top: 50%;  /* Keep them vertically centered */
-  transform: translateY(-50%); /* Ensure perfect centering */
-  z-index: 10; /* Keep them above the slides */
-}
-
 
 .exhibition-link {
   text-decoration: none;
@@ -367,8 +358,6 @@
     font-size: 18px;
   }
 
- 
-
   .carousel-btn {
     font-size: 20px;
     padding: 10px 15px;
@@ -404,25 +393,11 @@
 
 /* Desktops (1024px+) */
 @media (min-width: 1024px) {
-  .carousel-container {
-    width: 80%;
-  }
 
-  /* .carousel {
+  .carousel {
     gap: 20px;
-  } */
-
-  .carousel-item {
-    flex: 0 0 40%;
-    max-width: 40%;
-    font-size: 20px;
   }
 
-
-  .carousel-btn {
-    font-size: 24px;
-    padding: 12px 18px;
-  }
   .departments-sidebar {
     display: block;
   }
