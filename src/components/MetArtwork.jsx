@@ -2,7 +2,7 @@ import { fetchMetArtwork } from "../utils/met-api-calls";
 import { useQuery } from "@tanstack/react-query";
 import { MetArtworkCard } from "./MetArtworkCard";
 import { Link, useSearchParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MetDepartments } from "./MetDepartments";
 import { AddArtModal } from "./AddArtModal";
 import { Pagination } from "./Pagination";
@@ -24,18 +24,21 @@ export const MetArtwork = () => {
     setIsModalOpen(true);
   };
 
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["met-artworks", departmentId],
+  const { data, isLoading, error, refetch } = useQuery({
+    queryKey: ["met-artworks", departmentId, currentPage],
     queryFn: () => fetchMetArtwork(departmentId),
   });
-  
+  // Refetch when params change
+useEffect(() => {
+  refetch();
+}, [searchParams, refetch]);
+
   const itemsPerPage = 10; // Number of items per page
 
   // Calculate the start and end indices for slicing
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  
 
   // Extract the subset of objectIDs for the current page
   const currentObjectIDs = data?.objectIDs
@@ -53,6 +56,9 @@ export const MetArtwork = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen((prev) => !prev);
   };
+
+  
+
 
   return (<>
       {isLoading && <p>Loading artworks...</p>}
