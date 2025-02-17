@@ -31,7 +31,7 @@ export const Home = () => {
   const updateSlidesPerView = (count) => {
     if (window.innerWidth >= 1024) {
       setSlidesPerView(Math.min(3, count));
-    } else if (window.innerWidth >= 768) {
+    } else if (window.innerWidth >= 600) {
       setSlidesPerView(Math.min(2, count));
     } else {
       setSlidesPerView(1);
@@ -69,11 +69,11 @@ export const Home = () => {
         <p>Start browsing to create exhibition</p>
       )}
 
-      <br />
+      
       <h2>Browse Art</h2>
-      <Link to="/met">Metropolitan Museum of Art</Link>
+      <Link to="/met" className="page-link">Metropolitan Museum of Art</Link>
       <br />
-      <Link to="/harvard">Harvard Art Museums</Link>
+      <Link to="/harvard" className="page-link">Harvard Art Museums</Link>
     </main>
   );
 };

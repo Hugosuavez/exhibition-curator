@@ -23,16 +23,18 @@ export const MetArtworkCard = ({ id, openModal }) => {
 
   // Handle error state
   if (error) return <p>Error fetching artwork: {error.message}</p>;
-const imageUrl =
+  
+  const imageUrl =
     data.primaryImage || data.primaryImageSmall || NoImagePlaceholder;
+
   return (
     <li key={data.objectID} className="artwork-card">
       <h2>{data.title || "Untitled"}</h2>
       <img
-          src={imageUrl}
-          alt={data.title || "No title available"}
-          className="artwork-image"
-        />
+        src={imageUrl}
+        alt={data.title || "No title available"}
+        className="artwork-image"
+      />
       <p>
         {data.artistDisplayName || "Unknown Artist"} |{" "}
         {data.department || "Unknown Department"} |{" "}

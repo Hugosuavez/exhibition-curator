@@ -41,7 +41,7 @@ export const HarvardArtwork = () => {
     <>
       <main className="container">
         <Link to="/">Home</Link>
-        <h1>Harvard Artworks</h1>
+        <h1>Harvard Art Museums</h1>
         {/* Sidebar Toggle Button */}
         <section className="content-wrapper">
         <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
@@ -53,22 +53,19 @@ export const HarvardArtwork = () => {
               setIsSidebarOpen={setIsSidebarOpen}
               isSidebarOpen={isSidebarOpen}
             />
-          <main className="artworks-content">
-            {department && <h3>{department}</h3>}
             {isLoading && <p>Loading artworks...</p>}
             {error && <p>Error fetching artworks</p>}
             {data?.records && (
-              <article className="artwork-content">
-                {data.records.map((record) => {
-                  return (
+              <main className="artworks-content">
+                {department && <h3>{department}</h3>}
+                {data.records.map((record) => 
                     <HarvardArtworkCard
                       setIsModalOpen={setIsModalOpen}
                       setSelectedArtwork={setSelectedArtwork}
                       record={record}
                       key={record.objectid}
                     />
-                  );
-                })}
+                )}
                 <Pagination
                   currentPage={currentPage}
                   totalPages={totalPages}
@@ -81,9 +78,8 @@ export const HarvardArtwork = () => {
                   setErrorMessage={setErrorMessage}
                   errorMessage={errorMessage}
                 />
-              </article>
-            )}
           </main>
+            )}
         </section>
       </main>
     </>
