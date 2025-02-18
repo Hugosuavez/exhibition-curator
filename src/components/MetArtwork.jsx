@@ -37,9 +37,12 @@ export const MetArtwork = () => {
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
+  
+  const sortedObjectIDs = [...(data?.objectIDs || [])].sort((a, b) => a - b);
+  
 
-  const currentObjectIDs = data?.objectIDs
-    ? data.objectIDs.slice(startIndex, endIndex)
+  const currentObjectIDs = sortedObjectIDs
+    ? sortedObjectIDs.slice(startIndex, endIndex)
     : [];
 
   const totalPages = data?.objectIDs

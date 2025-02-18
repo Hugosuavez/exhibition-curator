@@ -80,6 +80,7 @@ export const AddArtModal = ({
           onChange={(e) => setSelectedExhibition(e.target.value)}
           value={selectedExhibition}
           className="modal-select"
+          id="add-select"
         >
           <option value="">-- Select Exhibition --</option>
           {exhibitions.map((exhibition) => (
@@ -98,6 +99,7 @@ export const AddArtModal = ({
         <input
           className="modal-select"
           type="text"
+          id="create-exhibition"
           placeholder="Exhibition Name"
           value={newExhibitionName}
           onChange={(e) => {
