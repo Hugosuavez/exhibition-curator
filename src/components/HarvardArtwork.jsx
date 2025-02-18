@@ -11,8 +11,8 @@ export const HarvardArtwork = () => {
   const [selectedArtwork, setSelectedArtwork] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [department, setDepartment] = useState(null);
-  const [searchParams, setSearchParams] = useSearchParams(); 
-  const [errorMessage, setErrorMessage] = useState(""); 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [errorMessage, setErrorMessage] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const classification = searchParams.get("classificationId") || null;
@@ -26,13 +26,10 @@ export const HarvardArtwork = () => {
 
   const itemsPerPage = 10;
 
-  // Calculate the total number of pages
   const totalPages = data?.info
     ? Math.ceil(data.info.totalrecords / itemsPerPage)
     : 0;
 
-
-  // Function to toggle the sidebar open/closed
   const toggleSidebar = () => {
     setIsSidebarOpen((prev) => !prev);
   };
@@ -42,44 +39,44 @@ export const HarvardArtwork = () => {
       <main className="container">
         <Link to="/">Home</Link>
         <h1>Harvard Art Museums</h1>
-        {/* Sidebar Toggle Button */}
+
         <section className="content-wrapper">
-        <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
-          {isSidebarOpen ? "Close Departments" : "Search Departments"}
-        </button>
-          {/* Sidebar for departments */}
-            <HarvardDepartments
-              setDepartment={setDepartment}
-              setIsSidebarOpen={setIsSidebarOpen}
-              isSidebarOpen={isSidebarOpen}
-            />
-            {isLoading && <p>Loading artworks...</p>}
-            {error && <p>Error fetching artworks</p>}
-            {data?.records && (
-              <main className="artworks-content">
-                {department && <h3>{department}</h3>}
-                {data.records.map((record) => 
-                    <HarvardArtworkCard
-                      setIsModalOpen={setIsModalOpen}
-                      setSelectedArtwork={setSelectedArtwork}
-                      record={record}
-                      key={record.objectid}
-                    />
-                )}
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  classification={classification}
-                />
-                <AddArtModal
-                  isOpen={isModalOpen}
+          <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
+            {isSidebarOpen ? "Close Departments" : "Search Departments"}
+          </button>
+
+          <HarvardDepartments
+            setDepartment={setDepartment}
+            setIsSidebarOpen={setIsSidebarOpen}
+            isSidebarOpen={isSidebarOpen}
+          />
+          {isLoading && <p>Loading artworks...</p>}
+          {error && <p>Error fetching artworks</p>}
+          {data?.records && (
+            <main className="artworks-content">
+              {department && <h3>{department}</h3>}
+              {data.records.map((record) => (
+                <HarvardArtworkCard
                   setIsModalOpen={setIsModalOpen}
-                  artwork={selectedArtwork}
-                  setErrorMessage={setErrorMessage}
-                  errorMessage={errorMessage}
+                  setSelectedArtwork={setSelectedArtwork}
+                  record={record}
+                  key={record.objectid}
                 />
-          </main>
-            )}
+              ))}
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                classification={classification}
+              />
+              <AddArtModal
+                isOpen={isModalOpen}
+                setIsModalOpen={setIsModalOpen}
+                artwork={selectedArtwork}
+                setErrorMessage={setErrorMessage}
+                errorMessage={errorMessage}
+              />
+            </main>
+          )}
         </section>
       </main>
     </>

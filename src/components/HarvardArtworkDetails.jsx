@@ -5,24 +5,27 @@ import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
 import { Link, useSearchParams } from "react-router-dom";
 
 export const HarvardArtworkDetails = () => {
-  // Get the objectID from the route parameters
   const [searchParams] = useSearchParams();
   const { objectID } = useParams();
 
-  // Fetch details for the Harvard artwork with the given objectID
   const { data, isLoading, error } = useQuery({
-    queryKey: ["harvard-artwork-details", objectID], // Unique query key
-    queryFn: () => fetchHarvardArtworkDetails(objectID), // Fetcher function
+    queryKey: ["harvard-artwork-details", objectID],
+    queryFn: () => fetchHarvardArtworkDetails(objectID),
   });
 
   if (isLoading) return <p>Loading artwork details...</p>;
   if (error) return <p>Error fetching artwork details: {error.message}</p>;
 
-  // Use the image if available; fallback to the placeholder
   const imageUrl = data?.primaryimageurl || NoImagePlaceholder;
 
+  //Formatting titles for display by removing surrounding brackets []
   const regex = /^\[.*\]$/;
-  const title = data.title ? (regex.test(data.title) ? data.title.slice(1, -1) : data.title) : "Untitled";
+  const title = data.title
+    ? regex.test(data.title)
+      ? data.title.slice(1, -1)
+      : data.title
+    : "Untitled";
+
   return (
     <main className="artwork-details-container">
       <Link to={`/harvard?${searchParams.toString()}`}>Back to Collection</Link>

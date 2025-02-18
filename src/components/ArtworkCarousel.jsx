@@ -6,7 +6,6 @@ import "swiper/css/navigation";
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
 
 export const ArtworkCarousel = ({ artworks, handleRemove, slidesPerView }) => {
-
   return (
     <main className="carousel-container">
       <Swiper
@@ -17,7 +16,6 @@ export const ArtworkCarousel = ({ artworks, handleRemove, slidesPerView }) => {
         slidesPerView={1}
         autoHeight={true}
         loop={false}
-       
       >
         {artworks.map((artwork, index) => {
           const imageUrl =
@@ -25,8 +23,12 @@ export const ArtworkCarousel = ({ artworks, handleRemove, slidesPerView }) => {
             artwork.primaryImageSmall ||
             artwork.primaryimageurl ||
             NoImagePlaceholder;
-            const regex = /^\[.*\]$/;
-            const title = artwork.title ? (regex.test(artwork.title) ? artwork.title.slice(1, -1) : artwork.title) : "Untitled";
+          const regex = /^\[.*\]$/;
+          const title = artwork.title
+            ? regex.test(artwork.title)
+              ? artwork.title.slice(1, -1)
+              : artwork.title
+            : "Untitled";
           const normalizedArtwork = {
             id: artwork.objectID || artwork.objectid,
             title: title,
@@ -62,7 +64,8 @@ export const ArtworkCarousel = ({ artworks, handleRemove, slidesPerView }) => {
                       <strong>Artist:</strong> {normalizedArtwork.artist}
                     </p>
                     <p>
-                      <strong>Department:</strong> {normalizedArtwork.department}
+                      <strong>Department:</strong>{" "}
+                      {normalizedArtwork.department}
                     </p>
                     <p>
                       <strong>Culture:</strong> {normalizedArtwork.culture}
@@ -74,13 +77,16 @@ export const ArtworkCarousel = ({ artworks, handleRemove, slidesPerView }) => {
                       <strong>Medium:</strong> {normalizedArtwork.medium}
                     </p>
                     <p>
-                      <strong>Dimensions:</strong> {normalizedArtwork.dimensions}
+                      <strong>Dimensions:</strong>{" "}
+                      {normalizedArtwork.dimensions}
                     </p>
                     <p>
-                      <strong>Credit Line:</strong> {normalizedArtwork.creditLine}
+                      <strong>Credit Line:</strong>{" "}
+                      {normalizedArtwork.creditLine}
                     </p>
                     <p>
-                      <strong>Description:</strong> {normalizedArtwork.description}
+                      <strong>Description:</strong>{" "}
+                      {normalizedArtwork.description}
                     </p>
                     <p>
                       <strong>Source:</strong> {normalizedArtwork.source}

@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 export const ExhibitionPage = () => {
   const { id } = useParams();
-  const [exhibition, setExhibition] = useState(null); // Initially set to null
+  const [exhibition, setExhibition] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export const ExhibitionPage = () => {
       const updatedArtworks = prevExhibition.artworks.filter((art) => {
         const currentArtworkId = art.objectID || art.objectid;
 
-        return String(currentArtworkId) !== String(artworkId); // Convert both to strings for comparison
+        return String(currentArtworkId) !== String(artworkId);
       });
 
       const updatedExhibition = {

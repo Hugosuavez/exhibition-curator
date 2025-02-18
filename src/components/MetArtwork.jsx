@@ -28,62 +28,51 @@ export const MetArtwork = () => {
     queryKey: ["met-artworks", departmentId, currentPage],
     queryFn: () => fetchMetArtwork(departmentId),
   });
-  // Refetch when params change
-useEffect(() => {
-  refetch();
-}, [searchParams, refetch]);
 
-  const itemsPerPage = 10; // Number of items per page
+  useEffect(() => {
+    refetch();
+  }, [searchParams, refetch]);
 
-  // Calculate the start and end indices for slicing
+  const itemsPerPage = 10;
+
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-
-  // Extract the subset of objectIDs for the current page
   const currentObjectIDs = data?.objectIDs
     ? data.objectIDs.slice(startIndex, endIndex)
     : [];
 
-  // Calculate the total number of pages
   const totalPages = data?.objectIDs
     ? Math.ceil(data.objectIDs.length / itemsPerPage)
     : 0;
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // Function to toggle the sidebar open/closed
   const toggleSidebar = () => {
     setIsSidebarOpen((prev) => !prev);
   };
 
-  
-
-
-  return (<>
+  return (
+    <>
       {isLoading && <p>Loading artworks...</p>}
       {error && <p>Error fetching artworks: {error.message}</p>}
       {data && data.objectIDs && (
         <main className="container">
-          <Link to="/">Home</Link>
+          <Link to="/" className="link">
+            Home
+          </Link>
           <h1>Metropolitan Museum of Art</h1>
-          {/* Sidebar Toggle Button */}
-          <section className="content-wrapper">
-          <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
-            {isSidebarOpen ? "Close Departments" : "Search Departments"}
-          </button>
-            {/* Left Sidebar for Departments */}
-            {/* <aside
-              // className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}
-            > */}
-              <MetDepartments
-                // setDepartment={setDepartment}
-                setIsSidebarOpen={setIsSidebarOpen}
-                isSidebarOpen={isSidebarOpen}
-              />
-            {/* </aside> */}
 
-            {/* Main Content */}
+          <section className="content-wrapper">
+            <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
+              {isSidebarOpen ? "Close Departments" : "Search Departments"}
+            </button>
+
+            <MetDepartments
+              setIsSidebarOpen={setIsSidebarOpen}
+              isSidebarOpen={isSidebarOpen}
+            />
+
             <main className="artworks-content">
               {department && <h3>{department}</h3>}
               {/* Loop through the objectIDs and fetch artwork details */}
@@ -91,14 +80,12 @@ useEffect(() => {
                 <MetArtworkCard key={id} id={id} openModal={openModal} />
               ))}
 
-              {/* Pagination Controls */}
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
                 departmentId={departmentId}
               />
 
-              {/* Modal */}
               <AddArtModal
                 isOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
@@ -108,9 +95,8 @@ useEffect(() => {
               />
             </main>
           </section>
-        
-          </main>
+        </main>
       )}
-  </>
+    </>
   );
 };

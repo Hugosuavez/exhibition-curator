@@ -7,9 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const Home = () => {
   const [exhibitions, setExhibitions] = useState([]);
-  const [slidesPerView, setSlidesPerView] = useState(1); // Default to 1
+  const [slidesPerView, setSlidesPerView] = useState(1);
 
-  // Fetch exhibitions from localStorage
   useEffect(() => {
     const storedExhibitions =
       JSON.parse(localStorage.getItem("userExhibitions")) || [];
@@ -22,11 +21,10 @@ export const Home = () => {
     const handleResize = () => {
       updateSlidesPerView(exhibitions.length);
     };
-  
+
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [exhibitions.length]);
-  
 
   const updateSlidesPerView = (count) => {
     if (window.innerWidth >= 1024) {
@@ -38,21 +36,16 @@ export const Home = () => {
     }
   };
 
-
-
-  // Handle deleting an exhibition
   const handleDeleteExhibition = (exhibitionId) => {
-    deleteExhibition(exhibitionId); // Remove from localStorage
+    deleteExhibition(exhibitionId);
     setExhibitions((prevExhibitions) => {
-
       const updatedExhibitions = prevExhibitions.filter(
-        (exh) => exh.id !== exhibitionId)
-        updateSlidesPerView(updatedExhibitions.length);
-        return updatedExhibitions;
-    }
-    ); 
-        toast.success("Exhibition deleted!");
-    
+        (exh) => exh.id !== exhibitionId
+      );
+      updateSlidesPerView(updatedExhibitions.length);
+      return updatedExhibitions;
+    });
+    toast.success("Exhibition deleted!");
   };
 
   return (
@@ -69,11 +62,14 @@ export const Home = () => {
         <p>Start browsing to create exhibition</p>
       )}
 
-      
       <h2>Browse Art</h2>
-      <Link to="/met" className="page-link">Metropolitan Museum of Art</Link>
+      <Link to="/met" className="page-link">
+        Metropolitan Museum of Art
+      </Link>
       <br />
-      <Link to="/harvard" className="page-link">Harvard Art Museums</Link>
+      <Link to="/harvard" className="page-link">
+        Harvard Art Museums
+      </Link>
     </main>
   );
 };

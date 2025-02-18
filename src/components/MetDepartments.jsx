@@ -2,17 +2,16 @@ import { fetchMetDepartments } from "../utils/met-api-calls";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams, useNavigate } from "react-router-dom";
 
-export const MetDepartments = ({ setDepartment, setIsSidebarOpen, isSidebarOpen }) => {
-  
+export const MetDepartments = ({ setIsSidebarOpen, isSidebarOpen }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const { data, isLoading, error } = useQuery({
     queryKey: ["met-departments"],
     queryFn: () => fetchMetDepartments(),
   });
-  
+
   const handleAll = () => {
-    setSearchParams({page: 1})
+    setSearchParams({ page: 1 });
     setIsSidebarOpen((prev) => !prev);
     navigate("/met");
   };
@@ -20,8 +19,11 @@ export const MetDepartments = ({ setDepartment, setIsSidebarOpen, isSidebarOpen 
   const handleDepartment = (department) => {
     if (!department) return;
     const departmentId = department.departmentId;
-    setSearchParams({ departmentId, page: 1, department: department.displayName }); // Reset to page 1 for new classification
-    // setDepartment(department.displayName);
+    setSearchParams({
+      departmentId,
+      page: 1,
+      department: department.displayName,
+    }); // Reset to page 1 for new classification
     setIsSidebarOpen((prev) => !prev);
   };
 
@@ -37,10 +39,10 @@ export const MetDepartments = ({ setDepartment, setIsSidebarOpen, isSidebarOpen 
         {data?.departments &&
           data.departments.map((department) => (
             <button
-              key={department.departmentId} // Add a unique key for each button
-              onClick={() => handleDepartment(department)} // Pass the department name to the handler
+              key={department.departmentId}
+              onClick={() => handleDepartment(department)}
             >
-              {department.displayName} {/* Display the department name */}
+              {department.displayName}
             </button>
           ))}
       </section>

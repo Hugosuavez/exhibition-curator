@@ -65,11 +65,11 @@
   color: rgb(253, 253, 253);
   display: none;
 }
-.dpmt-button-container{
+.dpmt-button-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
-.dpmt-button-container-harv{
+.dpmt-button-container-harv {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
@@ -84,13 +84,11 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-  
 }
 
 .departments-sidebar button:hover {
   background-color: #333;
 }
-
 
 /* Main Content */
 .artworks-content {
@@ -100,7 +98,6 @@
   gap: 20px;
   padding: 20px;
 }
-
 
 /* Pagination Controls */
 .pagination-controls {
@@ -144,7 +141,7 @@
 }
 
 .artwork-card button {
-  margin: 5px
+  margin: 5px;
 }
 
 .artwork-details-container {
@@ -210,7 +207,6 @@
 .modal-select-container {
   display: flex;
   justify-content: center;
-  
 }
 
 .modal-select {
@@ -243,7 +239,6 @@
   margin: auto;
   overflow: visible;
   padding: 10px;
-  
 }
 .carousel-item-artwork {
   display: flex;
@@ -282,7 +277,7 @@
 
 .swiper-pagination {
   position: relative !important;
-  margin-top: 20px;  
+  margin-top: 20px;
 }
 
 .swiper .swiper-pagination .swiper-pagination-bullet-active {
@@ -318,7 +313,6 @@
 
 .page-link {
   color: rgb(190, 180, 180);
-  
 }
 
 .page-link:hover {
@@ -330,14 +324,18 @@
 }
 
 /* Very Small Screens (Under 420px)*/
-@media (max-width: 420px){
-  .dpmt-button-container{
+@media (max-width: 420px) {
+  .dpmt-button-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-  .dpmt-button-container-harv{
+  .dpmt-button-container-harv {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+
+  h1 {
+    font-size: 30px;
   }
 }
 
@@ -348,7 +346,6 @@
   }
 
   .modal-select {
-    
     font-size: 26px;
   }
 
@@ -362,7 +359,7 @@
     font-size: 20px;
     padding: 10px 15px;
   }
- 
+
   .departments-sidebar {
     display: block;
     flex: 0 0 200px;
@@ -377,10 +374,10 @@
   .toggle-sidebar-btn {
     display: none;
   }
-  .dpmt-button-container{
+  .dpmt-button-container {
     display: block;
   }
-  .dpmt-button-container-harv{
+  .dpmt-button-container-harv {
     display: block;
   }
   .content-wrapper {
@@ -393,7 +390,6 @@
 
 /* Desktops (1024px+) */
 @media (min-width: 1024px) {
-
   .carousel {
     gap: 20px;
   }
@@ -401,7 +397,7 @@
   .departments-sidebar {
     display: block;
   }
-  
+
   .toggle-sidebar-btn {
     display: none;
   }

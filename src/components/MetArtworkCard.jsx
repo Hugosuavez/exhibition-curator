@@ -4,12 +4,12 @@ import { useQuery } from "@tanstack/react-query";
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
 
 export const MetArtworkCard = ({ id, openModal }) => {
-  const [searchParams] = useSearchParams(); // Manage query params
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ["artwork-details", id], // Query key
-    queryFn: () => fetchMetArtworkDetails(id), // Fetcher function
+    queryKey: ["artwork-details", id],
+    queryFn: () => fetchMetArtworkDetails(id),
   });
 
   const handleDetailsClick = (artwork) => {
@@ -18,12 +18,10 @@ export const MetArtworkCard = ({ id, openModal }) => {
     );
   };
 
-  // Handle loading state
   if (isLoading) return <p>Loading artwork...</p>;
 
-  // Handle error state
   if (error) return <p>Error fetching artwork: {error.message}</p>;
-  
+
   const imageUrl =
     data.primaryImage || data.primaryImageSmall || NoImagePlaceholder;
 
