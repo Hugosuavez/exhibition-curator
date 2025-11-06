@@ -11,7 +11,7 @@ export const MetArtwork = () => {
   const [selectedArtwork, setSelectedArtwork] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const [errorMessage, setErrorMessage] = useState("");
 
