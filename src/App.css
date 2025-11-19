@@ -314,9 +314,19 @@
 
 .page-link {
   color: rgb(190, 180, 180);
+  grid-area: one;
 }
 
 .page-link:hover {
+  color: white;
+}
+
+.page-link2 {
+    grid-area: two;
+  color: rgb(190, 180, 180);
+}
+
+.page-link2:hover {
   color: white;
 }
 
@@ -331,10 +341,41 @@
 
 .curate-preview {
   grid-area: one;
+  display: grid;
+  grid-template-areas: 
+    'one two'
+    'three three'
+    'three three';
+}
+
+.one {
+  grid-area: one;
+}
+
+.two {
+  grid-area: two;
+}
+
+.three {
+  border: #ffffff 2px solid;
+  grid-area: three;
+  height: 800px;
+  max-height: 80vh;
+  flex-direction: row;
 }
 
 .curate-browse {
   grid-area: two;
+   display: grid;
+  grid-template-areas: 
+    'one two'
+    'three three'
+    'three three';
+}
+
+.browse-container {
+  grid-area: three;
+  border: solid white 2px;
 }
 
 /* Very Small Screens (Under 420px)*/

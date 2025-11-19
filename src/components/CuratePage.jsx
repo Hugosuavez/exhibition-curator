@@ -4,11 +4,15 @@ import { ArtworkCarousel } from "./ArtworkCarousel";
 import { Link } from "react-router-dom";
 import { removeArtworkFromExhibition } from "../utils/local-storage-calls";
 import { toast } from "react-toastify";
+import { MetArtwork } from "./MetArtwork";
+import { HarvardArtwork } from "./HarvardArtwork";
 
 export const CuratePage = () => {
    const { id } = useParams();
   const [exhibition, setExhibition] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [museumToggle, setMuseumToggle] = useState(null);
+
 
   useEffect(() => {
     const fetchExhibition = () => {
@@ -44,6 +48,10 @@ export const CuratePage = () => {
     toast.success("Art successfully removed!");
   };
 
+  const handleToggle = (toggle) => {
+    setMuseumToggle(toggle);
+  }
+
   if (loading) return <p>Loading...</p>;
   if (!exhibition) return <p>Exhibition not found!</p>;
 
@@ -51,10 +59,19 @@ export const CuratePage = () => {
         <Link to="/">Home</Link>
         <main className="curate-container">
             <section className="curate-preview">
-                <h2>{exhibition.name}</h2>
+                <h2 className="one">{exhibition.name}</h2>
+                <h2 className="two">two</h2>
+                <div className="three">
+
+                </div>
             </section>
             <section className="curate-browse">
-                <h2>hello</h2>
+                <button className="page-link" onClick={() => handleToggle(true)}>Metropolitan Museum of Art</button>
+                <br />
+                <button className="page-link2" onClick={() => handleToggle(false)}>Harvard Art Museums</button>
+                <div className="browse-container">
+                {museumToggle ? <MetArtwork/> : <HarvardArtwork/>}
+                </div>
             </section>
      <ArtworkCarousel
         artworks={exhibition.artworks || []}
