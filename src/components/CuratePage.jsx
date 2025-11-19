@@ -1,0 +1,69 @@
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { ArtworkCarousel } from "./ArtworkCarousel";
+import { Link } from "react-router-dom";
+import { removeArtworkFromExhibition } from "../utils/local-storage-calls";
+import { toast } from "react-toastify";
+
+export const CuratePage = () => {
+   const { id } = useParams();
+  const [exhibition, setExhibition] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchExhibition = () => {
+      const exhibitions =
+        JSON.parse(localStorage.getItem("userExhibitions")) || [];
+      const selectedExhibition = exhibitions.find(
+        (exh) => String(exh.id) === id
+      );
+      setExhibition(selectedExhibition);
+      setLoading(false);
+    };
+    fetchExhibition();
+  }, [id]);
+
+  const handleRemove = (artworkId) => {
+    removeArtworkFromExhibition(id, artworkId);
+
+    setExhibition((prevExhibition) => {
+      if (!prevExhibition) return prevExhibition;
+
+      const updatedArtworks = prevExhibition.artworks.filter((art) => {
+        const currentArtworkId = art.objectID || art.objectid;
+
+        return String(currentArtworkId) !== String(artworkId);
+      });
+
+      const updatedExhibition = {
+        ...prevExhibition,
+        artworks: updatedArtworks,
+      };
+      return updatedExhibition;
+    });
+    toast.success("Art successfully removed!");
+  };
+
+  if (loading) return <p>Loading...</p>;
+  if (!exhibition) return <p>Exhibition not found!</p>;
+
+  return (
+    <main className="curate-container">
+      <Link to="/">Home</Link>
+        <section className="curate-preview">
+        <h2>{exhibition.name}</h2>
+        artworks={exhibition.artworks || []}
+        handleRemove={handleRemove}
+
+        </section>
+        <section className="curate-browse">
+
+        </section>
+     <ArtworkCarousel
+        artworks={exhibition.artworks || []}
+        handleRemove={handleRemove}
+      />
+    </main>
+  );
+
+}

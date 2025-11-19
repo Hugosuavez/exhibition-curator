@@ -4,7 +4,9 @@ import { ExhibitionCarousel } from "./ExhibitionCarousel";
 import { deleteExhibition } from "../utils/local-storage-calls";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import {
+  createExhibition,
+} from "../utils/local-storage-calls";
 export const Home = () => {
   const [exhibitions, setExhibitions] = useState([]);
   const [slidesPerView, setSlidesPerView] = useState(1);
@@ -48,10 +50,55 @@ export const Home = () => {
     toast.success("Exhibition deleted!");
   };
 
+
+  const [newExhibitionName, setNewExhibitionName] = useState("");
+
+const handleCreateExhibition = () => {
+    // if (newExhibitionName.trim() === "") {
+    //   setErrorMessage("Please enter a name for the exhibition."); // Set error
+    //   return;
+    // }
+
+    // const exhibitionFound = exhibitions.find(
+    //   (exh) => exh.name === newExhibitionName
+    // );
+    // if (exhibitionFound) {
+    //   setErrorMessage("Exhibition name taken!");
+    //   return;
+    // }
+    const newExhibition = createExhibition(newExhibitionName);
+
+    setExhibitions([...exhibitions, newExhibition]);
+    toast.success("Exhibition added successfully!");
+
+    setNewExhibitionName("");
+    // setErrorMessage("");
+  };
+
+
   return (
     <main className="container">
       <h1>Exhibition Curation Platform</h1>
       <h2>Your Exhibitions</h2>
+         <h3>Create New Exhibition</h3>
+      <div className="modal-select-container">
+        <input
+          className="modal-select"
+          type="text"
+          id="create-exhibition"
+          placeholder="Exhibition Name"
+          value={newExhibitionName}
+          onChange={(e) => {
+            setNewExhibitionName(e.target.value);
+            // setErrorMessage(""); // Clear error when user types
+          }}
+          maxLength={20}
+          required
+        />
+
+        {/* Display error message */}
+        <button onClick={handleCreateExhibition}>Create</button>
+      </div>
       {exhibitions.length > 0 ? (
         <ExhibitionCarousel
           exhibitions={exhibitions}

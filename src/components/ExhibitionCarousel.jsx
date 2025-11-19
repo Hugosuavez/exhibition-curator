@@ -31,11 +31,11 @@ export const ExhibitionCarousel = ({
               >
                 x
               </button>
-              <Link
-                to={`/exhibition/${exhibition.id}`}
-                className="exhibition-link"
-              >
-                <h3>{exhibition.name}</h3>
+              <Link to={`/exhibition/${exhibition.id}`} className="exhibition-link">
+               View <h3>{exhibition.name}</h3>
+              </Link>
+              <Link to={`/curate/${exhibition.id}`} className="exhibition-link">
+               Curate <h3>{exhibition.name}</h3>
               </Link>
             </article>
           </SwiperSlide>

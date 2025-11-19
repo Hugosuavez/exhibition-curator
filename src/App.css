@@ -288,6 +288,7 @@
   text-decoration: none;
   color: #d6caca;
   justify-self: center;
+  font-size: 12px;
 }
 
 .delete-button {
@@ -322,6 +323,12 @@
 .exhibition-container {
   max-height: 100%;
 }
+
+.curate-container {
+  display: grid;
+  grid-template-columns: auto, auto;
+}
+
 
 /* Very Small Screens (Under 420px)*/
 @media (max-width: 420px) {

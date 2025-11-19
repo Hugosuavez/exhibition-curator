@@ -7,6 +7,7 @@ import { MetArtworkDetails } from "./components/MetArtworkDetails";
 import { HarvardArtworkDetails } from "./components/HarvardArtworkDetails";
 import { ExhibitionPage } from "./components/ExhibitionPage";
 import { ToastContainer } from "react-toastify";
+import { CuratePage } from "./components/CuratePage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             element={<HarvardArtworkDetails />}
           />
           <Route path="/exhibition/:id" element={<ExhibitionPage />} />
+          <Route path="/curate/:id" element={<CuratePage />} />
         </Routes>
       </div>
     </>
