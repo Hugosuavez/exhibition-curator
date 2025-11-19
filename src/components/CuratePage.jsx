@@ -47,23 +47,21 @@ export const CuratePage = () => {
   if (loading) return <p>Loading...</p>;
   if (!exhibition) return <p>Exhibition not found!</p>;
 
-  return (
-    <main className="curate-container">
-      <Link to="/">Home</Link>
-        <section className="curate-preview">
-        <h2>{exhibition.name}</h2>
-        artworks={exhibition.artworks || []}
-        handleRemove={handleRemove}
-
-        </section>
-        <section className="curate-browse">
-
-        </section>
+  return (<>
+        <Link to="/">Home</Link>
+        <main className="curate-container">
+            <section className="curate-preview">
+                <h2>{exhibition.name}</h2>
+            </section>
+            <section className="curate-browse">
+                <h2>hello</h2>
+            </section>
      <ArtworkCarousel
         artworks={exhibition.artworks || []}
         handleRemove={handleRemove}
-      />
+        />
     </main>
+        </>
   );
 
 }

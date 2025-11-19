@@ -326,9 +326,16 @@
 
 .curate-container {
   display: grid;
-  grid-template-columns: auto, auto;
+  grid-template-areas: 'one two';
 }
 
+.curate-preview {
+  grid-area: one;
+}
+
+.curate-browse {
+  grid-area: two;
+}
 
 /* Very Small Screens (Under 420px)*/
 @media (max-width: 420px) {
