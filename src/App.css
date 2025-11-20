@@ -312,24 +312,6 @@
   color: white;
 }
 
-.page-link {
-  color: rgb(190, 180, 180);
-  grid-area: one;
-}
-
-.page-link:hover {
-  color: white;
-}
-
-.page-link2 {
-    grid-area: two;
-  color: rgb(190, 180, 180);
-}
-
-.page-link2:hover {
-  color: white;
-}
-
 .exhibition-container {
   max-height: 100%;
 }
@@ -346,21 +328,24 @@
     'one two'
     'three three'
     'three three';
+    width: 40vw;
+    height: 90vh;
 }
 
 .one {
   grid-area: one;
+  height: 10vh;
 }
 
 .two {
   grid-area: two;
+  height: 10vh;
 }
 
 .three {
   border: #ffffff 2px solid;
   grid-area: three;
-  height: 800px;
-  max-height: 80vh;
+  height: 80vh;
   flex-direction: row;
 }
 
@@ -371,12 +356,37 @@
     'one two'
     'three three'
     'three three';
+    width: 40vw;
+    height: 90vh;
 }
 
 .browse-container {
-  grid-area: three;
   border: solid white 2px;
+  grid-area: three;
+  height: 80vh;
 }
+
+
+.page-link {
+  color: rgb(190, 180, 180);
+  grid-area: one;
+  height: 10vh;
+}
+
+.page-link:hover {
+  color: white;
+}
+
+.page-link2 {
+  grid-area: two;
+  color: rgb(190, 180, 180);
+  height: 10vh;
+}
+
+.page-link2:hover {
+  color: white;
+}
+
 
 /* Very Small Screens (Under 420px)*/
 @media (max-width: 420px) {

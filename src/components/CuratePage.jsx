@@ -59,24 +59,19 @@ export const CuratePage = () => {
         <Link to="/">Home</Link>
         <main className="curate-container">
             <section className="curate-preview">
-                <h2 className="one">{exhibition.name}</h2>
-                <h2 className="two">two</h2>
+                <div className="one">{exhibition.name}</div>
+                <div className="two">two</div>
                 <div className="three">
-
                 </div>
             </section>
             <section className="curate-browse">
                 <button className="page-link" onClick={() => handleToggle(true)}>Metropolitan Museum of Art</button>
-                <br />
+              
                 <button className="page-link2" onClick={() => handleToggle(false)}>Harvard Art Museums</button>
                 <div className="browse-container">
                 {museumToggle ? <MetArtwork/> : <HarvardArtwork/>}
                 </div>
             </section>
-     <ArtworkCarousel
-        artworks={exhibition.artworks || []}
-        handleRemove={handleRemove}
-        />
     </main>
         </>
   );
