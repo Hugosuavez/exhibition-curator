@@ -6,13 +6,15 @@ import { removeArtworkFromExhibition } from "../utils/local-storage-calls";
 import { toast } from "react-toastify";
 import { MetArtwork } from "./MetArtwork";
 import { HarvardArtwork } from "./HarvardArtwork";
+import { CuratePreview } from "./CuratePreview";
 
 export const CuratePage = () => {
    const { id } = useParams();
   const [exhibition, setExhibition] = useState(null);
   const [loading, setLoading] = useState(true);
   const [museumToggle, setMuseumToggle] = useState(null);
-
+  const [artwork, setArtwork] = useState(null)
+  console.log(exhibition)
 
   useEffect(() => {
     const fetchExhibition = () => {
@@ -22,31 +24,32 @@ export const CuratePage = () => {
         (exh) => String(exh.id) === id
       );
       setExhibition(selectedExhibition);
+      setArtwork(selectedExhibition.artworks)
       setLoading(false);
     };
     fetchExhibition();
   }, [id]);
 
-  const handleRemove = (artworkId) => {
-    removeArtworkFromExhibition(id, artworkId);
+  // const handleRemove = (artworkId) => {
+  //   removeArtworkFromExhibition(id, artworkId);
 
-    setExhibition((prevExhibition) => {
-      if (!prevExhibition) return prevExhibition;
+  //   setExhibition((prevExhibition) => {
+  //     if (!prevExhibition) return prevExhibition;
 
-      const updatedArtworks = prevExhibition.artworks.filter((art) => {
-        const currentArtworkId = art.objectID || art.objectid;
+  //     const updatedArtworks = prevExhibition.artworks.filter((art) => {
+  //       const currentArtworkId = art.objectID || art.objectid;
 
-        return String(currentArtworkId) !== String(artworkId);
-      });
+  //       return String(currentArtworkId) !== String(artworkId);
+  //     });
 
-      const updatedExhibition = {
-        ...prevExhibition,
-        artworks: updatedArtworks,
-      };
-      return updatedExhibition;
-    });
-    toast.success("Art successfully removed!");
-  };
+  //     const updatedExhibition = {
+  //       ...prevExhibition,
+  //       artworks: updatedArtworks,
+  //     };
+  //     return updatedExhibition;
+  //   });
+  //   toast.success("Art successfully removed!");
+  // };
 
   const handleToggle = (toggle) => {
     setMuseumToggle(toggle);
@@ -62,6 +65,7 @@ export const CuratePage = () => {
                 <div className="one">{exhibition.name}</div>
                 <div className="two">two</div>
                 <div className="three">
+                  <CuratePreview artwork={artwork}/>
                 </div>
             </section>
             <section className="curate-browse">
@@ -69,7 +73,7 @@ export const CuratePage = () => {
               
                 <button className="page-link2" onClick={() => handleToggle(false)}>Harvard Art Museums</button>
                 <div className="browse-container">
-                {museumToggle ? <MetArtwork/> : <HarvardArtwork/>}
+                {museumToggle ? <MetArtwork /> : <HarvardArtwork exhibition={exhibition} setArtwork={setArtwork} artwork={artwork}/>}
                 </div>
             </section>
     </main>

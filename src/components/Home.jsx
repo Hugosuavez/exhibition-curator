@@ -54,6 +54,7 @@ export const Home = () => {
   const [newExhibitionName, setNewExhibitionName] = useState("");
 
 const handleCreateExhibition = () => {
+
     // if (newExhibitionName.trim() === "") {
     //   setErrorMessage("Please enter a name for the exhibition."); // Set error
     //   return;
@@ -66,6 +67,7 @@ const handleCreateExhibition = () => {
     //   setErrorMessage("Exhibition name taken!");
     //   return;
     // }
+    
     const newExhibition = createExhibition(newExhibitionName);
 
     setExhibitions([...exhibitions, newExhibition]);

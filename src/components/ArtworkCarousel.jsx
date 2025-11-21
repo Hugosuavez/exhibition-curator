@@ -23,12 +23,15 @@ export const ArtworkCarousel = ({ artworks, handleRemove, slidesPerView }) => {
             artwork.primaryImageSmall ||
             artwork.primaryimageurl ||
             NoImagePlaceholder;
+
           const regex = /^\[.*\]$/;
+          
           const title = artwork.title
             ? regex.test(artwork.title)
               ? artwork.title.slice(1, -1)
               : artwork.title
             : "Untitled";
+
           const normalizedArtwork = {
             id: artwork.objectID || artwork.objectid,
             title: title,

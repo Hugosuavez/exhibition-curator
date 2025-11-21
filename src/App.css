@@ -12,14 +12,6 @@
   max-width: 100%;
 }
 
-/* Main container to structure the layout */
-.container {
-  display: flex;
-  flex-direction: column;
-  padding: 0px;
-  max-width: 100%;
-}
-
 /* Content Wrapper: Flexbox for Departments and Main Content */
 .content-wrapper {
   gap: 20px;
@@ -322,6 +314,7 @@
 }
 
 .curate-preview {
+  overflow: auto;
   grid-area: one;
   display: grid;
   grid-template-areas: 
@@ -364,8 +357,8 @@
   border: solid white 2px;
   grid-area: three;
   height: 80vh;
+  overflow: scroll;
 }
-
 
 .page-link {
   color: rgb(190, 180, 180);
@@ -387,7 +380,20 @@
   color: white;
 }
 
-
+.browse-page {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  max-width: 100%;
+}
+.exhibition-preview-container {
+  display: flex;
+  flex-direction: row;
+}
+.exhibit {
+  height: 200px;
+  width: auto;
+}
 /* Very Small Screens (Under 420px)*/
 @media (max-width: 420px) {
   .dpmt-button-container {

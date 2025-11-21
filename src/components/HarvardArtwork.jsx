@@ -7,7 +7,7 @@ import { AddArtModal } from "./AddArtModal";
 import { HarvardArtworkCard } from "./HarvardArtworkCard";
 import { Pagination } from "./Pagination";
 
-export const HarvardArtwork = () => {
+export const HarvardArtwork = ({setArtwork, artwork, exhibition}) => {
   const [selectedArtwork, setSelectedArtwork] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [department, setDepartment] = useState(null);
@@ -36,7 +36,7 @@ export const HarvardArtwork = () => {
 
   return (
     <>
-      <main className="container">
+      <main className="browse-page">
         <Link to="/">Home</Link>
         <h1>Harvard Art Museums</h1>
 
@@ -50,13 +50,16 @@ export const HarvardArtwork = () => {
             setIsSidebarOpen={setIsSidebarOpen}
             isSidebarOpen={isSidebarOpen}
           />
-          {isLoading && <p>Loading artworks...</p>}
-          {error && <p>Error fetching artworks</p>}
+          {isLoading && <p>Loading artwork...</p>}
+          {error && <p>Error fetching artwork</p>}
           {data?.records && (
             <main className="artworks-content">
               {department && <h3>{department}</h3>}
               {data.records.map((record) => (
                 <HarvardArtworkCard
+                exhibition={exhibition}
+                  setArtwork={setArtwork}
+                  artwork={artwork}
                   setIsModalOpen={setIsModalOpen}
                   setSelectedArtwork={setSelectedArtwork}
                   record={record}

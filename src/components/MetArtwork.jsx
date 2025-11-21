@@ -57,10 +57,10 @@ export const MetArtwork = () => {
 
   return (
     <>
-      {isLoading && <p>Loading artworks...</p>}
+      {isLoading && <p>Loading artwork...</p>}
       {error && <p>Error fetching artworks: {error.message}</p>}
       {data && data.objectIDs && (
-        <main className="container">
+        <main className="browse-page">
           <Link to="/" className="link">
             Home
           </Link>
