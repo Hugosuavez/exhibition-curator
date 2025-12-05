@@ -7,7 +7,9 @@ import { MetDepartments } from "./MetDepartments";
 import { AddArtModal } from "./AddArtModal";
 import { Pagination } from "./Pagination";
 
-export const MetArtwork = () => {
+export const MetArtwork = ({artwork,
+  setArtwork,
+  exhibition}) => {
   const [selectedArtwork, setSelectedArtwork] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -61,10 +63,10 @@ export const MetArtwork = () => {
       {error && <p>Error fetching artworks: {error.message}</p>}
       {data && data.objectIDs && (
         <main className="browse-page">
-          <Link to="/" className="link">
+          {/* <Link to="/" className="link">
             Home
-          </Link>
-          <h1>Metropolitan Museum of Art</h1>
+          </Link> */}
+          <h3>Metropolitan Museum of Art</h3>
 
           <section className="content-wrapper">
             <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
@@ -80,7 +82,8 @@ export const MetArtwork = () => {
               {department && <h3>{department}</h3>}
               {/* Loop through the objectIDs and fetch artwork details */}
               {currentObjectIDs.map((id) => (
-                <MetArtworkCard key={id} id={id} openModal={openModal} />
+                <MetArtworkCard key={id} id={id} openModal={openModal} artwork={artwork} 
+  setArtwork={setArtwork} exhibition={exhibition}/>
               ))}
 
               <Pagination

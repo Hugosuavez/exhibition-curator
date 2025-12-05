@@ -1,8 +1,12 @@
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
   addArtworkToExhibition,
+  getExhibitionById,
 } from "../utils/local-storage-calls";
+
+
 export const HarvardArtworkCard = ({
   record,
   setSelectedArtwork,
@@ -14,17 +18,37 @@ export const HarvardArtworkCard = ({
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   
-
   const openModal = (artwork) => {
     setSelectedArtwork(artwork);
     setIsModalOpen(true);
   };
-
-
+  
+  const exhibitionId = exhibition.id
   //new function for direct add to art preview in curate page
   const addArtwork = (newArt) => {
+    const updatedExhibition = getExhibitionById(exhibitionId);
+
+
+        //ERROR HANDLING
+    const foundMetArt = updatedExhibition.artworks.find(
+      (art) => art.objectID !== undefined && art.objectID === newArt.objectID
+    );
+
+    const foundHarvardArt = exhibition.artworks.find(
+      (art) => art.objectid !== undefined && art.objectid === newArt.objectid
+    );
+    
+    if (foundMetArt || foundHarvardArt) {
+      // setErrorMessage("Selected artwork already added to exhibition");
+    toast.error("Selected artwork already added to exhibition!");
+
+      return;
+    }
+
+
     setArtwork([...artwork, newArt])
     addArtworkToExhibition(exhibition.id, newArt);
+    toast.success("Artwork successfully added!");
   }
 
 

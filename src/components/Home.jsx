@@ -111,14 +111,14 @@ const handleCreateExhibition = () => {
         <p>Start browsing to create exhibition</p>
       )}
 
-      <h2>Browse Art</h2>
+      {/* <h2>Browse Art</h2>
       <Link to="/met" className="page-link">
         Metropolitan Museum of Art
       </Link>
       <br />
       <Link to="/harvard" className="page-link">
         Harvard Art Museums
-      </Link>
+      </Link> */}
     </main>
   );
 };

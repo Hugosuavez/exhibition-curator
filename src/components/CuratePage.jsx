@@ -14,7 +14,7 @@ export const CuratePage = () => {
   const [loading, setLoading] = useState(true);
   const [museumToggle, setMuseumToggle] = useState(null);
   const [artwork, setArtwork] = useState(null)
-  console.log(exhibition)
+ 
 
   useEffect(() => {
     const fetchExhibition = () => {
@@ -65,7 +65,7 @@ export const CuratePage = () => {
                 <div className="one">{exhibition.name}</div>
                 <div className="two">two</div>
                 <div className="three">
-                  <CuratePreview artwork={artwork}/>
+                  <CuratePreview artwork={artwork} exhibition={exhibition}/>
                 </div>
             </section>
             <section className="curate-browse">
@@ -73,7 +73,7 @@ export const CuratePage = () => {
               
                 <button className="page-link2" onClick={() => handleToggle(false)}>Harvard Art Museums</button>
                 <div className="browse-container">
-                {museumToggle ? <MetArtwork /> : <HarvardArtwork exhibition={exhibition} setArtwork={setArtwork} artwork={artwork}/>}
+                {museumToggle ? <MetArtwork exhibition={exhibition} setArtwork={setArtwork} artwork={artwork}/> : <HarvardArtwork exhibition={exhibition} setArtwork={setArtwork} artwork={artwork}/>}
                 </div>
             </section>
     </main>

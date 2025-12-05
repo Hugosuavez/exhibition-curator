@@ -37,8 +37,8 @@ export const HarvardArtwork = ({setArtwork, artwork, exhibition}) => {
   return (
     <>
       <main className="browse-page">
-        <Link to="/">Home</Link>
-        <h1>Harvard Art Museums</h1>
+        {/* {/* <Link to="/">Home</Link> */}
+        <h3>Harvard Art Museums</h3>
 
         <section className="content-wrapper">
           <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
