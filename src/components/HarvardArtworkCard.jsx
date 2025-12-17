@@ -46,7 +46,7 @@ export const HarvardArtworkCard = ({
     }
 
 
-    setArtwork([...artwork, newArt])
+    setArtwork([...artwork, newArt]);
     addArtworkToExhibition(exhibition.id, newArt);
     toast.success("Artwork successfully added!");
   }

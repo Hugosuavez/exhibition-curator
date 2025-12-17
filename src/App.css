@@ -389,10 +389,14 @@
 .exhibition-preview-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
 }
 .exhibit {
-  height: 200px;
+  height: 100px;
   width: auto;
+  max-width: 200px;
 }
 /* Very Small Screens (Under 420px)*/
 @media (max-width: 420px) {

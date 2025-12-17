@@ -14,7 +14,7 @@ export const CuratePage = () => {
   const [loading, setLoading] = useState(true);
   const [museumToggle, setMuseumToggle] = useState(null);
   const [artwork, setArtwork] = useState(null)
- 
+  console.log(exhibition);
 
   useEffect(() => {
     const fetchExhibition = () => {
@@ -65,7 +65,7 @@ export const CuratePage = () => {
                 <div className="one">{exhibition.name}</div>
                 <div className="two">two</div>
                 <div className="three">
-                  <CuratePreview artwork={artwork} exhibition={exhibition}/>
+                  <CuratePreview artwork={artwork} setArtwork={setArtwork} exhibition={exhibition}/>
                 </div>
             </section>
             <section className="curate-browse">

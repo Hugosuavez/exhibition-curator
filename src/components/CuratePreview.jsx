@@ -1,9 +1,30 @@
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
 import { removeArtworkFromExhibition } from "../utils/local-storage-calls";
+import { toast } from "react-toastify";
+
+export const CuratePreview = ({artwork, setArtwork, exhibition}) => {
+
+    const handleRemove = (artworkId) => {
+      removeArtworkFromExhibition(exhibition.id, artworkId);
+      setArtwork((prevExhibition) => {
+        if (!prevExhibition) return prevExhibition;
+  
+        const updatedArtworks = prevExhibition.filter((art) => {
+          const currentArtworkId = art.objectID || art.objectid;
+  
+          return String(currentArtworkId) !== String(artworkId);
+        });
+  
+        // const updatedExhibition = {
+        //   ...prevExhibition,
+        //   artworks: updatedArtworks,
+        // };
+        return updatedArtworks;
+      });
+      toast.success("Art successfully removed!");
+    };
 
 
-export const CuratePreview = ({artwork, exhibition}) => {
-    
     const regex = /^\[.*\]$/;
     
 
@@ -24,10 +45,12 @@ export const CuratePreview = ({artwork, exhibition}) => {
                 artwork.primaryimageurl ||
                 NoImagePlaceholder;
 
-            return (<>
-           
-            <img src={imageUrl} alt={title} key={index} className="exhibit"/>
-            </>
+            return (
+            <div key={index}>
+              <img src={imageUrl} alt={title} className="exhibit"/>
+              <p></p>
+              <button className="delete-button" onClick={() => handleRemove(normalizedId)}>x</button>
+            </div>
           )
     })}
     
