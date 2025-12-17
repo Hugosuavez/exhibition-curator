@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchHarvardArtwork } from "../utils/harvard-api-calls";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { HarvardDepartments } from "./HarvardDepartments";
 import { useState } from "react";
-import { AddArtModal } from "./AddArtModal";
+
 import { HarvardArtworkCard } from "./HarvardArtworkCard";
 import { Pagination } from "./Pagination";
 
@@ -12,7 +12,7 @@ export const HarvardArtwork = ({setArtwork, artwork, exhibition}) => {
   
   const [department, setDepartment] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [errorMessage, setErrorMessage] = useState("");
+  
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const classification = searchParams.get("classificationId") || null;

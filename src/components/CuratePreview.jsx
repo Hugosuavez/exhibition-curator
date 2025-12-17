@@ -32,7 +32,7 @@ export const CuratePreview = ({artwork, setArtwork, exhibition}) => {
 
     {artwork.map((artwork, index) => {
             const normalizedId = artwork.objectID || artwork.objectid
-            console.log(normalizedId)
+           
             const title = artwork.title
             ? regex.test(artwork.title)
               ? artwork.title.slice(1, -1)

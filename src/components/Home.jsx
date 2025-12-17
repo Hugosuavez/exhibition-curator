@@ -4,9 +4,10 @@ import { ExhibitionCarousel } from "./ExhibitionCarousel";
 import { deleteExhibition } from "../utils/local-storage-calls";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {
-  createExhibition,
-} from "../utils/local-storage-calls";
+import { createExhibition} from "../utils/local-storage-calls";
+
+
+
 export const Home = () => {
   const [exhibitions, setExhibitions] = useState([]);
   const [slidesPerView, setSlidesPerView] = useState(1);
