@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import { useState, useEffect } from "react";
 import { ExhibitionCarousel } from "./ExhibitionCarousel";
 import { deleteExhibition } from "../utils/local-storage-calls";
@@ -110,15 +110,6 @@ const handleCreateExhibition = () => {
       ) : (
         <p>Start browsing to create exhibition</p>
       )}
-
-      {/* <h2>Browse Art</h2>
-      <Link to="/met" className="page-link">
-        Metropolitan Museum of Art
-      </Link>
-      <br />
-      <Link to="/harvard" className="page-link">
-        Harvard Art Museums
-      </Link> */}
     </main>
   );
 };

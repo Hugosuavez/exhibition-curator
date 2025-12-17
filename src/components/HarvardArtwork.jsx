@@ -8,8 +8,8 @@ import { HarvardArtworkCard } from "./HarvardArtworkCard";
 import { Pagination } from "./Pagination";
 
 export const HarvardArtwork = ({setArtwork, artwork, exhibition}) => {
-  const [selectedArtwork, setSelectedArtwork] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  
   const [department, setDepartment] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [errorMessage, setErrorMessage] = useState("");
@@ -60,8 +60,6 @@ export const HarvardArtwork = ({setArtwork, artwork, exhibition}) => {
                 exhibition={exhibition}
                   setArtwork={setArtwork}
                   artwork={artwork}
-                  setIsModalOpen={setIsModalOpen}
-                  setSelectedArtwork={setSelectedArtwork}
                   record={record}
                   key={record.objectid}
                 />
@@ -70,13 +68,6 @@ export const HarvardArtwork = ({setArtwork, artwork, exhibition}) => {
                 currentPage={currentPage}
                 totalPages={totalPages}
                 classification={classification}
-              />
-              <AddArtModal
-                isOpen={isModalOpen}
-                setIsModalOpen={setIsModalOpen}
-                artwork={selectedArtwork}
-                setErrorMessage={setErrorMessage}
-                errorMessage={errorMessage}
               />
             </main>
           )}

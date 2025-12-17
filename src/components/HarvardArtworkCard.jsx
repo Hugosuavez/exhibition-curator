@@ -9,8 +9,6 @@ import {
 
 export const HarvardArtworkCard = ({
   record,
-  setSelectedArtwork,
-  setIsModalOpen,
   artwork,
   setArtwork,
   exhibition
@@ -18,11 +16,7 @@ export const HarvardArtworkCard = ({
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   
-  const openModal = (artwork) => {
-    setSelectedArtwork(artwork);
-    setIsModalOpen(true);
-  };
-  
+
   const exhibitionId = exhibition.id
   //new function for direct add to art preview in curate page
   const addArtwork = (newArt) => {

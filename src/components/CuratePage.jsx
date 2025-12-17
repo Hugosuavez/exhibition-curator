@@ -1,9 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { ArtworkCarousel } from "./ArtworkCarousel";
 import { Link } from "react-router-dom";
-import { removeArtworkFromExhibition } from "../utils/local-storage-calls";
-import { toast } from "react-toastify";
 import { MetArtwork } from "./MetArtwork";
 import { HarvardArtwork } from "./HarvardArtwork";
 import { CuratePreview } from "./CuratePreview";
@@ -14,7 +11,7 @@ export const CuratePage = () => {
   const [loading, setLoading] = useState(true);
   const [museumToggle, setMuseumToggle] = useState(null);
   const [artwork, setArtwork] = useState(null)
-  console.log(exhibition);
+
 
   useEffect(() => {
     const fetchExhibition = () => {
@@ -30,26 +27,6 @@ export const CuratePage = () => {
     fetchExhibition();
   }, [id]);
 
-  // const handleRemove = (artworkId) => {
-  //   removeArtworkFromExhibition(id, artworkId);
-
-  //   setExhibition((prevExhibition) => {
-  //     if (!prevExhibition) return prevExhibition;
-
-  //     const updatedArtworks = prevExhibition.artworks.filter((art) => {
-  //       const currentArtworkId = art.objectID || art.objectid;
-
-  //       return String(currentArtworkId) !== String(artworkId);
-  //     });
-
-  //     const updatedExhibition = {
-  //       ...prevExhibition,
-  //       artworks: updatedArtworks,
-  //     };
-  //     return updatedExhibition;
-  //   });
-  //   toast.success("Art successfully removed!");
-  // };
 
   const handleToggle = (toggle) => {
     setMuseumToggle(toggle);

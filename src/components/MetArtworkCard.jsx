@@ -1,5 +1,5 @@
 import { fetchMetArtworkDetails } from "../utils/met-api-calls";
-import { Link, useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import {
@@ -8,7 +8,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
 
-export const MetArtworkCard = ({ id, openModal, artwork,
+export const MetArtworkCard = ({ id, artwork,
   setArtwork,
   exhibition }) => {
   const [searchParams] = useSearchParams();
@@ -19,7 +19,6 @@ export const MetArtworkCard = ({ id, openModal, artwork,
     queryKey: ["artwork-details", id],
     queryFn: () => fetchMetArtworkDetails(id),
   });
-
 
 
    //new function for direct add to art preview in curate page
