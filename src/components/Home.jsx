@@ -1,12 +1,9 @@
-
 import { useState, useEffect } from "react";
 import { ExhibitionCarousel } from "./ExhibitionCarousel";
 import { deleteExhibition } from "../utils/local-storage-calls";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createExhibition} from "../utils/local-storage-calls";
-
-
 
 export const Home = () => {
   const [exhibitions, setExhibitions] = useState([]);
@@ -56,18 +53,19 @@ export const Home = () => {
 
 const handleCreateExhibition = () => {
 
-    // if (newExhibitionName.trim() === "") {
-    //   setErrorMessage("Please enter a name for the exhibition."); // Set error
-    //   return;
-    // }
+    if (newExhibitionName.trim() === "") {
+        toast.error("Please enter a name for exhibition") // Set error
+      return;
+    }
 
-    // const exhibitionFound = exhibitions.find(
-    //   (exh) => exh.name === newExhibitionName
-    // );
-    // if (exhibitionFound) {
-    //   setErrorMessage("Exhibition name taken!");
-    //   return;
-    // }
+    const exhibitionFound = exhibitions.find(
+      (exh) => exh.name === newExhibitionName
+    );
+    if (exhibitionFound) {
+      toast.error("Exhibition name taken!")
+    
+      return;
+    }
     
     const newExhibition = createExhibition(newExhibitionName);
 
@@ -81,9 +79,9 @@ const handleCreateExhibition = () => {
 
   return (
     <main className="container">
-      <h1>Exhibition Curation Platform</h1>
-      <h2>Your Exhibitions</h2>
-         <h3>Create New Exhibition</h3>
+      <h1>Decor!</h1>
+      <h2>Your very own exhibition curator</h2>
+      <h3>Create New Exhibition</h3>
       <div className="modal-select-container">
         <input
           className="modal-select"
@@ -97,20 +95,21 @@ const handleCreateExhibition = () => {
           }}
           maxLength={20}
           required
-        />
+          />
 
         {/* Display error message */}
         <button onClick={handleCreateExhibition}>Create</button>
       </div>
-      {exhibitions.length > 0 ? (
-        <ExhibitionCarousel
+      <div>
+          <h2>Your Exhibitions</h2>
+          {exhibitions.length > 0 ? <ExhibitionCarousel
           exhibitions={exhibitions}
           onDelete={handleDeleteExhibition}
           slidesPerView={slidesPerView}
-        />
-      ) : (
-        <p>Start browsing to create exhibition</p>
-      )}
+          /> : <p>Create exhibition to begin!</p>}
+      </div>
+        
+     
     </main>
   );
 };

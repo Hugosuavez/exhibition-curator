@@ -1,7 +1,7 @@
 import { fetchMetArtworkDetails } from "../utils/met-api-calls";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import { getExhibitionById } from "../utils/local-storage-calls";
 import {
   addArtworkToExhibition,
 } from "../utils/local-storage-calls";
@@ -20,20 +20,22 @@ export const MetArtworkCard = ({ id, artwork,
     queryFn: () => fetchMetArtworkDetails(id),
   });
 
+  const exhibitionId = exhibition.id
 
    //new function for direct add to art preview in curate page
     const addArtwork = (newArt) => {
-      console.log(newArt)
-      console.log(exhibition.artworks)
+ 
+    const updatedExhibition = getExhibitionById(exhibitionId);
+
           //ERROR HANDLING
-      const foundMetArt = exhibition.artworks.find(
+      const foundMetArt = updatedExhibition.artworks.find(
         (art) => art.objectID !== undefined && art.objectID === newArt.objectID
       );
   
-      const foundHarvardArt = exhibition.artworks.find(
+      const foundHarvardArt = updatedExhibition.artworks.find(
         (art) => art.objectid !== undefined && art.objectid === newArt.objectid
       );
-      console.log(foundMetArt)
+  
       if (foundMetArt || foundHarvardArt) {
         // setErrorMessage("Selected artwork already added to exhibition");
       toast.error("Selected artwork already added to exhibition!");

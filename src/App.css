@@ -65,6 +65,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
+
 /* Buttons in the Departments Sidebar */
 .departments-sidebar button {
   display: block;
@@ -196,6 +197,7 @@
   position: relative;
   width: 75%;
 }
+
 .modal-select-container {
   display: flex;
   justify-content: center;
@@ -232,6 +234,7 @@
   overflow: visible;
   padding: 10px;
 }
+
 .carousel-item-artwork {
   display: flex;
   flex-direction: column;
@@ -386,6 +389,7 @@
   padding: 0px;
   max-width: 100%;
 }
+
 .exhibition-preview-container {
   display: flex;
   flex-direction: row;
@@ -393,11 +397,15 @@
   gap: 20px;
   padding: 20px;
 }
+
 .exhibit {
   height: 100px;
   width: auto;
   max-width: 200px;
 }
+
+
+
 /* Very Small Screens (Under 420px)*/
 @media (max-width: 420px) {
   .dpmt-button-container {
