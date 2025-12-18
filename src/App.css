@@ -506,9 +506,6 @@ button:focus-visible {
 
 
 
-
-
-
 /* Very Small Screens (Under 420px)*/
 @media (max-width: 420px) {
   .dpmt-button-container {
