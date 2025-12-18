@@ -59,12 +59,12 @@ export const HarvardArtworkCard = ({
   const imageUrl = record?.primaryimageurl || NoImagePlaceholder;
 
   return (
-    <li key={record.objectid} className="artwork-card">
+    <li key={record.objectid} className="artwork-card-cb">
       <h2>{title || "Untitled"}</h2>
       <img
         src={imageUrl}
         alt={record.title || "No title available"}
-        className="artwork-image"
+        className="artwork-image-cb"
       />
       <p>
         {record.century || "Unknown Artist"} |{" "}

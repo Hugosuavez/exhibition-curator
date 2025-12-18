@@ -53,16 +53,16 @@ export const ArtworkCarousel = ({ artworks, handleRemove, slidesPerView }) => {
           return (
             <SwiperSlide key={index}>
               <article className="carousel-item-artwork">
-                <section className="artwork-details-container">
-                  <h3 className="artwork-title">{normalizedArtwork.title}</h3>
-                  <section className="artwork-image-container">
+                <section className="artwork-details-container-ep">
+                  <h3 className="artwork-title-ep">{normalizedArtwork.title}</h3>
+                  <section className="artwork-image-container-ep">
                     <img
                       src={imageUrl}
                       alt={normalizedArtwork.title}
                       className="carousel-artwork-image"
                     />
                   </section>
-                  <section className="artwork-info">
+                  <section className="artwork-info-ep">
                     <p>
                       <strong>Artist:</strong> {normalizedArtwork.artist}
                     </p>

@@ -49,7 +49,7 @@ export const CuratePreview = ({artwork, setArtwork, exhibition}) => {
             <div key={index}>
               <img src={imageUrl} alt={title} className="exhibit"/>
               <p></p>
-              <button className="delete-button" onClick={() => handleRemove(normalizedId)}>x</button>
+              <button className="delete-button-cp" onClick={() => handleRemove(normalizedId)}>x</button>
             </div>
           )
     })}

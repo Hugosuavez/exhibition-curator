@@ -65,12 +65,12 @@ export const MetArtworkCard = ({ id, artwork,
     data.primaryImage || data.primaryImageSmall || NoImagePlaceholder;
 
   return (
-    <li key={data.objectID} className="artwork-card">
+    <li key={data.objectID} className="artwork-card-cb">
       <h2>{data.title || "Untitled"}</h2>
       <img
         src={imageUrl}
         alt={data.title || "No title available"}
-        className="artwork-image"
+        className="artwork-image-cb"
       />
       <p>
         {data.artistDisplayName || "Unknown Artist"} |{" "}
