@@ -23,21 +23,21 @@ export const ExhibitionCarousel = ({
       >
         {exhibitions.map((exhibition) => (
           <SwiperSlide key={exhibition.id}>
+            
             <article className="carousel-item">
-              {/* Delete Button */}
-              <button
-                onClick={() => onDelete(exhibition.id)}
-                className="delete-button"
-              >
-                x
-              </button>
+
+              <button onClick={() => onDelete(exhibition.id)} className="delete-button">x</button>
+
               <Link to={`/exhibition/${exhibition.id}`} className="exhibition-link">
                View <h3>{exhibition.name}</h3>
               </Link>
+
               <Link to={`/curate/${exhibition.id}`} className="exhibition-link">
                Curate <h3>{exhibition.name}</h3>
               </Link>
+
             </article>
+
           </SwiperSlide>
         ))}
       </Swiper>

@@ -35,8 +35,6 @@ button:focus-visible {
 }
 
 
-
-
 /* || HOME PAGE */
 
 .modal-select-container {
@@ -90,8 +88,19 @@ button:focus-visible {
   color: white;
 }
 
-/* || CURATE PAGE */
+/* Exhibition Carousel CSS*/
 
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 20px;
+}
+
+.swiper .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: rgb(255, 255, 255) !important;
+}
+
+
+/* || CURATE PAGE */
 
 /* CURATE PREVIEW */
 
@@ -491,17 +500,6 @@ button:focus-visible {
 
 .close-btn:hover {
   color: #131212;
-}
-
-/* || CAROUSEL CSS*/
-
-.swiper-pagination {
-  position: relative !important;
-  margin-top: 20px;
-}
-
-.swiper .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: rgb(255, 255, 255) !important;
 }
 
 

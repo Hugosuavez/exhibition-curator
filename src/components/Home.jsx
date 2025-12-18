@@ -78,7 +78,7 @@ const handleCreateExhibition = () => {
 
   return (
     <main>
-      <h1>Decor!</h1>
+      <h1>Archivist!</h1>
       <h2>Your very own exhibition curator</h2>
       <h3>Create New Exhibition</h3>
       <div className="modal-select-container">
