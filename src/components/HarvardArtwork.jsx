@@ -37,9 +37,7 @@ export const HarvardArtwork = ({setArtwork, artwork, exhibition}) => {
   return (
     <>
       <main className="browse-page">
-        {/* {/* <Link to="/">Home</Link> */}
-
-        {/* <section className="content-wrapper"> */}
+       
           <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
             {isSidebarOpen ? "Close Departments" : "Search by Department"}
           </button>

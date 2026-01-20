@@ -16,7 +16,7 @@ export const HarvardDepartments = ({
   });
 
   const handleClassification = (classification) => {
-  const classificationId = classification.id;
+    const classificationId = classification.id;
 
     if (classification.name == "(not assigned)") {
       setDepartment("");

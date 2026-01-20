@@ -17,7 +17,7 @@
   overflow-x: hidden;
   overflow-y: hidden;
   scrollbar-width: none;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   padding: 2rem;
   text-align: center;
 }

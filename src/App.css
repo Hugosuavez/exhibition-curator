@@ -111,8 +111,8 @@ button:focus-visible {
   grid-template-columns: 1fr 1fr;
   grid-template-areas: 'preview browse';
   column-gap: 50px;
-  margin-left: 10px;
-  margin-right: 50px;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .curate-preview {
@@ -137,7 +137,8 @@ button:focus-visible {
 }
 
 .exhibition-preview-container {
-  border: #ffffff 2px solid;
+  /* border: #2c2b2b 2px solid; */
+  box-shadow: 5px 5px 10px 2px rgb(0 0 0 / 0.8);
   grid-area: exhibition;
   flex-direction: row;
   overflow-y: scroll;
@@ -152,7 +153,7 @@ button:focus-visible {
 .exhibit {
   height: 100px;
   width: auto;
-  max-width: 200px;
+  max-width: 7vw;
 }
 
 .delete-button-cp {
@@ -183,6 +184,8 @@ button:focus-visible {
     'browse-container browse-container';
   /* width: 40vw; */
   height: 90vh;
+  /* border: #000000 2px solid; */
+  /* box-shadow: 5px 5px 10px 2px rgb(0 0 0 / 0.8); */
 }
 
 
@@ -200,6 +203,7 @@ button:focus-visible {
 .met-link.met-toggle {
   background-color: rgb(81, 81, 87);
 }
+
 .harvard-link.harvard-toggle {
   background-color: rgb(81, 81, 87);
 }
@@ -217,18 +221,20 @@ button:focus-visible {
 
 /*MET & HARVARD COMPONENTS*/
 
-.browse-page {  
-  border: solid white 2px;
+.browse-page {
+  /* border: #2c2b2b 2px solid;
+  box-shadow: 5px 5px 10px 2px rgb(0 0 0 / 0.8); */
   grid-area: browse-container;
   overflow-y: scroll;
   scrollbar-width: none;
   display: flex;
   flex-direction: column;
-  padding: 0px;
   max-width: 100%;
   gap: 20px;
-  width: 100%;
+  padding: 20px;
+
 }
+
 /* 
 .content-wrapper {
   gap: 20px;
@@ -599,7 +605,7 @@ button:focus-visible {
   /* .toggle-sidebar-btn {
     display: none;
   } */
-/* 
+  /* 
   .dpmt-button-container {
     display: block;
   } */
