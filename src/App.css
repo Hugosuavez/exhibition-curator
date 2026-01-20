@@ -3,6 +3,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -106,39 +107,38 @@ button:focus-visible {
 
 .curate-container {
   display: grid;
-  grid-template-areas: 'one two';
+  grid-template-areas: 
+    'home-button title met-link harvard-link'
+    'preview preview browse browse';
 }
 
 .curate-preview {
-  overflow: auto;
-  grid-area: one;
+  grid-area: preview;
   display: grid;
-  grid-template-areas: 
-    'one two'
-    'three three'
-    'three three';
-    width: 40vw;
-    height: 90vh;
+  grid-template-areas:
+    'exhibition exhibition'
+    'exhibition exhibition';
+  width: 40vw;
+  height: 90vh;
 }
 
-.one {
-  grid-area: one;
-  height: 10vh;
+.home-button {
+  grid-area: home-button;
+  height: 6vh;
 }
 
-.two {
-  grid-area: two;
-  height: 10vh;
-}
-
-.three {
-  border: #ffffff 2px solid;
-  grid-area: three;
-  height: 80vh;
-  flex-direction: row;
+.exhibition-title {
+  grid-area: title;
+  height: 6vh;
 }
 
 .exhibition-preview-container {
+  border: #ffffff 2px solid;
+  grid-area: exhibition;
+  height: 80vh;
+  flex-direction: row;
+  overflow-y: scroll;
+  scrollbar-width: none;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -151,6 +151,7 @@ button:focus-visible {
   width: auto;
   max-width: 200px;
 }
+
 .delete-button-cp {
   background-color: #494949;
   grid-row: 1;
@@ -171,42 +172,36 @@ button:focus-visible {
 /* CURATE BROWSE */
 
 .curate-browse {
-  grid-area: two;
-   display: grid;
-  grid-template-areas: 
-    'one two'
-    'three three'
-    'three three';
-    width: 40vw;
-    height: 90vh;
+  grid-area: browse;
+
+  width: 40vw;
+  height: 90vh;
 }
 
 
-.page-link {
+.met-link {
   color: rgb(190, 180, 180);
-  grid-area: one;
-  height: 10vh;
+  grid-area: met-link;
 }
 
-.page-link:hover {
+.met-link:hover {
   color: white;
 }
 
-.page-link2 {
-  grid-area: two;
+.harvard-link {
+  grid-area: harvard-link;
   color: rgb(190, 180, 180);
-  height: 10vh;
 }
 
-.page-link2:hover {
+.harvard-link:hover {
   color: white;
 }
 
 .browse-container {
   border: solid white 2px;
-  grid-area: three;
   height: 80vh;
-  overflow: scroll;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 /*MET & HARVARD COMPONENTS*/
@@ -406,10 +401,12 @@ button:focus-visible {
   color: rgb(253, 253, 253);
   display: none;
 }
+
 .dpmt-button-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
+
 .dpmt-button-container-harv {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -510,6 +507,7 @@ button:focus-visible {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+
   .dpmt-button-container-harv {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -520,32 +518,31 @@ button:focus-visible {
   }
 
   .artworks-content {
-  
-  padding: 0px;
+
+    padding: 0px;
+  }
+
+  .container {
+
+    padding: 0px;
+
+  }
+
 }
 
-.container {
-
-  padding: 0px;
-
-}
-
-}
 /* medium phones (Under 720px)*/
 @media (max-width: 720px) {
 
-
-
   .artworks-content {
-  
-  padding: 0px;
-}
 
-.container {
+    padding: 0px;
+  }
 
-  padding: 0px;
+  .container {
 
-}
+    padding: 0px;
+
+  }
 
 }
 
@@ -574,25 +571,32 @@ button:focus-visible {
     display: block;
     flex: 0 0 200px;
   }
+
   .departments-sidebar.open {
     display: block;
     flex: 0 0 200px;
   }
+
   .departments-sidebar h3 {
     display: block;
   }
+
   .toggle-sidebar-btn {
     display: none;
   }
+
   .dpmt-button-container {
     display: block;
   }
+
   .dpmt-button-container-harv {
     display: block;
   }
+
   .content-wrapper {
     display: flex;
   }
+
   .artwork-title {
     font-size: 40px;
   }
