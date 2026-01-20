@@ -108,6 +108,7 @@ button:focus-visible {
 .curate-container {
   max-height: 100vh;
   display: grid;
+  grid-template-columns: 1fr 1fr;
   grid-template-areas: 'preview browse';
   column-gap: 50px;
   margin-left: 10px;
@@ -117,22 +118,22 @@ button:focus-visible {
 .curate-preview {
   grid-area: preview;
   display: grid;
+  grid-template-rows: 6vh 1fr;
   grid-template-areas:
-    'title title2'
-    'exhibition exhibition'
+    'home-button title'
     'exhibition exhibition';
   /* width: 40vw; */
   height: 90vh;
 }
 
 .home-button {
-  grid-area: title;
-  height: 6vh;
+  grid-area: home-button;
+  /* height: 6vh; */
 }
 
 .exhibition-title {
-  grid-area: title2;
-  height: 6vh;
+  grid-area: title;
+  /* height: 6vh; */
 }
 
 .exhibition-preview-container {
@@ -226,7 +227,6 @@ button:focus-visible {
   padding: 0px;
   max-width: 100%;
   gap: 20px;
-  margin-top: 20px;
   width: 100%;
 }
 /* 
