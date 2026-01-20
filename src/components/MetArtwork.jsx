@@ -57,9 +57,9 @@ export const MetArtwork = ({artwork,
           {/* <Link to="/" className="link">
             Home
           </Link> */}
-          <h3>Metropolitan Museum of Art</h3>
+      
 
-          <section className="content-wrapper">
+          {/* <section className="content-wrapper"> */}
             <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
               {isSidebarOpen ? "Close Departments" : "Search Departments"}
             </button>
@@ -83,7 +83,7 @@ export const MetArtwork = ({artwork,
                 departmentId={departmentId}
               />
             </main>
-          </section>
+          {/* </section> */}
         </main>
       )}
     </>

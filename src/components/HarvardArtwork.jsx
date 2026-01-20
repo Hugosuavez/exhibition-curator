@@ -38,11 +38,10 @@ export const HarvardArtwork = ({setArtwork, artwork, exhibition}) => {
     <>
       <main className="browse-page">
         {/* {/* <Link to="/">Home</Link> */}
-        <h3>Harvard Art Museums</h3>
 
-        <section className="content-wrapper">
+        {/* <section className="content-wrapper"> */}
           <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
-            {isSidebarOpen ? "Close Departments" : "Search Departments"}
+            {isSidebarOpen ? "Close Departments" : "Search by Department"}
           </button>
 
           <HarvardDepartments
@@ -71,7 +70,7 @@ export const HarvardArtwork = ({setArtwork, artwork, exhibition}) => {
               />
             </main>
           )}
-        </section>
+        {/* </section> */}
       </main>
     </>
   );

@@ -36,19 +36,17 @@ export const CuratePage = () => {
   if (!exhibition) return <p>Exhibition not found!</p>;
 
   return (<>
-        <Link to="/">Home</Link>
         <main className="curate-container">
-                <div className="home-button">Archivist!</div>
-                <div className="exhibition-title">{exhibition.name}</div>
             <section className="curate-preview">
+                <Link to="/" className="home-button">Archivist!</Link>
+                {/* <div className="home-button">Archivist!</div> */}
+                <div className="exhibition-title">{exhibition.name}</div>
                 <CuratePreview artwork={artwork} setArtwork={setArtwork} exhibition={exhibition}/>
             </section>
-                <button className="met-link" onClick={() => handleToggle(true)}>Metropolitan Museum of Art</button>
-                <button className="harvard-link" onClick={() => handleToggle(false)}>Harvard Art Museums</button>
             <section className="curate-browse">
-                <div className="browse-container">
+                <button className={`met-link ${museumToggle ? "met-toggle" : ""}`} onClick={() => handleToggle(true)}>Metropolitan Museum of Art</button>
+                <button className={`harvard-link ${museumToggle ? "" : "harvard-toggle"}`} onClick={() => handleToggle(false)}>Harvard Art Museums</button>
                 {museumToggle ? <MetArtwork exhibition={exhibition} setArtwork={setArtwork} artwork={artwork}/> : <HarvardArtwork exhibition={exhibition} setArtwork={setArtwork} artwork={artwork}/>}
-                </div>
             </section>
     </main>
         </>
