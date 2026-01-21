@@ -38,20 +38,45 @@ button:focus-visible {
 
 /* || HOME PAGE */
 
-.modal-select-container {
+.home-container {
+  margin-right: 75px;
+}
+
+.home-header {
   display: flex;
-  justify-content: center;
+  /* justify-content: space-between; */
+  align-items: baseline;
+  gap: 25px;
+}
+.header-colour{
+  color: red;
+}
+.saved-exhibitions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 0 10px;
+  border-bottom: #b1a8a8 solid 2px;
+  padding-bottom: 10px;
 }
 
-.modal-select {
-  text-align: center;
-  font-size: 14px;
+.saved-exhibitions-title {
+  margin: 0;
 }
 
-.carousel-item {
+.saved-exhibitions {
+  padding-top: 20px;
+  /* border-top: #b1a8a8 solid 2px; */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+   /* overflow: scroll; */
+  scrollbar-width: none;
+}
+
+.saved-exhibition-item {
   display: grid;
   grid-template-rows: 1fr 3fr;
-  min-width: 100%;
   background-color: #494949;
   color: white;
   font-size: 16px;
@@ -59,7 +84,20 @@ button:focus-visible {
   text-align: center;
   padding: 8px 15px 15px 15px;
   box-shadow: 5px 5px 10px 2px rgba(5, 5, 5, 0.8);
+  margin: 0 10px;
 }
+
+.create-exhibition-container {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+
+.exhibition-name-input {
+  text-align: center;
+  font-size: 14px;
+}
+
 
 .delete-button {
   background-color: #494949;
@@ -159,7 +197,6 @@ button:focus-visible {
 
 .exhibit img {
   max-height: 10vh;
-  
   max-width: 7vw;
 }
 
@@ -589,9 +626,6 @@ button:focus-visible {
     width: 90%;
   }
 
-  .modal-select {
-    font-size: 26px;
-  }
 
   .carousel-item {
     flex: 0 0 60%;
