@@ -148,24 +148,39 @@ button:focus-visible {
   flex-wrap: wrap;
   gap: 20px;
   padding: 20px;
+  
 }
 
 .exhibit {
-  height: 100px;
-  width: auto;
+  flex-basis: 20%;
+  
+}
+
+.exhibit img {
+  max-height: 10vh;
+  
   max-width: 7vw;
+}
+
+.exhibit p {
+  font-size: x-small;
+}
+
+.exhibit div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .delete-button-cp {
   background-color: #494949;
   grid-row: 1;
-  justify-self: left;
   color: #b1a8a8;
-  border: none;
   padding: 1px;
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
+  font-size: xx-small;
 }
 
 .delete-button-cp:hover {
@@ -179,7 +194,7 @@ button:focus-visible {
   grid-area: browse;
   display: grid;
   grid-template-areas:
-    'met-link harvard-link'
+    'harvard-link met-link'
     'browse-container browse-container'
     'browse-container browse-container';
   /* width: 40vw; */

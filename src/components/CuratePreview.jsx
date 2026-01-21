@@ -46,10 +46,13 @@ export const CuratePreview = ({artwork, setArtwork, exhibition}) => {
                 NoImagePlaceholder;
 
             return (
-            <div key={index}>
-              <img src={imageUrl} alt={title} className="exhibit"/>
-              <p></p>
+            <div key={index} className="exhibit">
+              <img src={imageUrl} alt={title} />
+              <div>
+
+              <p>{title}</p>
               <button className="delete-button-cp" onClick={() => handleRemove(normalizedId)}>x</button>
+              </div>
             </div>
           )
     })}
