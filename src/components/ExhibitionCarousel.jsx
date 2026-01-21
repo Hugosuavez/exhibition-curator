@@ -18,13 +18,12 @@ export const ExhibitionCarousel = ({
         <article className="saved-exhibition-item" key={exhibition.id}>
 
           <button onClick={() => onDelete(exhibition.id)} className="delete-button">x</button>
-
+          <p>{exhibition.name}</p>
           <Link to={`/exhibition/${exhibition.id}`} className="exhibition-link">
-            View <h3>{exhibition.name}</h3>
+            View
           </Link>
-
           <Link to={`/curate/${exhibition.id}`} className="exhibition-link">
-            Curate <h3>{exhibition.name}</h3>
+            Curate
           </Link>
 
         </article>
