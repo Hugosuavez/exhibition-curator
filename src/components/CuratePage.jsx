@@ -40,7 +40,7 @@ export const CuratePage = () => {
       <section className="curate-preview">
         <Link to="/" className="home-button">Archivist!</Link>
         {/* <div className="home-button">Archivist!</div> */}
-        <div className="exhibition-title">{exhibition.name}</div>
+        <div className="exhibition-title">Preview of {exhibition.name}</div>
         <CuratePreview artwork={artwork} setArtwork={setArtwork} exhibition={exhibition} />
       </section>
       <section className="curate-browse">

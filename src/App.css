@@ -118,10 +118,11 @@ button:focus-visible {
 .curate-preview {
   grid-area: preview;
   display: grid;
-  grid-template-rows: 6vh 1fr;
+  grid-template-rows: 5vh 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
-    'home-button title'
-    'exhibition exhibition';
+    'home-button title title'
+    'exhibition exhibition exhibition';
   /* width: 40vw; */
   height: 90vh;
 }
@@ -207,7 +208,7 @@ button:focus-visible {
 .met-link {
   color: rgb(190, 180, 180);
   grid-area: met-link;
-  height: 6vh;
+  height: 5vh;
 
 }
 
@@ -225,7 +226,7 @@ button:focus-visible {
 
 .harvard-link {
   grid-area: harvard-link;
-  height: 6vh;
+  height: 5vh;
   color: rgb(190, 180, 180);
 }
 
