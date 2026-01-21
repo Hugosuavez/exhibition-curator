@@ -36,20 +36,35 @@ export const CuratePage = () => {
   if (!exhibition) return <p>Exhibition not found!</p>;
 
   return (
-    <main className="curate-container">
-      <section className="curate-preview">
-        <Link to="/" className="home-button">ARCHIVIST!</Link>
-        {/* <div className="home-button">Archivist!</div> */}
-        <div className="exhibition-title">Preview of {exhibition.name}</div>
-        <CuratePreview artwork={artwork} setArtwork={setArtwork} exhibition={exhibition} />
-      </section>
-      <section className="curate-browse">
-        <button className={`met-link ${museumToggle ? "met-toggle" : ""}`} onClick={() => handleToggle(true)}>Metropolitan Museum of Art</button>
-        <button className={`harvard-link ${museumToggle ? "" : "harvard-toggle"}`} onClick={() => handleToggle(false)}>Harvard Art Museums</button>
-        {museumToggle ? <MetArtwork exhibition={exhibition} setArtwork={setArtwork} artwork={artwork} /> : <HarvardArtwork exhibition={exhibition} setArtwork={setArtwork} artwork={artwork} />}
-      </section>
-    </main>
+    <div>
+      <header className="home-header">
+        <Link to="/" className="home-button">
+          <h1>
+            <span className="header-colour-first">
+              ARCHI
+            </span>
+            <span className="header-colour">
+              VIST!
+            </span>
+          </h1>
+        </Link>
+        <h2>Your very own exhibition curator</h2>
 
+      </header>
+      <main className="curate-container">
+
+        <section className="curate-preview">
+          {/* <div className="home-button">Archivist!</div> */}
+          <div className="exhibition-title">Preview of {exhibition.name}</div>
+          <CuratePreview artwork={artwork} setArtwork={setArtwork} exhibition={exhibition} />
+        </section>
+        <section className="curate-browse">
+          <button className={`met-link ${museumToggle ? "met-toggle" : ""}`} onClick={() => handleToggle(true)}>Metropolitan Museum of Art</button>
+          <button className={`harvard-link ${museumToggle ? "" : "harvard-toggle"}`} onClick={() => handleToggle(false)}>Harvard Art Museums</button>
+          {museumToggle ? <MetArtwork exhibition={exhibition} setArtwork={setArtwork} artwork={artwork} /> : <HarvardArtwork exhibition={exhibition} setArtwork={setArtwork} artwork={artwork} />}
+        </section>
+      </main>
+    </div>
   );
 
 }

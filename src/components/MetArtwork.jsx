@@ -70,7 +70,7 @@ export const MetArtwork = ({artwork,
             />
 
             <main className="artworks-content">
-              {department && <h3>{department}</h3>}
+              {department && <h3 className="department-title">{department}</h3>}
               {/* Loop through the objectIDs and fetch artwork details */}
               {currentObjectIDs.map((id) => (
                 <MetArtworkCard key={id} id={id} artwork={artwork} 

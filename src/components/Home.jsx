@@ -7,34 +7,13 @@ import { createExhibition } from "../utils/local-storage-calls";
 
 export const Home = () => {
   const [exhibitions, setExhibitions] = useState([]);
-  // const [slidesPerView, setSlidesPerView] = useState(1);
 
   useEffect(() => {
     const storedExhibitions =
       JSON.parse(localStorage.getItem("userExhibitions")) || [];
     setExhibitions(storedExhibitions);
-
-    // updateSlidesPerView(storedExhibitions.length);
   }, []);
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     updateSlidesPerView(exhibitions.length);
-  //   };
-
-  // window.addEventListener("resize", handleResize);
-  // return () => window.removeEventListener("resize", handleResize);
-  // }, [exhibitions.length]);
-
-  // const updateSlidesPerView = (count) => {
-  //   if (window.innerWidth >= 1024) {
-  //     setSlidesPerView(Math.min(3, count));
-  //   } else if (window.innerWidth >= 600) {
-  //     setSlidesPerView(Math.min(2, count));
-  //   } else {
-  //     setSlidesPerView(1);
-  //   }
-  // };
 
   const handleDeleteExhibition = (exhibitionId) => {
     deleteExhibition(exhibitionId);
@@ -42,7 +21,6 @@ export const Home = () => {
       const updatedExhibitions = prevExhibitions.filter(
         (exh) => exh.id !== exhibitionId
       );
-      // updateSlidesPerView(updatedExhibitions.length);
       return updatedExhibitions;
     });
     toast.success("Exhibition deleted!");
@@ -52,18 +30,17 @@ export const Home = () => {
   const [newExhibitionName, setNewExhibitionName] = useState("");
 
   const handleCreateExhibition = () => {
-
     if (newExhibitionName.trim() === "") {
-      toast.error("Please enter a name for exhibition") // Set error
+      toast.error("Please enter a name for exhibition") 
       return;
     }
 
     const exhibitionFound = exhibitions.find(
       (exh) => exh.name === newExhibitionName
     );
+
     if (exhibitionFound) {
       toast.error("Exhibition name taken!")
-
       return;
     }
 
@@ -73,7 +50,6 @@ export const Home = () => {
     toast.success("Exhibition added successfully!");
 
     setNewExhibitionName("");
-    // setErrorMessage("");
   };
 
   return (
@@ -85,10 +61,8 @@ export const Home = () => {
         </h1>
         <h2>Your very own exhibition curator</h2>
       </header>
-      
         <div className="saved-exhibitions-header">
           <h2 className="saved-exhibitions-title">Exhibitions</h2>
-
           <div className="create-exhibition-container">
             <input
               className="exhibition-name-input"
@@ -102,18 +76,13 @@ export const Home = () => {
               maxLength={20}
               required
             />
-
-            {/* Display error message */}
             <button onClick={handleCreateExhibition}>Create</button>
           </div>
-          
         </div>
-
-        {exhibitions.length > 0 ? <ExhibitionCarousel
+        <ExhibitionCarousel
           exhibitions={exhibitions}
           onDelete={handleDeleteExhibition}
-        // slidesPerView={slidesPerView}
-        /> : <p>Create exhibition to begin!</p>}
+        />
     </main>
   );
 };

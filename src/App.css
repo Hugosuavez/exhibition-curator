@@ -48,9 +48,16 @@ button:focus-visible {
   align-items: baseline;
   gap: 25px;
 }
+
+.header-colour-first {
+  color: #ccc;
+}
+
 .header-colour{
   color: red;
 }
+
+
 .saved-exhibitions-header {
   display: flex;
   justify-content: space-between;
@@ -91,6 +98,22 @@ button:focus-visible {
   flex-basis: 20%;
 }
 
+.default-exhibition-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #494949;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 15px 15px 15px;
+  box-shadow: 5px 5px 10px 2px rgba(5, 5, 5, 0.8);
+  margin: 0 10px;
+  flex-basis: 20%;
+  height: 148px;
+}
+
 .create-exhibition-container {
   display: flex;
   justify-content: center;
@@ -106,7 +129,7 @@ button:focus-visible {
 .delete-button {
   background-color: #494949;
   grid-row: 1;
-  justify-self: left;
+  justify-self: right;
   color: #b1a8a8;
   border: none;
   padding: 1px;
@@ -153,8 +176,9 @@ button:focus-visible {
   grid-template-columns: 1fr 1fr;
   grid-template-areas: 'preview browse';
   column-gap: 50px;
-  margin-left: 5%;
-  margin-right: 5%;
+  /* margin-top: 42px; */
+  /* margin-left: 5%;
+  margin-right: 5%; */
 }
 
 .curate-preview {
@@ -163,10 +187,10 @@ button:focus-visible {
   grid-template-rows: 5vh 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
-    'home-button title title'
+    'title title title'
     'exhibition exhibition exhibition';
   /* width: 40vw; */
-  height: 90vh;
+  height: 80vh;
 }
 
 .home-button {
@@ -240,7 +264,7 @@ button:focus-visible {
     'browse-container browse-container'
     'browse-container browse-container';
   /* width: 40vw; */
-  height: 90vh;
+  height: 80vh;
   /* border: #000000 2px solid; */
   /* box-shadow: 5px 5px 10px 2px rgb(0 0 0 / 0.8); */
 }
@@ -449,9 +473,9 @@ button:focus-visible {
   background-color: #333;
   margin-left: 20%;
   margin-right: 20%;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   color: white;
-  padding: 10px;
+  /* padding: 10px; */
   border: none;
   cursor: pointer;
   font-size: 16px;
@@ -488,6 +512,10 @@ button:focus-visible {
 .dpmt-button-container-harv {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+.department-title {
+  margin: 0;
 }
 
 /* Buttons in the Departments Sidebar */

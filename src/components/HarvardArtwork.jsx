@@ -51,7 +51,7 @@ export const HarvardArtwork = ({setArtwork, artwork, exhibition}) => {
           {error && <p>Error fetching artwork</p>}
           {data?.records && (
             <main className="artworks-content">
-              {department && <h3>{department}</h3>}
+              {department && <h3 className="department-title">{department}</h3>}
               {data.records.map((record) => (
                 <HarvardArtworkCard
                 exhibition={exhibition}
