@@ -44,9 +44,11 @@ export const HarvardArtworkCard = ({
     addArtworkToExhibition(exhibition.id, newArt);
     toast.success("Artwork successfully added!");
   }
-
+  
 
   const handleDetailsClick = (artwork) => {
+    
+
     navigate(
       `/harvard-artwork-details/${artwork.objectid}?${searchParams.toString()}`
     );

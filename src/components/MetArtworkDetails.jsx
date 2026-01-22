@@ -7,6 +7,7 @@ import { Link, useSearchParams } from "react-router-dom";
 export const MetArtworkDetails = () => {
   const { objectID } = useParams();
   const [searchParams] = useSearchParams();
+  const exhibitionId = searchParams.get("exhibitionId") || null;
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["artwork-details", objectID],
@@ -22,7 +23,7 @@ export const MetArtworkDetails = () => {
 
   return (
     <article className="artwork-details-container">
-      <Link to={`/met?${searchParams.toString()}`}>Back to collection</Link>
+      <Link to={`/curate/${exhibitionId}?${searchParams.toString()}`}>Back to collection</Link>
       <h1 className="artwork-title">{data.title}</h1>
       <section className="artwork-image-container">
         <img

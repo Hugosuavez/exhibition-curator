@@ -16,7 +16,7 @@ export const ArtworkCarousel = ({ artworks }) => {
                   alt={normalisedArtwork.title}
                   className="carousel-artwork-image"
                 />
-                <section className="artwork-info-container">
+                {/* <section className="artwork-info-container">
                   <p className="artwork-info-ellipsis">Info...</p>
                   <div className="artwork-info-contents">
                     <div className="more-info">
@@ -65,7 +65,7 @@ export const ArtworkCarousel = ({ artworks }) => {
                       )}
                     </div>
                   </div>
-                </section>
+                </section> */}
               </article>
           );
         })}

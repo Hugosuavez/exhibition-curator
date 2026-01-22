@@ -6,6 +6,7 @@ export const HarvardDepartments = ({
   setDepartment,
   setIsSidebarOpen,
   isSidebarOpen,
+  exhibitionId
 }) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -20,9 +21,9 @@ export const HarvardDepartments = ({
 
     if (classification.name == "(not assigned)") {
       setDepartment("");
-      setSearchParams({ page: 1 });
+      setSearchParams({ page: 1, exhibitionId });
     } else {
-      setSearchParams({ classificationId, page: 1 }); // Reset to page 1 for new classification
+      setSearchParams({ classificationId, page: 1, exhibitionId }); // Reset to page 1 for new classification
       setDepartment(classification.name);
     }
 

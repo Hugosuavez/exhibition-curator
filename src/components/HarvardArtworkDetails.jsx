@@ -17,6 +17,7 @@ export const HarvardArtworkDetails = () => {
   if (error) return <p>Error fetching artwork details: {error.message}</p>;
 
   const imageUrl = data?.primaryimageurl || NoImagePlaceholder;
+  const exhibitionId = searchParams.get("exhibitionId") || null;
 
   //Formatting titles for display by removing surrounding brackets []
   const regex = /^\[.*\]$/;
@@ -28,7 +29,7 @@ export const HarvardArtworkDetails = () => {
 
   return (
     <main className="artwork-details-container">
-      <Link to={`/harvard?${searchParams.toString()}`}>Back to Collection</Link>
+      <Link to={`/curate/${exhibitionId}?${searchParams.toString()}`}>Back to Collection</Link>
       <h1>{title}</h1>
       <section className="artwork-image-container">
         <img

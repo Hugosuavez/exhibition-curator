@@ -46,6 +46,7 @@ export const HarvardArtwork = ({setArtwork, artwork, exhibition}) => {
             setDepartment={setDepartment}
             setIsSidebarOpen={setIsSidebarOpen}
             isSidebarOpen={isSidebarOpen}
+            exhibitionId={exhibition.id}
           />
           {isLoading && <p>Loading artwork...</p>}
           {error && <p>Error fetching artwork</p>}

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { MetArtwork } from "./MetArtwork";
 import { HarvardArtwork } from "./HarvardArtwork";
 import { CuratePreview } from "./CuratePreview";
+import { useSearchParams } from "react-router-dom";
 
 export const CuratePage = () => {
   const { id } = useParams();
@@ -11,7 +12,9 @@ export const CuratePage = () => {
   const [loading, setLoading] = useState(true);
   const [museumToggle, setMuseumToggle] = useState(null);
   const [artwork, setArtwork] = useState(null)
+  const [searchParams, setSearchParams] = useSearchParams();
 
+  
 
   useEffect(() => {
     const fetchExhibition = () => {
@@ -23,6 +26,7 @@ export const CuratePage = () => {
       setExhibition(selectedExhibition);
       setArtwork(selectedExhibition.artworks)
       setLoading(false);
+      setSearchParams({exhibitionId: id})
     };
     fetchExhibition();
   }, [id]);
@@ -30,6 +34,7 @@ export const CuratePage = () => {
 
   const handleToggle = (toggle) => {
     setMuseumToggle(toggle);
+    setSearchParams({exhibitionId: id});
   }
 
   if (loading) return <p>Loading...</p>;
