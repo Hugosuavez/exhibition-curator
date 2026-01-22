@@ -48,7 +48,7 @@ export const ExhibitionPage = () => {
   if (!exhibition) return <p>Exhibition not found!</p>;
 
   return (
-    <main>
+    <main className="exhibition-page-container">
        <header className="home-header">
         <Link to="/" className="home-button">
           <h1>
@@ -62,7 +62,7 @@ export const ExhibitionPage = () => {
         </Link>
       <h2>{exhibition.name}</h2>
       </header>
-      
+
       <ArtworkCarousel
         artworks={exhibition.artworks || []}
         handleRemove={handleRemove}
