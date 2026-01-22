@@ -160,7 +160,7 @@ button:focus-visible {
 
 .exhibition-link:hover {
   color: white;
-  
+
 }
 
 /* Exhibition Carousel CSS*/
@@ -236,7 +236,7 @@ button:focus-visible {
 }
 
 .exhibit button {
-background-color: #242424;
+  background-color: #242424;
   color: #b1a8a8;
   padding: 1px;
   width: 15px;
@@ -419,14 +419,11 @@ background-color: #242424;
 
 /* || EXHIBITION PAGE */
 
-.exhibition-container {
-  max-height: 100%;
-}
 
 .carousel-container {
   margin: auto;
-  overflow: visible;
-  padding: 10px;
+  max-height: 70vh;
+  gap: 10px;
 }
 
 .carousel-item-artwork {
@@ -434,49 +431,66 @@ background-color: #242424;
   flex-direction: column;
   justify-content: top;
   align-items: center;
-  color: white;
+  color: #dbdbdb;
   background-color: #494949;
   font-size: 16px;
   font-weight: bold;
-  text-align: center;
-  padding: 15px;
   box-shadow: 5px 5px 10px 2px rgba(5, 5, 5, 0.8);
-}
-
-.artwork-details-container-ep {
   max-width: 800px;
-  margin: 0 auto;
+  margin: auto;
   padding: 20px;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  color: #dbdbdb;
+
 }
 
-.artwork-title-ep {
-  font-size: 30px;
-}
+.artwork-title-ep {}
 
-.artwork-image-container-ep {
-  text-align: center;
-  margin-bottom: 20px;
-}
 
 .carousel-artwork-image {
-  width: 100%;
-  max-height: 400px;
+  max-height: 40vh;
   border-radius: 10px;
-  object-fit: contain;
-  border-radius: 5px;
 }
 
-.artwork-info-ep {
+.artwork-info-ellipsis {
+  width: 50px;
+}
+
+.artwork-info-container {
   background-color: #f9f9f9;
   padding: 20px;
   color: #333;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* trial bit of css */
+  /* width: 30px; */
+  /* overflow: scroll; */
+  cursor: pointer;
+  /* Smooth transition for height/max-height and background-color */
+  transition: max-height 0.4s ease-out, background-color 0.3s ease;
+  height: 50px;
+  /* Initial height, adjust as needed to fit the main text */
 }
 
+.artwork-info-contents {
+  margin: 0;
+  font-weight: bold;
+}
+
+.artwork-info-ep :hover {
+  height: 200px;
+  /* Expanded height, needs to be enough to fit all content */
+  background-color: #e0e0e0;
+}
+
+.more-info {
+  /* Initially hide the extra text using opacity */
+  opacity: 0;
+  transition: opacity 0.3s ease-in 0.1s;
+  /* Add a slight delay for smoother appearance */
+}
+
+.artwork-info-ep:hover .more-info {
+  opacity: 1;
+}
 
 /* || SIDEBAR */
 
