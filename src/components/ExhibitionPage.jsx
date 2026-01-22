@@ -49,8 +49,21 @@ export const ExhibitionPage = () => {
 
   return (
     <main className="exhibition-container">
-      <Link to="/">Home</Link>
+       <header className="home-header">
+        <Link to="/" className="home-button">
+          <h1>
+            <span className="header-colour-first">
+              ARCHI
+            </span>
+            <span className="header-colour">
+              VIST!
+            </span>
+          </h1>
+        </Link>
       <h2>{exhibition.name}</h2>
+        
+
+      </header>
       <ArtworkCarousel
         artworks={exhibition.artworks || []}
         handleRemove={handleRemove}

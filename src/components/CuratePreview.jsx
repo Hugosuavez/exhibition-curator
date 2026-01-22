@@ -30,7 +30,7 @@ export const CuratePreview = ({artwork, setArtwork, exhibition}) => {
 
     return (<div className="exhibition-preview-container">
 
-    {artwork.map((artwork, index) => {
+    {artwork.length > 0 ? artwork.map((artwork, index) => {
             const normalizedId = artwork.objectID || artwork.objectid
            
             const title = artwork.title
@@ -47,14 +47,12 @@ export const CuratePreview = ({artwork, setArtwork, exhibition}) => {
 
             return (
             <div key={index} className="exhibit">
+              <button onClick={() => handleRemove(normalizedId)}>x</button>
               <img src={imageUrl} alt={title} />
-              <div>
               <p>{title}</p>
-              <button className="delete-button-cp" onClick={() => handleRemove(normalizedId)}>x</button>
-              </div>
             </div>
           )
-    })}
+    }) : <p className="exhibit-default">To begin, use the right hand panel to browse art and add it to your exhibition!</p>}
     
     </div>)
 }

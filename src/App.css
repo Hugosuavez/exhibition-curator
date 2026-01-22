@@ -53,7 +53,7 @@ button:focus-visible {
   color: #ccc;
 }
 
-.header-colour{
+.header-colour {
   color: red;
 }
 
@@ -79,23 +79,26 @@ button:focus-visible {
   flex-wrap: wrap;
   /* justify-content: space-evenly; */
   gap: 20px;
-   /* overflow: scroll; */
+  /* overflow: scroll; */
   scrollbar-width: none;
-  
+
 }
 
 .saved-exhibition-item {
   display: grid;
-  grid-template-rows: 1fr 3fr;
+  grid-template-rows: 1fr 1fr 1fr;
   background-color: #494949;
+  box-shadow: 5px 5px 10px 2px rgba(5, 5, 5, 0.8);
+  margin-left: 10px;
+  flex-basis: 20%;
+  height: 148px;
+}
+
+.saved-exhibition-title {
   color: white;
   font-size: 16px;
   font-weight: bold;
-  text-align: center;
-  padding: 8px 15px 15px 15px;
-  box-shadow: 5px 5px 10px 2px rgba(5, 5, 5, 0.8);
-  margin: 0 10px;
-  flex-basis: 20%;
+  margin: 0
 }
 
 .default-exhibition-item {
@@ -104,12 +107,12 @@ button:focus-visible {
   align-items: center;
   background-color: #494949;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
-  text-align: center;
-  padding: 8px 15px 15px 15px;
+  /* text-align: center; */
+  /* padding: 8px 15px 15px 15px; */
   box-shadow: 5px 5px 10px 2px rgba(5, 5, 5, 0.8);
-  margin: 0 10px;
+  margin-left: 10px;
   flex-basis: 20%;
   height: 148px;
 }
@@ -128,19 +131,24 @@ button:focus-visible {
 
 .delete-button {
   background-color: #494949;
-  grid-row: 1;
   justify-self: right;
   color: #b1a8a8;
   border: none;
   padding: 1px;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
 }
 
 .delete-button:hover {
   background-color: #3f3e3e;
   color: white;
+}
+
+.exhibition-links-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
 }
 
 .exhibition-link {
@@ -152,6 +160,7 @@ button:focus-visible {
 
 .exhibition-link:hover {
   color: white;
+  
 }
 
 /* Exhibition Carousel CSS*/
@@ -204,23 +213,42 @@ button:focus-visible {
 }
 
 .exhibition-preview-container {
-  /* border: #2c2b2b 2px solid; */
   box-shadow: 5px 5px 10px 2px rgb(0 0 0 / 0.8);
   grid-area: exhibition;
-  flex-direction: row;
-  overflow-y: scroll;
-  scrollbar-width: none;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
-  
+  justify-content: left;
+  align-content: flex-start;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  gap: 15px;
+  padding: 10px;
+
 }
 
 .exhibit {
+  display: grid;
+  margin-left: 10px;
   flex-basis: 20%;
-  
+  height: 148px;
+  justify-items: center;
+}
+
+.exhibit button {
+background-color: #242424;
+  color: #b1a8a8;
+  padding: 1px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  font-size: xx-small;
+  justify-self: end;
+}
+
+.exhibit button:hover {
+  background-color: #3f3e3e;
+  color: white;
 }
 
 .exhibit img {
@@ -232,27 +260,11 @@ button:focus-visible {
   font-size: x-small;
 }
 
-.exhibit div {
-  display: flex;
-  gap: 10px;
-  align-items: center;
+.exhibit-default {
+  align-self: center;
+  margin: auto;
 }
 
-.delete-button-cp {
-  background-color: #494949;
-  grid-row: 1;
-  color: #b1a8a8;
-  padding: 1px;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  font-size: xx-small;
-}
-
-.delete-button-cp:hover {
-  background-color: #3f3e3e;
-  color: white;
-}
 
 /* CURATE BROWSE */
 

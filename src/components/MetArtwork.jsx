@@ -16,7 +16,6 @@ export const MetArtwork = ({artwork,
   const department = searchParams.get("department") || null;
   const currentPage = parseInt(searchParams.get("page") || 1, 10);
 
-
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ["met-artworks", departmentId, currentPage],
     queryFn: () => fetchMetArtwork(departmentId),
