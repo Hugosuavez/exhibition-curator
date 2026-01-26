@@ -1,18 +1,3 @@
-/* a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
-} */
-
-/* h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-} */
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -49,7 +34,6 @@ button:focus-visible {
   justify-content: flex-start;
   align-content: flex-start;
   align-items: baseline;
-  /* gap: 25px; */
 }
 
 .home-header h1 {
@@ -59,7 +43,7 @@ button:focus-visible {
 }
 
 .home-header h2 {
-  font-size: 10px;
+
   display: none;
 }
 
@@ -83,8 +67,6 @@ button:focus-visible {
 }
 
 .saved-exhibitions-header h2 {
-  margin: 0;
-  font-size: 16px;
   display: none;
 }
 
@@ -100,13 +82,9 @@ button:focus-visible {
 }
 .saved-exhibitions {
   padding-top: 20px;
-  /* border-top: #b1a8a8 solid 2px; */
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
-  /* justify-content: space-evenly; */
   gap: 20px;
-  /* overflow: scroll; */
   scrollbar-width: none;
 
 }
@@ -116,8 +94,6 @@ button:focus-visible {
   grid-template-rows: 1fr 1fr 1fr;
   background-color: #494949;
   box-shadow: 5px 5px 10px 2px rgba(5, 5, 5, 0.8);
-  /* margin-left: 10px; */
-  /* flex-basis: 20%; */
   height: 148px;
 }
 
@@ -125,7 +101,7 @@ button:focus-visible {
   color: white;
   font-size: 16px;
   font-weight: bold;
-  margin: 0
+  margin: 0;
 }
 
 .default-exhibition-item {
@@ -136,11 +112,8 @@ button:focus-visible {
   color: white;
   font-size: 14px;
   font-weight: bold;
-  /* text-align: center; */
-  /* padding: 8px 15px 15px 15px; */
   box-shadow: 5px 5px 10px 2px rgba(5, 5, 5, 0.8);
   margin-left: 10px;
-  /* flex-basis: 20%; */
   height: 148px;
 }
 
@@ -181,28 +154,18 @@ button:focus-visible {
 
 }
 
-/* Exhibition Carousel CSS*/
-
-.swiper-pagination {
-  position: relative !important;
-  margin-top: 20px;
-}
-
-.swiper .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: rgb(255, 255, 255) !important;
-}
-
-
 /* || CURATE PAGE */
 
 /* CURATE PREVIEW */
 
 .curate-container {
   max-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: 'preview browse';
-  column-gap: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  /* grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'preview browse'; */
+  /* column-gap: 50px; */
   /* margin-top: 42px; */
   /* margin-left: 5%;
   margin-right: 5%; */
@@ -214,20 +177,17 @@ button:focus-visible {
   grid-template-rows: 5vh 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
-    'title title title'
+    'title . .'
     'exhibition exhibition exhibition';
   /* width: 40vw; */
-  height: 80vh;
+  height: 20vh;
 }
 
-.home-button {
-  grid-area: home-button;
-  /* height: 6vh; */
-}
 
 .exhibition-title {
   grid-area: title;
-  /* height: 6vh; */
+  height: 1vh;
+  margin: auto;
 }
 
 .exhibition-preview-container {
@@ -304,7 +264,7 @@ button:focus-visible {
   color: rgb(190, 180, 180);
   grid-area: met-link;
   height: 5vh;
-
+  font-size: 10px;
 }
 
 .met-link:hover {
@@ -315,18 +275,19 @@ button:focus-visible {
   background-color: rgb(81, 81, 87);
 }
 
-.harvard-link.harvard-toggle {
-  background-color: rgb(81, 81, 87);
-}
-
 .harvard-link {
   grid-area: harvard-link;
   height: 5vh;
   color: rgb(190, 180, 180);
+  font-size: 10px;
 }
 
 .harvard-link:hover {
   color: white;
+}
+
+.harvard-link.harvard-toggle {
+  background-color: rgb(81, 81, 87);
 }
 
 
@@ -341,8 +302,9 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   max-width: 100%;
-  gap: 20px;
-  padding: 20px;
+  gap: 10px;
+  margin-top: 10px;
+  /* padding: 20px; */
 
 }
 
@@ -358,19 +320,28 @@ button:focus-visible {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   padding: 0px;
 }
 
 .artwork-card-cb {
-  padding: 20px;
+  padding: 10px;
   background-color: #353535;
   box-shadow: 5px 5px 10px 2px rgb(0 0 0 / 0.8);
   list-style-type: none;
 }
 
+.artwork-card-cb h2 {
+  font-size: 14px;
+}
+
+/* .artwork-card-cb p {
+  font-size: 14px;
+} */
+
 .artwork-card-cb button {
   margin: 5px;
+  font-size: 12px;
 }
 
 .artwork-image-cb {
@@ -536,7 +507,7 @@ button:focus-visible {
   /* padding: 10px; */
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 12px;
   border-radius: 4px;
 }
 
@@ -586,7 +557,7 @@ button:focus-visible {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .departments-sidebar button:hover {
@@ -600,13 +571,14 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  gap: 10px;
+  /* margin-top: 5px; */
+  gap: 5px;
+  font-size: 12px;
 }
 
 .pagination-controls button {
-  padding: 8px 16px;
-  font-size: 14px;
+  /* padding: 8px 16px; */
+  font-size: 10px;
   background-color: #007acc;
   color: white;
   border: none;
@@ -619,192 +591,14 @@ button:focus-visible {
   cursor: not-allowed;
 }
 
-
-/* || MODAL CSS */
-/* .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-content {
-  background: rgb(230, 231, 219);
-  box-shadow: 5px 5px 10px 2px rgb(0 0 0 / 0.8);
-  color: #333;
-  padding: 20px;
-  position: relative;
-  width: 75%;
-}
-
-
-.modal-select option {
-  text-align: center;
-  font-size: 10px;
-}
-
-.close-btn {
-  position: absolute;
-  color: #818181;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.close-btn:hover {
-  color: #131212;
-} */
-
-
-
-/* Very Small Screens (Under 420px)*/
-/* @media (max-width: 420px) {
-  .dpmt-button-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .dpmt-button-container-harv {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  } 
-
-  h1 {
-    font-size: 30px;
-  }
-
-  .artworks-content {
-
-    padding: 0px;
-  }
-
-  .container {
-
-    padding: 0px;
-
-  }
-
-} */
-
-/* medium phones (Under 720px)*/
-/* @media (max-width: 720px) {
-
-  .artworks-content {
-
-    padding: 0px;
-  }
-
-  .container {
-
-    padding: 0px;
-
-  }
-
-} */
-
-/* Tablets (720px - 1023px) */
-/* @media (min-width: 720px) { */
-
-  /* h1 {
-    font-size: 30px
-  } */
-
-  /* .carousel-container {
-    width: 90%;
-  }
-
-
-  .carousel-item {
-    flex: 0 0 60%;
-    max-width: 60%;
-    font-size: 18px;
-  }
-
-  .carousel-btn {
-    font-size: 20px;
-    padding: 10px 15px;
-  } */
-
-  /* .departments-sidebar {
-    display: block;
-    flex: 0 0 200px;
-  } */
-
-  /* .departments-sidebar.open {
-    display: block;
-    flex: 0 0 200px;
-  } */
-
-  /* .departments-sidebar h3 {
-    display: block;
-  } */
-
-  /* .toggle-sidebar-btn {
-    display: none;
-  } */
-  /* 
-  .dpmt-button-container {
-    display: block;
-  } */
-
-  /* .dpmt-button-container-harv {
-    display: block;
-  } */
-/* 
-  .content-wrapper {
-    display: flex;
-  }
-
-  .artwork-title {
-    font-size: 40px;
-  }
-} */
-
 /* Desktops (1024px+) */
-@media (min-width: 1024px) {
+@media (min-width: 500px) {
  
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  color: #ffffff;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-button:hover {
-  border-color: #ffffff;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
 
 /* || HOME PAGE */
 
-.home-container {
-  margin-right: 75px;
-}
-
 .home-header {
-  display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
   align-items: baseline;
   gap: 25px;
 }
@@ -816,136 +610,44 @@ button:focus-visible {
 }
 
 .home-header h2 {
-  font-size: 1.5em;
   display: block;
-}
-
-.header-colour-first {
-  color: #ccc;
-}
-
-.header-colour {
-  color: red;
 }
 
 
 .saved-exhibitions-header {
-  display: flex;
+ 
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
   margin: 0 10px;
-  border-bottom: #b1a8a8 solid 2px;
-  padding-bottom: 10px;
 }
 
 .saved-exhibitions-header h2 {
-  font-size: 1.5em;
+  
   margin: 0;
   display: block;
 }
 
+
+.exhibition-name-input {
+  font-size: 14px;
+}
+
 .saved-exhibitions {
-  padding-top: 20px;
-  /* border-top: #b1a8a8 solid 2px; */
-  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  /* justify-content: space-evenly; */
   gap: 20px;
-  /* overflow: scroll; */
   scrollbar-width: none;
-
 }
 
 .saved-exhibition-item {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  background-color: #494949;
-  box-shadow: 5px 5px 10px 2px rgba(5, 5, 5, 0.8);
   margin-left: 10px;
   flex-basis: 20%;
-  height: 148px;
 }
 
-.saved-exhibition-title {
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0
-}
 
 .default-exhibition-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #494949;
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-  /* text-align: center; */
-  /* padding: 8px 15px 15px 15px; */
-  box-shadow: 5px 5px 10px 2px rgba(5, 5, 5, 0.8);
-  margin-left: 10px;
   flex-basis: 20%;
-  height: 148px;
-}
-
-.create-exhibition-container {
-  display: flex;
-  justify-content: center;
-  gap: 2px;
-}
-
-.exhibition-name-input {
-  text-align: center;
-  font-size: 14px;
-}
-
-
-.delete-button {
-  background-color: #494949;
-  justify-self: right;
-  color: #b1a8a8;
-  border: none;
-  padding: 1px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-}
-
-.delete-button:hover {
-  background-color: #3f3e3e;
-  color: white;
-}
-
-.exhibition-links-container {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-}
-
-.exhibition-link {
-  text-decoration: none;
-  color: #d6caca;
-  justify-self: center;
-  font-size: 12px;
-}
-
-.exhibition-link:hover {
-  color: white;
-
-}
-
-/* Exhibition Carousel CSS*/
-
-.swiper-pagination {
-  position: relative !important;
-  margin-top: 20px;
-}
-
-.swiper .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: rgb(255, 255, 255) !important;
 }
 
 
@@ -976,10 +678,7 @@ button:focus-visible {
   height: 80vh;
 }
 
-.home-button {
-  grid-area: home-button;
-  /* height: 6vh; */
-}
+
 
 .exhibition-title {
   grid-area: title;
@@ -1060,7 +759,7 @@ button:focus-visible {
   color: rgb(190, 180, 180);
   grid-area: met-link;
   height: 5vh;
-
+  font-size: 1em;
 }
 
 .met-link:hover {
@@ -1079,6 +778,7 @@ button:focus-visible {
   grid-area: harvard-link;
   height: 5vh;
   color: rgb(190, 180, 180);
+  font-size: 1em;
 }
 
 .harvard-link:hover {
@@ -1125,8 +825,13 @@ button:focus-visible {
   list-style-type: none;
 }
 
+.artwork-card-cb h2 {
+  font-size: 1.5em;
+}
+
 .artwork-card-cb button {
   margin: 5px;
+  font-size: 1em;
 }
 
 .artwork-image-cb {
@@ -1374,5 +1079,6 @@ button:focus-visible {
   background-color: #ccc;
   cursor: not-allowed;
 }
+
 
 }

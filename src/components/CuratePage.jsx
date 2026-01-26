@@ -43,7 +43,7 @@ export const CuratePage = () => {
   return (
     <div>
       <header className="home-header">
-        <Link to="/" className="home-button">
+        <Link to="/">
           <h1>
             <span className="header-colour-first">
               ARCHI
