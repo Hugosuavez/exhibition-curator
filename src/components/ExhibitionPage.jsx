@@ -60,7 +60,7 @@ export const ExhibitionPage = () => {
             </span>
           </h1>
         </Link>
-      <h2>{exhibition.name}</h2>
+      <h3>{exhibition.name}</h3>
       </header>
 
       <ArtworkCarousel

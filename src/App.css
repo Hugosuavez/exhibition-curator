@@ -416,13 +416,8 @@ button:focus-visible {
   overflow: scroll;
   scrollbar-width: none;
   margin: auto;
-  max-height: 70vh;
-  /* gap: 10px; */
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: left;
-  align-content: flex-start;
+  flex-direction: column;
   gap: 10px;
 }
 
@@ -433,14 +428,10 @@ button:focus-visible {
   align-items: center;
   color: #dbdbdb;
   background-color: #494949;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 12px;
   box-shadow: 5px 5px 10px 2px rgba(5, 5, 5, 0.8);
-  max-width: 800px;
   margin: auto;
-  padding: 20px;
-  flex-basis: 20%;
-  height: 400px;
+  padding: 10px;
 }
 
 /* .artwork-title-ep {
@@ -449,13 +440,14 @@ button:focus-visible {
 
 
 .carousel-artwork-image {
-  max-height: 40vh;
+  /* max-height: 20vh; */
+  max-width: 250px;
   border-radius: 10px;
 }
 
-.artwork-info-ellipsis {
+/* .artwork-info-ellipsis {
   width: 50px;
-}
+} */
 
 .artwork-info-container {
   background-color: #f9f9f9;
