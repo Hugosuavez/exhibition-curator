@@ -62,7 +62,7 @@ export const Home = () => {
         <h2>Your very own exhibition curator</h2>
       </header>
         <div className="saved-exhibitions-header">
-          <h2 className="saved-exhibitions-title">Exhibitions</h2>
+          <h2>Exhibitions</h2>
           <div className="create-exhibition-container">
             <input
               className="exhibition-name-input"
