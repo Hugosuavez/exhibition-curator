@@ -416,9 +416,9 @@ button:focus-visible {
 .carousel-container {
   overflow: scroll;
   scrollbar-width: none;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
+  /* margin: auto; */
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 10px;
 }
 
@@ -431,17 +431,18 @@ button:focus-visible {
   background-color: #494949;
   font-size: 12px;
   box-shadow: 5px 5px 10px 2px rgba(5, 5, 5, 0.8);
-  margin: auto;
+  /* margin: auto; */
   padding: 10px;
+  max-width: 500px;
 }
 
-/* .artwork-title-ep {
-
-} */
+.artwork-title-ep {
+  /* max-width: 250px; */
+}
 
 
 .carousel-artwork-image {
-  max-width: 250px;
+  max-width: 200px;
   border-radius: 10px;
 }
 
@@ -590,11 +591,17 @@ button:focus-visible {
   grid-template-columns: 1fr 1fr;
   scrollbar-width: none;
   }
+  .carousel-artwork-image{
+    max-width: 250px;
+  }
 }
 
 
 @media (min-width: 420px){
 
+   .carousel-artwork-image{
+    max-width: 300px;
+  }
 .home-header h2 {
   display: block;
   font-size: 12px;
@@ -624,6 +631,14 @@ button:focus-visible {
 }
 }
 
+@media (min-width: 500px){
+  .carousel-container {
+    grid-template-columns: 1fr 1fr;
+  }
+   .carousel-artwork-image{
+    max-width: 200px;
+  }
+}
 
 @media (min-width: 600px) {
  
@@ -684,7 +699,9 @@ button:focus-visible {
 }
 
 
-
+ .carousel-artwork-image{
+    max-width: 230px;
+  }
 
 /* || ARTWORK DETAILS */
 
@@ -750,11 +767,12 @@ button:focus-visible {
   margin: auto;
   max-height: 70vh;
   /* gap: 10px; */
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* flex-direction: row;
   flex-wrap: wrap;
   justify-content: left;
-  align-content: flex-start;
+  align-content: flex-start; */
   gap: 10px;
 }
 
@@ -933,6 +951,9 @@ button:focus-visible {
   font-size: 18px;
   display: block;
 }
+ .carousel-artwork-image{
+    max-width: 250px;
+  }
 
 /* || CURATE PAGE */
 
@@ -1136,5 +1157,9 @@ button:focus-visible {
 
   .exhibition-preview-container {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .carousel-container {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
