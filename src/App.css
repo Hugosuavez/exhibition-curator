@@ -30,7 +30,8 @@ button:focus-visible {
 
 .home-header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 10px;
   justify-content: flex-start;
   align-content: flex-start;
   align-items: baseline;
@@ -593,6 +594,12 @@ button:focus-visible {
 
 
 @media (min-width: 420px){
+
+.home-header h2 {
+  display: block;
+  font-size: 12px;
+  font-weight: 300;
+}
 
 .saved-exhibitions-header {
  
