@@ -7,9 +7,10 @@ export const Pagination = ({
   classification,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const exhibitionId = searchParams.get("exhibitionId") || null;
 
   const updatePage = (newPage) => {
-    const params = {};
+    const params = {exhibitionId};
     if (departmentId) {
       params.departmentId = departmentId;
       params.department = searchParams.get("department") || null;

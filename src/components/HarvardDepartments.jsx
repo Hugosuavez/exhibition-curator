@@ -6,7 +6,9 @@ export const HarvardDepartments = ({
   setDepartment,
   setIsSidebarOpen,
   isSidebarOpen,
+  exhibitionId
 }) => {
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const { data, isLoading, error } = useQuery({
@@ -19,9 +21,9 @@ export const HarvardDepartments = ({
 
     if (classification.name == "(not assigned)") {
       setDepartment("");
-      setSearchParams({ page: 1 });
+      setSearchParams({ page: 1, exhibitionId });
     } else {
-      setSearchParams({ classificationId, page: 1 }); // Reset to page 1 for new classification
+      setSearchParams({ classificationId, page: 1, exhibitionId }); // Reset to page 1 for new classification
       setDepartment(classification.name);
     }
 
@@ -30,12 +32,14 @@ export const HarvardDepartments = ({
 
   data?.records.sort((a, b) => a.name.localeCompare(b.name));
 
+
+
   if (isLoading) return <p>Loading classifications...</p>;
   if (error) return <p>Error fetching classifications: {error.message}</p>;
 
   return (
-    <aside className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}>
-      <h3>Departments</h3>
+    <nav className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}>
+      
       <section className={"dpmt-button-container-harv"}>
         {data?.records.map((classification) => {
           return (
@@ -50,6 +54,6 @@ export const HarvardDepartments = ({
           );
         })}
       </section>
-    </aside>
+    </nav>
   );
 };

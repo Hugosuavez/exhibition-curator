@@ -1,18 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchHarvardArtwork } from "../utils/harvard-api-calls";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { HarvardDepartments } from "./HarvardDepartments";
 import { useState } from "react";
-import { AddArtModal } from "./AddArtModal";
+
 import { HarvardArtworkCard } from "./HarvardArtworkCard";
 import { Pagination } from "./Pagination";
 
-export const HarvardArtwork = () => {
-  const [selectedArtwork, setSelectedArtwork] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+export const HarvardArtwork = ({setArtwork, artwork, exhibition}) => {
+
+  
   const [department, setDepartment] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [errorMessage, setErrorMessage] = useState("");
+  
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const classification = searchParams.get("classificationId") || null;
@@ -36,29 +36,28 @@ export const HarvardArtwork = () => {
 
   return (
     <>
-      <main className="container">
-        <Link to="/">Home</Link>
-        <h1>Harvard Art Museums</h1>
-
-        <section className="content-wrapper">
+      <main className="browse-page">
+       
           <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
-            {isSidebarOpen ? "Close Departments" : "Search Departments"}
+            {isSidebarOpen ? "Close Departments" : "Search by Department"}
           </button>
 
           <HarvardDepartments
             setDepartment={setDepartment}
             setIsSidebarOpen={setIsSidebarOpen}
             isSidebarOpen={isSidebarOpen}
+            exhibitionId={exhibition.id}
           />
-          {isLoading && <p>Loading artworks...</p>}
-          {error && <p>Error fetching artworks</p>}
+          {isLoading && <p>Loading artwork...</p>}
+          {error && <p>Error fetching artwork</p>}
           {data?.records && (
             <main className="artworks-content">
-              {department && <h3>{department}</h3>}
+              {department && <h3 className="department-title">{department}</h3>}
               {data.records.map((record) => (
                 <HarvardArtworkCard
-                  setIsModalOpen={setIsModalOpen}
-                  setSelectedArtwork={setSelectedArtwork}
+                exhibition={exhibition}
+                  setArtwork={setArtwork}
+                  artwork={artwork}
                   record={record}
                   key={record.objectid}
                 />
@@ -68,16 +67,9 @@ export const HarvardArtwork = () => {
                 totalPages={totalPages}
                 classification={classification}
               />
-              <AddArtModal
-                isOpen={isModalOpen}
-                setIsModalOpen={setIsModalOpen}
-                artwork={selectedArtwork}
-                setErrorMessage={setErrorMessage}
-                errorMessage={errorMessage}
-              />
             </main>
           )}
-        </section>
+        {/* </section> */}
       </main>
     </>
   );

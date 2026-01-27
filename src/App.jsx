@@ -7,12 +7,12 @@ import { MetArtworkDetails } from "./components/MetArtworkDetails";
 import { HarvardArtworkDetails } from "./components/HarvardArtworkDetails";
 import { ExhibitionPage } from "./components/ExhibitionPage";
 import { ToastContainer } from "react-toastify";
+import { CuratePage } from "./components/CuratePage";
 
 function App() {
   return (
     <>
-      <div>
-        <ToastContainer position="top-right" autoClose={3000} />
+        <ToastContainer position="bottom-left" autoClose={3000} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/met" element={<MetArtwork />} />
@@ -26,8 +26,8 @@ function App() {
             element={<HarvardArtworkDetails />}
           />
           <Route path="/exhibition/:id" element={<ExhibitionPage />} />
+          <Route path="/curate/:id" element={<CuratePage />} />
         </Routes>
-      </div>
     </>
   );
 }

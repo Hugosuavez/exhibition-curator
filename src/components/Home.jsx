@@ -1,40 +1,19 @@
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ExhibitionCarousel } from "./ExhibitionCarousel";
 import { deleteExhibition } from "../utils/local-storage-calls";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { createExhibition } from "../utils/local-storage-calls";
 
 export const Home = () => {
   const [exhibitions, setExhibitions] = useState([]);
-  const [slidesPerView, setSlidesPerView] = useState(1);
 
   useEffect(() => {
     const storedExhibitions =
       JSON.parse(localStorage.getItem("userExhibitions")) || [];
     setExhibitions(storedExhibitions);
-
-    updateSlidesPerView(storedExhibitions.length);
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      updateSlidesPerView(exhibitions.length);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [exhibitions.length]);
-
-  const updateSlidesPerView = (count) => {
-    if (window.innerWidth >= 1024) {
-      setSlidesPerView(Math.min(3, count));
-    } else if (window.innerWidth >= 600) {
-      setSlidesPerView(Math.min(2, count));
-    } else {
-      setSlidesPerView(1);
-    }
-  };
 
   const handleDeleteExhibition = (exhibitionId) => {
     deleteExhibition(exhibitionId);
@@ -42,34 +21,68 @@ export const Home = () => {
       const updatedExhibitions = prevExhibitions.filter(
         (exh) => exh.id !== exhibitionId
       );
-      updateSlidesPerView(updatedExhibitions.length);
       return updatedExhibitions;
     });
-    toast.success("Exhibition deleted!");
+    // toast.success("Exhibition deleted!");
+  };
+
+
+  const [newExhibitionName, setNewExhibitionName] = useState("");
+
+  const handleCreateExhibition = () => {
+    if (newExhibitionName.trim() === "") {
+      toast.error("Please enter a name for exhibition") 
+      return;
+    }
+
+    const exhibitionFound = exhibitions.find(
+      (exh) => exh.name === newExhibitionName
+    );
+
+    if (exhibitionFound) {
+      toast.error("Exhibition name taken!")
+      return;
+    }
+
+    const newExhibition = createExhibition(newExhibitionName);
+
+    setExhibitions([...exhibitions, newExhibition]);
+    // toast.success("Exhibition added successfully!");
+
+    setNewExhibitionName("");
   };
 
   return (
-    <main className="container">
-      <h1>Exhibition Curation Platform</h1>
-      <h2>Your Exhibitions</h2>
-      {exhibitions.length > 0 ? (
+    <main className="home-container">
+      <header className="home-header">
+        <h1>
+          <span>ARCHI</span>
+          <span className="header-colour">VIST!</span>
+        </h1>
+        <h2>Your very own exhibition curator</h2>
+      </header>
+        <div className="saved-exhibitions-header">
+          <h2>Exhibitions</h2>
+          <form className="create-exhibition-container">
+            <input
+              className="exhibition-name-input"
+              type="text"
+              id="create-exhibition"
+              placeholder="Exhibition Name"
+              value={newExhibitionName}
+              onChange={(e) => {
+                setNewExhibitionName(e.target.value);
+              }}
+              maxLength={20}
+              // required
+            />
+            <button type="submit" onClick={handleCreateExhibition}>Create</button>
+          </form>
+        </div>
         <ExhibitionCarousel
           exhibitions={exhibitions}
           onDelete={handleDeleteExhibition}
-          slidesPerView={slidesPerView}
         />
-      ) : (
-        <p>Start browsing to create exhibition</p>
-      )}
-
-      <h2>Browse Art</h2>
-      <Link to="/met" className="page-link">
-        Metropolitan Museum of Art
-      </Link>
-      <br />
-      <Link to="/harvard" className="page-link">
-        Harvard Art Museums
-      </Link>
     </main>
   );
 };

@@ -32,7 +32,7 @@ export const MetDepartments = ({ setIsSidebarOpen, isSidebarOpen }) => {
       <h3>Departments</h3>
       {isLoading && <p>Loading departments...</p>}
       {error && <p>Error fetching departments</p>}
-      <section className={"dpmt-button-container"}>
+      <section className={"dpmt-button-container-met"}>
         <button key={"all"} onClick={() => handleAll()}>
           All
         </button>

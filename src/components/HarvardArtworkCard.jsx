@@ -1,20 +1,52 @@
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import {
+  addArtworkToExhibition,
+  getExhibitionById,
+} from "../utils/local-storage-calls";
+
 
 export const HarvardArtworkCard = ({
   record,
-  setSelectedArtwork,
-  setIsModalOpen,
+  artwork,
+  setArtwork,
+  exhibition
 }) => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const openModal = (artwork) => {
-    setSelectedArtwork(artwork);
-    setIsModalOpen(true);
-  };
+
+  const exhibitionId = exhibition.id
+
+  //new function for direct add to art preview in curate page
+  const addArtwork = (newArt) => {
+    const updatedExhibition = getExhibitionById(exhibitionId);
+
+    //ERROR HANDLING
+    const foundMetArt = updatedExhibition.artworks.find(
+      (art) => art.objectID !== undefined && art.objectID === newArt.objectID
+    );
+
+    const foundHarvardArt = updatedExhibition.artworks.find(
+      (art) => art.objectid !== undefined && art.objectid === newArt.objectid
+    );
+
+    if (foundMetArt || foundHarvardArt) {
+      toast.error("Selected artwork already added to exhibition!");
+      return;
+    }
+
+
+    setArtwork([...artwork, newArt]);
+    addArtworkToExhibition(exhibition.id, newArt);
+
+  }
+
 
   const handleDetailsClick = (artwork) => {
+
+
     navigate(
       `/harvard-artwork-details/${artwork.objectid}?${searchParams.toString()}`
     );
@@ -27,19 +59,19 @@ export const HarvardArtworkCard = ({
   const imageUrl = record?.primaryimageurl || NoImagePlaceholder;
 
   return (
-    <li key={record.objectid} className="artwork-card">
+    <li key={record.objectid} className="artwork-card-cb">
       <h2>{title || "Untitled"}</h2>
       <img
         src={imageUrl}
         alt={record.title || "No title available"}
-        className="artwork-image"
+        className="artwork-image-cb"
       />
       <p>
         {record.century || "Unknown Artist"} |{" "}
         {record.department || "Unknown Department"} |{" "}
         {record.culture || "Unknown Nationality"}
       </p>
-      <button onClick={() => openModal(record)}>Add to Exhibition</button>
+      <button onClick={() => addArtwork(record)}>Add to Exhibition</button>
       <button onClick={() => handleDetailsClick(record)}>View Details</button>
     </li>
   );
