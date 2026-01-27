@@ -15,39 +15,37 @@ export const HarvardArtworkCard = ({
 }) => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  
+
 
   const exhibitionId = exhibition.id
-  
+
   //new function for direct add to art preview in curate page
   const addArtwork = (newArt) => {
-  const updatedExhibition = getExhibitionById(exhibitionId);
-    
+    const updatedExhibition = getExhibitionById(exhibitionId);
+
     //ERROR HANDLING
-   const foundMetArt = updatedExhibition.artworks.find(
+    const foundMetArt = updatedExhibition.artworks.find(
       (art) => art.objectID !== undefined && art.objectID === newArt.objectID
     );
 
     const foundHarvardArt = updatedExhibition.artworks.find(
       (art) => art.objectid !== undefined && art.objectid === newArt.objectid
     );
-    
-    if (foundMetArt || foundHarvardArt) {
-      // setErrorMessage("Selected artwork already added to exhibition");
-    toast.error("Selected artwork already added to exhibition!");
 
+    if (foundMetArt || foundHarvardArt) {
+      toast.error("Selected artwork already added to exhibition!");
       return;
     }
 
 
     setArtwork([...artwork, newArt]);
     addArtworkToExhibition(exhibition.id, newArt);
-    toast.success("Artwork successfully added!");
+
   }
-  
+
 
   const handleDetailsClick = (artwork) => {
-    
+
 
     navigate(
       `/harvard-artwork-details/${artwork.objectid}?${searchParams.toString()}`

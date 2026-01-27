@@ -14,14 +14,10 @@ export const CuratePreview = ({artwork, setArtwork, exhibition}) => {
   
           return String(currentArtworkId) !== String(artworkId);
         });
-  
-        // const updatedExhibition = {
-        //   ...prevExhibition,
-        //   artworks: updatedArtworks,
-        // };
+
         return updatedArtworks;
       });
-      toast.success("Art successfully removed!");
+   
     };
 
 
