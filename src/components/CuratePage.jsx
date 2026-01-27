@@ -43,7 +43,7 @@ export const CuratePage = () => {
   return (
     <div>
       <header className="home-header">
-        <Link to="/">
+        <Link className="home-link" to="/">
           <h1>
             <span className="header-colour-first">
               ARCHI
@@ -61,6 +61,7 @@ export const CuratePage = () => {
         <section className="curate-preview">
           {/* <div className="home-button">Archivist!</div> */}
           <div className="exhibition-title">Preview of {exhibition.name}</div>
+          <Link to={`/exhibition/${id}`} className="gallery-link">Gallery View</Link>
           <CuratePreview artwork={artwork} setArtwork={setArtwork} exhibition={exhibition} />
         </section>
         <section className="curate-browse">

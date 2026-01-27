@@ -24,7 +24,7 @@ export const ExhibitionCarousel = ({
           </div>
         </article>
       )) : <article className="default-exhibition-item">
-          <p>Create exhibition to begin!</p>
+          <p>Create exhibition and click curate to begin!</p>
         </article>}
     </main>
   );

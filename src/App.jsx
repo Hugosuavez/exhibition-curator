@@ -12,8 +12,7 @@ import { CuratePage } from "./components/CuratePage";
 function App() {
   return (
     <>
-      <div>
-        <ToastContainer position="top-right" autoClose={3000} />
+        <ToastContainer position="bottom-left" autoClose={3000} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/met" element={<MetArtwork />} />
@@ -29,7 +28,6 @@ function App() {
           <Route path="/exhibition/:id" element={<ExhibitionPage />} />
           <Route path="/curate/:id" element={<CuratePage />} />
         </Routes>
-      </div>
     </>
   );
 }

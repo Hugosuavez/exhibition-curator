@@ -23,7 +23,7 @@ export const Home = () => {
       );
       return updatedExhibitions;
     });
-    toast.success("Exhibition deleted!");
+    // toast.success("Exhibition deleted!");
   };
 
 
@@ -47,7 +47,7 @@ export const Home = () => {
     const newExhibition = createExhibition(newExhibitionName);
 
     setExhibitions([...exhibitions, newExhibition]);
-    toast.success("Exhibition added successfully!");
+    // toast.success("Exhibition added successfully!");
 
     setNewExhibitionName("");
   };
@@ -63,7 +63,7 @@ export const Home = () => {
       </header>
         <div className="saved-exhibitions-header">
           <h2>Exhibitions</h2>
-          <div className="create-exhibition-container">
+          <form className="create-exhibition-container">
             <input
               className="exhibition-name-input"
               type="text"
@@ -74,10 +74,10 @@ export const Home = () => {
                 setNewExhibitionName(e.target.value);
               }}
               maxLength={20}
-              required
+              // required
             />
-            <button onClick={handleCreateExhibition}>Create</button>
-          </div>
+            <button type="submit" onClick={handleCreateExhibition}>Create</button>
+          </form>
         </div>
         <ExhibitionCarousel
           exhibitions={exhibitions}

@@ -52,7 +52,7 @@ export const CuratePreview = ({artwork, setArtwork, exhibition}) => {
               <p>{title}</p>
             </div>
           )
-    }) : <p className="exhibit-default">To begin, use the right hand panel to browse art and add it to your exhibition!</p>}
+    }) : <p className="exhibit-default">Browse art and add it to your exhibition!</p>}
     
     </div>)
 }

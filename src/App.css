@@ -23,10 +23,6 @@ button:focus-visible {
 
 /* || HOME PAGE */
 
-.home-container {
-  margin: auto;
-  max-width: 90vw;
-}
 
 .home-header {
   display: flex;
@@ -37,6 +33,10 @@ button:focus-visible {
   align-items: baseline;
 }
 
+.home-link {
+  text-decoration: none;
+}
+
 .home-header h1 {
   font-size: 30px;
   margin-top: 10px;
@@ -44,7 +44,7 @@ button:focus-visible {
 }
 
 .home-header h2 {
-
+  margin-bottom: 0;
   display: none;
 }
 
@@ -112,6 +112,7 @@ button:focus-visible {
   background-color: #494949;
   color: white;
   font-size: 14px;
+  padding: 2px;
   font-weight: bold;
   box-shadow: 5px 5px 10px 2px rgba(5, 5, 5, 0.8);
   height: 148px;
@@ -172,12 +173,12 @@ button:focus-visible {
 }
 
 .curate-preview {
-  grid-area: preview;
+  /* grid-area: preview; */
   display: grid;
-  grid-template-rows: 5vh 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 3vh 1fr;
+  grid-template-columns: 3fr 1fr 2fr;
   grid-template-areas:
-    'title . .'
+    'title . gallery'
     'exhibition exhibition exhibition';
   /* width: 40vw; */
   height: 20vh;
@@ -186,8 +187,24 @@ button:focus-visible {
 
 .exhibition-title {
   grid-area: title;
-  height: 1vh;
-  margin: auto;
+  align-self: end;
+  justify-self: start;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.gallery-link {
+  grid-area: gallery;
+  text-decoration: none;
+  color: rgb(163, 163, 163);
+  font-size: 12px;
+  align-self: end;
+  justify-self: end;
+  margin-bottom: 2px;
+}
+
+.gallery-link:hover {
+  color: white
 }
 
 .exhibition-preview-container {
@@ -232,7 +249,7 @@ button:focus-visible {
 
 .exhibit img {
   max-height: 10vh;
-  max-width: 7vw;
+  max-width: 18vw;
 }
 
 .exhibit p {
@@ -240,8 +257,10 @@ button:focus-visible {
 }
 
 .exhibit-default {
-  align-self: center;
-  margin: auto;
+ font-size: 12px;
+ font-weight: 200;
+ grid-column: 1/5;
+ grid-row: 1;
 }
 
 
@@ -629,6 +648,15 @@ button:focus-visible {
 .exhibition-preview-container {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
+.exhibition-title {
+  font-size: 16px;
+  
+}
+
+.gallery-link{
+  font-size: 16px;
+}
 }
 
 @media (min-width: 500px){
@@ -646,8 +674,8 @@ button:focus-visible {
 /* || HOME PAGE */
 
 .home-header {
-  flex-direction: row;
-  align-items: baseline;
+  /* flex-direction: row;
+  align-items: baseline; */
   gap: 25px;
 }
 
@@ -689,7 +717,7 @@ button:focus-visible {
 }
 
 .saved-exhibition-item {
-  margin-left: 10px;
+  /* margin-left: 10px; */
   flex-basis: 20%;
 }
 
@@ -764,7 +792,7 @@ button:focus-visible {
 .carousel-container {
   overflow: scroll;
   scrollbar-width: none;
-  margin: auto;
+  /* margin: auto; */
   max-height: 70vh;
   /* gap: 10px; */
   display: grid;
@@ -777,26 +805,13 @@ button:focus-visible {
 }
 
 .carousel-item-artwork {
-  display: flex;
-  flex-direction: column;
-  justify-content: top;
-  align-items: center;
-  color: #dbdbdb;
-  background-color: #494949;
   font-size: 16px;
   font-weight: bold;
-  box-shadow: 5px 5px 10px 2px rgba(5, 5, 5, 0.8);
-  max-width: 800px;
-  margin: auto;
+  /* max-width: 800px; */
   padding: 20px;
   flex-basis: 20%;
   height: 400px;
 }
-
-/* .artwork-title-ep {
-
-} */
-
 
 .carousel-artwork-image {
   max-height: 40vh;
@@ -972,20 +987,9 @@ button:focus-visible {
 
 .curate-preview {
   grid-area: preview;
-  display: grid;
-  grid-template-rows: 5vh 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas:
-    'title . .'
-    'exhibition exhibition exhibition';
-  /* width: 40vw; */
   height: 80vh;
 }
 
-.exhibition-title {
-  grid-area: title;
-  /* height: 6vh; */
-}
 
 .exhibition-preview-container {
   box-shadow: 5px 5px 10px 2px rgb(0 0 0 / 0.8);
@@ -1034,6 +1038,8 @@ button:focus-visible {
 .exhibit-default {
   align-self: center;
   margin: auto;
+  grid-column: 1/5;
+  grid-row: 15;
 }
 
 
@@ -1097,7 +1103,7 @@ button:focus-visible {
   flex-direction: column;
   max-width: 100%;
   gap: 10px;
-  padding: 10px;
+  padding: 5px;
   margin-top: 0;
 }
 
@@ -1148,6 +1154,7 @@ button:focus-visible {
   .home-header h2{
     font-size: 24px;
   }
+
 }
 
 @media (min-width: 1024px){
