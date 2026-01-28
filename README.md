@@ -1,4 +1,4 @@
-## Art Exhibition Curator
+## ARCHIVIST! An Exhibition Curation Platform
 
 A web application that allows users to curate exhibitions by selecting artwork from **The Met Museum** and **Harvard Art Museums** APIs. Users can browse, search, and organize artworks into custom exhibitions.
 
