@@ -12,7 +12,7 @@ NOTE - Currently experiencing issues displaying images from the Harvard API on S
 - Search and browse artwork from **The Met Museum** and **Harvard Art Museums** APIs.
 - Create, edit, and delete exhibitions.
 - Add or remove artwork from exhibitions.
-- View detailed artwork information.gitgi
+- View detailed artwork information.
 - Responsive design for various screen sizes.
 
 ## Installation & Setup
