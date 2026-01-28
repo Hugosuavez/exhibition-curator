@@ -58,7 +58,9 @@ export const HarvardArtworkCard = ({
     : record.title;
 
   
-  const imageUrl = record?.images[0].iiifbaseuri + "/full/full/0/default.jpg" || NoImagePlaceholder;
+  // const imageUrl = record?.images[0].iiifbaseuri + "/full/full/0/default.jpg" || NoImagePlaceholder;
+
+  const imageUrl = record?.primaryimageurl || NoImagePlaceholder;
   
   return (
     <li key={record.objectid} className="artwork-card-cb">
