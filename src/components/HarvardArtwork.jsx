@@ -23,7 +23,10 @@ export const HarvardArtwork = ({setArtwork, artwork, exhibition}) => {
     queryFn: () => fetchHarvardArtwork(classification, currentPage),
     keepPreviousData: true,
   });
+  if(data){
 
+    console.log(data);
+  }
   const itemsPerPage = 10;
 
   const totalPages = data?.info

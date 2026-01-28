@@ -10,7 +10,7 @@ https://hugosuavez.github.io/exhibition-curator/
 - Search and browse artwork from **The Met Museum** and **Harvard Art Museums** APIs.
 - Create, edit, and delete exhibitions.
 - Add or remove artwork from exhibitions.
-- View detailed artwork information.
+- View detailed artwork information.gitgi
 - Responsive design for various screen sizes.
 
 ## Installation & Setup

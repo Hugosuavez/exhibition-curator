@@ -47,7 +47,7 @@ export const MetArtworkCard = ({ id, artwork,
           
       addArtworkToExhibition(exhibition.id, newArt);
           
-      toast.success("Artwork successfully added!");
+      // toast.success("Artwork successfully added!");
       }
 
 
@@ -63,6 +63,7 @@ export const MetArtworkCard = ({ id, artwork,
 
   const imageUrl =
     data.primaryImage || data.primaryImageSmall || NoImagePlaceholder;
+  
 
   return (
     <li key={data.objectID} className="artwork-card-cb">

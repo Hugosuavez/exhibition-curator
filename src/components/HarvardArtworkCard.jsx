@@ -56,8 +56,10 @@ export const HarvardArtworkCard = ({
   const title = regex.test(record.title)
     ? record.title.slice(1, -1)
     : record.title;
-  const imageUrl = record?.primaryimageurl || NoImagePlaceholder;
 
+  
+  const imageUrl = record?.images[0].iiifbaseuri + "/full/full/0/default.jpg" || NoImagePlaceholder;
+  
   return (
     <li key={record.objectid} className="artwork-card-cb">
       <h2>{title || "Untitled"}</h2>
