@@ -50,7 +50,7 @@ export const ExhibitionPage = () => {
   return (
     <main className="exhibition-page-container">
        <header className="home-header">
-        <Link to="/" className="home-button">
+        <Link to="/home" className="home-button">
           <h1>
             <span className="header-colour-first">
               ARCHI

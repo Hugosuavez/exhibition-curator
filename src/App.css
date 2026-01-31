@@ -596,6 +596,7 @@ button:focus-visible {
 
   .curate-preview {
     height: 25vh;
+    grid-template-rows: 5vh 1fr;
   }
 
   .exhibition-preview-container {

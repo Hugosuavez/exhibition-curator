@@ -8,13 +8,15 @@ import { HarvardArtworkDetails } from "./components/HarvardArtworkDetails";
 import { ExhibitionPage } from "./components/ExhibitionPage";
 import { ToastContainer } from "react-toastify";
 import { CuratePage } from "./components/CuratePage";
+import { WelcomeScreen } from "./components/WelcomeScreen";
 
 function App() {
   return (
     <>
         <ToastContainer position="bottom-left" autoClose={3000} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<WelcomeScreen />} />
+          <Route path="/home" element={<Home/>} />
           <Route path="/met" element={<MetArtwork />} />
           <Route path="/harvard" element={<HarvardArtwork />} />
           <Route

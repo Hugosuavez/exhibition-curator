@@ -27,7 +27,7 @@ export const MetArtworkCard = ({ id, artwork,
  
     const updatedExhibition = getExhibitionById(exhibitionId);
 
-          //ERROR HANDLING
+    //ERROR HANDLING
       const foundMetArt = updatedExhibition.artworks.find(
         (art) => art.objectID !== undefined && art.objectID === newArt.objectID
       );
