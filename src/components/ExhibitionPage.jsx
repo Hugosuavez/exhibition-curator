@@ -61,6 +61,8 @@ export const ExhibitionPage = () => {
           </h1>
         </Link>
       <h3>{exhibition.name}</h3>
+      <Link to={`/curate/${id}`} className="curate-link">Curate View</Link>
+
       </header>
 
       <ArtworkCarousel

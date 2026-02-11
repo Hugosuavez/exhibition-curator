@@ -404,6 +404,17 @@ button:focus-visible {
   overflow: hidden;
 }
 
+.curate-link {
+  text-decoration: none;
+  color: rgb(163, 163, 163);
+  justify-self:self-end;
+}
+
+.curate-link:hover {
+  color: white
+}
+
+
 .carousel-container {
   overflow: scroll;
   scrollbar-width: none;
