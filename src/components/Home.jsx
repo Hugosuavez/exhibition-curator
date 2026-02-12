@@ -4,6 +4,8 @@ import { deleteExhibition } from "../utils/local-storage-calls";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createExhibition } from "../utils/local-storage-calls";
+import { MdAccountBalance } from "react-icons/md";
+
 
 export const Home = () => {
   const [exhibitions, setExhibitions] = useState([]);
@@ -60,6 +62,7 @@ export const Home = () => {
           <span className="header-colour">VIST!</span>
         </h1>
         <h2>Your very own exhibition curator</h2>
+        <MdAccountBalance size={"1.5rem"}/>
       </header>
         <div className="saved-exhibitions-header">
           <h2>Exhibitions</h2>
