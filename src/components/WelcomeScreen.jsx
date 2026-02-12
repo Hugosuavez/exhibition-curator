@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createExhibition } from "../utils/local-storage-calls";
-import ShinyText from './ShinyText';
-import BlurText from "./BlurText";
 import Squares from './Squares';
-import LightRays from './LightRays';
 
 export const WelcomeScreen = () => {
     const [exhibitions, setExhibitions] = useState([]);
     const navigate = useNavigate();
+
+
+     useEffect(() => {
+        const storedExhibitions =
+          JSON.parse(localStorage.getItem("userExhibitions")) || [];
+        setExhibitions(storedExhibitions);
+      }, []);
 
     const [newExhibitionName, setNewExhibitionName] = useState("");
 
@@ -38,22 +42,10 @@ export const WelcomeScreen = () => {
         navigate(`/curate/${newExhibition.id}`)
     };
 
-    //     const handleAnimationComplete = () => {
-    //   console.log('Animation completed!');
-    // };
 
 
     return (
         <div className="welcome-screen-body">
-
-            {/* <BlurText
-                text="Isn't this so cool?!"
-                delay={200}
-                animateBy="letters"
-                direction="top"
-                //   onAnimationComplete={handleAnimationComplete}
-                className="text-2xl mb-8"
-            /> */}
             <div style={{ width: '100%', minHeight: '100vh', maxHeight: '100vh', position: 'relative' }}>
                 <div style={{
                     position: 'fixed',
@@ -71,46 +63,14 @@ export const WelcomeScreen = () => {
                         borderColor='#ffffff10'
                         hoverFillColor='#8f1a1a'
                     />
-                    {/* <LightRays
-                        raysOrigin="top-center"
-                        raysColor="#ffffff"
-                        raysSpeed={1}
-                        lightSpread={0.5}
-                        rayLength={6}
-                        followMouse={true}
-                        mouseInfluence={0.1}
-                        noiseAmount={1}
-                        distortion={1}
-                        className="custom-rays"
-                        pulsating={true}
-                        fadeDistance={1}
-                        saturation={1}
-                    /> */}
+                  
                 </div>
                 <div className="welcome-screen-container" >
-                    {/* <header className="home-header"> */}
+                    
                     <h2> Welcome to
                         <span> ARCHI</span>
                         <span className="header-colour">VIST!</span>
                     </h2>
-                    {/* <h2>Your very own exhibition curator</h2> */}
-                    {/* </header> */}
-                    {/* <img src="src\assets\fossil.jpg" alt="Fossil buried in the ground" className="welcome-screen-image" /> */}
-
-                    {/* 
-                    <ShinyText
-                        text="Welcome to ARCHIVIST!"
-                        speed={2}
-                        delay={0}
-                        color="#b5b5b5"
-                        shineColor="#ffffff"
-                        spread={120}
-                        direction="left"
-                        yoyo={false}
-                        pauseOnHover={false}
-                        disabled={false}
-                    /> */}
-
                     <form className="create-exhibition-form">
                         <p className="welcome-label"> To begin, enter the name of your first exhibition...</p>
                         <div className="create-exhibition-welcome-screen">
@@ -125,7 +85,7 @@ export const WelcomeScreen = () => {
                                     setNewExhibitionName(e.target.value);
                                 }}
                                 maxLength={20}
-                            // required
+                                required
                             />
                             <button className="create-exhibition-button-welcome-screen" type="submit" onClick={handleCreateExhibition}>Create</button>
                         </div>

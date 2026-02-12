@@ -57,11 +57,13 @@ export const Home = () => {
   return (
     <main className="home-container">
       <header className="home-header">
+        <div className="header-title">
         <h1>
           <span>ARCHI</span>
           <span className="header-colour">VIST!</span>
         </h1>
         <h2>Your very own exhibition curator</h2>
+        </div>
         <MdAccountBalance size={"1.5rem"}/>
       </header>
         <div className="saved-exhibitions-header">

@@ -45,6 +45,7 @@ export const CuratePage = () => {
   return (
     <div>
       <header className="home-header">
+        <div className="header-title">
           <h1>
             <span className="header-colour-first">
               ARCHI
@@ -54,6 +55,7 @@ export const CuratePage = () => {
             </span>
           </h1>
         <h2>Your very own exhibition curator</h2>
+        </div>
         <Link className="home-link" to="/home">
         <MdAccountBalance size={"1.5rem"}/>
         </Link>
