@@ -404,16 +404,27 @@ button:focus-visible {
   overflow: hidden;
 }
 
+.curate-link {
+  text-decoration: none;
+  color: rgb(163, 163, 163);
+  
+}
+
+.curate-link:hover {
+  color: white
+}
+
+
 .carousel-container {
   overflow: scroll;
   scrollbar-width: none;
   /* margin: auto; */
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: 20px;
 }
- 
-.carousel-item-artwork {
+
+.flip-card {
   display: flex;
   flex-direction: column;
   justify-content: top;
@@ -424,11 +435,59 @@ button:focus-visible {
   box-shadow: 5px 5px 10px 2px rgba(5, 5, 5, 0.8);
   padding: 10px;
   max-width: 500px;
+  height: 330px;
+  /* perspective: 1000px; */
+    /* background-color: transparent; */
+  /* width: 300px;
+  height: 200px; */
+  /* border: 1px solid #f1f1f1; */
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  
+}
+
+/* .flip-card-front {
+  background-color: #bbb;
+  color: black;
+} */
+
+.flip-card-back {
+  background-color: #7a7676;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.flip-card-details {
+  /* margin: 0px 20px 0px 20px; */
+  
+  /* display: flex;
+  flex-direction: column; */
+  /* gap: 0px; */
+}
 
 .carousel-artwork-image {
   max-width: 200px;
+  max-height: 100%;
   border-radius: 10px;
 }
 
@@ -654,13 +713,6 @@ button:focus-visible {
   .carousel-container {
     grid-template-columns: 1fr 1fr;
   }
-
-  .carousel-item-artwork {
-    font-size: 16px;
-    font-weight: bold;
-    padding: 20px;
-  }
-
 
   .artwork-info-ellipsis {
     width: 50px;
