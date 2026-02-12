@@ -35,8 +35,6 @@ export const WelcomeScreen = () => {
     };
 
     return (
-
-
         <form className="create-exhibition-container">
             <p>Welcome to ARCHIVIST! An exhibition curation platform allowing you to browse museums pieces and create your own exhibitions! To begin, enter the name of your first exhibition...</p>
             <input
