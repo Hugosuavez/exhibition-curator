@@ -407,7 +407,7 @@ button:focus-visible {
 .curate-link {
   text-decoration: none;
   color: rgb(163, 163, 163);
-  justify-self:self-end;
+  
 }
 
 .curate-link:hover {
@@ -421,7 +421,7 @@ button:focus-visible {
   /* margin: auto; */
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: 20px;
 }
 
 .flip-card {
