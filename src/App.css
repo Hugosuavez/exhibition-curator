@@ -412,7 +412,7 @@ button:focus-visible {
   grid-template-columns: 1fr;
   gap: 10px;
 }
-
+ 
 .carousel-item-artwork {
   display: flex;
   flex-direction: column;
