@@ -62,18 +62,19 @@ export const ExhibitionPage = () => {
               VIST!
             </span>
           </h1>
-        <h3>{exhibition.name}</h3>
         </div>
-
-        <Link to={`/curate/${id}`} className="curate-link">Curate View</Link>
+        <div className="exhibition-page-links">
+        <Link to={`/curate/${id}`} className="curate-link">Curate </Link>
+        <p> | </p>
         <Link className="home-link" to="/home">
-          <MdAccountBalance size={"1.5rem"} />
+          <MdAccountBalance size={"1.5rem"} className="icon" />
         </Link>
-
+      </div>
       </header>
 
       <ArtworkCarousel
         artworks={exhibition.artworks || []}
+        exhibition={exhibition}
         handleRemove={handleRemove}
       />
     </main>

@@ -1,9 +1,11 @@
 import { normaliseArtwork } from "../utils/normalisation-utils";
 
-export const ArtworkCarousel = ({ artworks }) => {
+export const ArtworkCarousel = ({ artworks, exhibition }) => {
   return (
+    <div>
+          <h3 className="gallery-title">{exhibition.name}</h3>
     <main className="carousel-container">
-    
+
         {artworks.map((artwork, index) => {
 
           const normalisedArtwork = normaliseArtwork(artwork);
@@ -44,14 +46,14 @@ export const ArtworkCarousel = ({ artworks }) => {
                         <strong>Dimensions:</strong>{" "}
                         {normalisedArtwork.dimensions}
                         </p>
-                        <p>
+                        {/* <p>
                         <strong>Credit Line:</strong>{" "}
                         {normalisedArtwork.creditLine}
-                        </p>
-                        <p>
+                        </p> */}
+                        {/* <p>
                         <strong>Description:</strong>{" "}
                         {normalisedArtwork.description}
-                        </p>
+                        </p> */}
                         <p>
                         <strong>Source:</strong> {normalisedArtwork.source}
                         </p>
@@ -76,5 +78,6 @@ export const ArtworkCarousel = ({ artworks }) => {
           );
         })}
     </main>
+  </div>
   );
 };

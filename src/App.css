@@ -483,6 +483,20 @@ button:focus-visible {
 
 /* || EXHIBITION PAGE */
 
+ .gallery-title {
+    margin: 0px 0px 5px 0px;
+  }
+.icon {
+  margin: 0px;
+}
+
+.exhibition-page-links {
+  display:flex;
+  justify-content: end;
+  align-items: center;
+  gap: 10px;
+}
+
 .exhibition-page-container {
   overflow: hidden;
 }
@@ -795,6 +809,10 @@ button:focus-visible {
 
 
   /* || EXHIBITION PAGE */
+
+  .gallery-title {
+    margin: 0px 0px 5px 0px;
+  }
 
   .carousel-container {
     grid-template-columns: 1fr 1fr;
