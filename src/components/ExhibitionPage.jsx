@@ -4,6 +4,9 @@ import { ArtworkCarousel } from "./ArtworkCarousel";
 import { Link } from "react-router-dom";
 import { removeArtworkFromExhibition } from "../utils/local-storage-calls";
 import { toast } from "react-toastify";
+import { MdAccountBalance } from "react-icons/md";
+
+
 
 export const ExhibitionPage = () => {
   const { id } = useParams();
@@ -49,8 +52,8 @@ export const ExhibitionPage = () => {
 
   return (
     <main className="exhibition-page-container">
-       <header className="home-header">
-        <Link to="/" className="home-button">
+      <header className="home-header">
+        <div className="header-title">
           <h1>
             <span className="header-colour-first">
               ARCHI
@@ -59,9 +62,13 @@ export const ExhibitionPage = () => {
               VIST!
             </span>
           </h1>
+        <h3>{exhibition.name}</h3>
+        </div>
+
+        <Link to={`/curate/${id}`} className="curate-link">Curate View</Link>
+        <Link className="home-link" to="/home">
+          <MdAccountBalance size={"1.5rem"} />
         </Link>
-      <h3>{exhibition.name}</h3>
-      <Link to={`/curate/${id}`} className="curate-link">Curate View</Link>
 
       </header>
 

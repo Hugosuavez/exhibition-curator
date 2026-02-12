@@ -5,6 +5,8 @@ import { MetArtwork } from "./MetArtwork";
 import { HarvardArtwork } from "./HarvardArtwork";
 import { CuratePreview } from "./CuratePreview";
 import { useSearchParams } from "react-router-dom";
+import { MdAccountBalance } from "react-icons/md";
+
 
 export const CuratePage = () => {
   const { id } = useParams();
@@ -43,7 +45,7 @@ export const CuratePage = () => {
   return (
     <div>
       <header className="home-header">
-        <Link className="home-link" to="/">
+        <div className="header-title">
           <h1>
             <span className="header-colour-first">
               ARCHI
@@ -52,9 +54,11 @@ export const CuratePage = () => {
               VIST!
             </span>
           </h1>
-        </Link>
         <h2>Your very own exhibition curator</h2>
-
+        </div>
+        <Link className="home-link" to="/home">
+        <MdAccountBalance size={"1.5rem"}/>
+        </Link>
       </header>
       <main className="curate-container">
 
