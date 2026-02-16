@@ -533,13 +533,7 @@ button:focus-visible {
   padding: 10px;
   max-width: 500px;
   height: 330px;
-  /* perspective: 1000px; */
-  /* background-color: transparent; */
-  /* width: 300px;
-  height: 200px; */
-  /* border: 1px solid #f1f1f1; */
   perspective: 1000px;
-  /* Remove this if you don't want the 3D effect */
 }
 
 .flip-card-inner {
@@ -563,7 +557,7 @@ button:focus-visible {
   -webkit-backface-visibility: hidden;
   /* Safari */
   backface-visibility: hidden;
-
+  max-height: 100%;
 }
 
 /* .flip-card-front {
@@ -585,8 +579,8 @@ button:focus-visible {
   /* gap: 0px; */
 }
 
-.carousel-artwork-image {
-  max-width: 200px;
+.flip-card-image {
+  max-width: 100%;
   max-height: 100%;
   border-radius: 10px;
 }

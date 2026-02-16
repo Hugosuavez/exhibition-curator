@@ -1,6 +1,11 @@
 import { normaliseArtwork } from "../utils/normalisation-utils";
 
 export const ArtworkCarousel = ({ artworks, exhibition }) => {
+
+
+
+
+
   return (
     <div>
           <h3 className="gallery-title">{exhibition.name}</h3>
@@ -18,7 +23,7 @@ export const ArtworkCarousel = ({ artworks, exhibition }) => {
                     <img
                       src={normalisedArtwork.imageUrl}
                       alt={normalisedArtwork.title}
-                      className="carousel-artwork-image"
+                      className="flip-card-image"
                       />
                   </div>
                   <div className="flip-card-back">
