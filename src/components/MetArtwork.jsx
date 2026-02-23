@@ -6,18 +6,20 @@ import { useState, useEffect } from "react";
 import { MetDepartments } from "./MetDepartments";
 import { Pagination } from "./Pagination";
 
-export const MetArtwork = ({artwork,
+export const MetArtwork = ({ artwork,
   setArtwork,
-  exhibition}) => {
+  exhibition }) => {
 
   const [searchParams] = useSearchParams();
+  const [department, setDepartment] = useState(null);
+
 
   const departmentId = searchParams.get("departmentId") || null;
-  const department = searchParams.get("department") || null;
+  // const department = searchParams.get("department") || null;
   const currentPage = parseInt(searchParams.get("page") || 1, 10);
 
   const { data, isLoading, error, refetch } = useQuery({
-    queryKey: ["met-artworks", departmentId, currentPage],
+    queryKey: ["met-artworks", departmentId],
     queryFn: () => fetchMetArtwork(departmentId),
   });
 
@@ -29,9 +31,8 @@ export const MetArtwork = ({artwork,
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  
+
   const sortedObjectIDs = [...(data?.objectIDs || [])].sort((a, b) => a - b);
-  
 
   const currentObjectIDs = sortedObjectIDs
     ? sortedObjectIDs.slice(startIndex, endIndex)
@@ -56,32 +57,34 @@ export const MetArtwork = ({artwork,
           {/* <Link to="/" className="link">
             Home
           </Link> */}
-      
+
 
           {/* <section className="content-wrapper"> */}
-            <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
-              {isSidebarOpen ? "Close Departments" : "Search Departments"}
-            </button>
+          <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
+            {isSidebarOpen ? "Close Departments" : "Search Departments"}
+          </button>
 
-            <MetDepartments
-              setIsSidebarOpen={setIsSidebarOpen}
-              isSidebarOpen={isSidebarOpen}
+          <MetDepartments
+            setDepartment={setDepartment}
+            setIsSidebarOpen={setIsSidebarOpen}
+            isSidebarOpen={isSidebarOpen}
+            exhibitionId={exhibition.id}
+          />
+
+          <main className="artworks-content">
+            {department && <h3 className="department-title">{department}</h3>}
+            {/* Loop through the objectIDs and fetch artwork details */}
+            {currentObjectIDs.map((id) => (
+              <MetArtworkCard key={id} id={id} artwork={artwork}
+                setArtwork={setArtwork} exhibition={exhibition} />
+            ))}
+
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              departmentId={departmentId}
             />
-
-            <main className="artworks-content">
-              {department && <h3 className="department-title">{department}</h3>}
-              {/* Loop through the objectIDs and fetch artwork details */}
-              {currentObjectIDs.map((id) => (
-                <MetArtworkCard key={id} id={id} artwork={artwork} 
-  setArtwork={setArtwork} exhibition={exhibition}/>
-              ))}
-
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                departmentId={departmentId}
-              />
-            </main>
+          </main>
           {/* </section> */}
         </main>
       )}

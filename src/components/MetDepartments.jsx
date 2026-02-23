@@ -1,29 +1,33 @@
 import { fetchMetDepartments } from "../utils/met-api-calls";
 import { useQuery } from "@tanstack/react-query";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
-export const MetDepartments = ({ setIsSidebarOpen, isSidebarOpen }) => {
+export const MetDepartments = ({ setDepartment, setIsSidebarOpen, isSidebarOpen, exhibitionId }) => {
+
   const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
+
   const { data, isLoading, error } = useQuery({
     queryKey: ["met-departments"],
     queryFn: () => fetchMetDepartments(),
   });
 
-  const handleAll = () => {
-    setSearchParams({ page: 1 });
-    setIsSidebarOpen((prev) => !prev);
-    navigate("/met");
-  };
 
   const handleDepartment = (department) => {
     if (!department) return;
-    const departmentId = department.departmentId;
+
+
+    if(department === "all"){
+      setDepartment("")
+      setSearchParams({page: 1, exhibitionId})
+    } else {
+      const departmentId = department.departmentId;
+
     setSearchParams({
       departmentId,
       page: 1,
-      department: department.displayName,
-    }); // Reset to page 1 for new classification
+      exhibitionId
+    }); 
+    }
     setIsSidebarOpen((prev) => !prev);
   };
 
@@ -33,7 +37,7 @@ export const MetDepartments = ({ setIsSidebarOpen, isSidebarOpen }) => {
       {isLoading && <p>Loading departments...</p>}
       {error && <p>Error fetching departments</p>}
       <section className={"dpmt-button-container-met"}>
-        <button key={"all"} onClick={() => handleAll()}>
+        <button key={"all"} onClick={() => handleDepartment("all")}>
           All
         </button>
         {data?.departments &&
