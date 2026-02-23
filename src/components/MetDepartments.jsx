@@ -22,7 +22,6 @@ export const MetDepartments = ({ setDepartment, setIsSidebarOpen, isSidebarOpen,
         prevParams.set("page", 1);
         return prevParams;
       });
-      // setSearchParams({ page: 1, exhibitionId })
     } else {
       const departmentId = department.departmentId;
       setSearchParams(prevParams => {
@@ -30,11 +29,6 @@ export const MetDepartments = ({ setDepartment, setIsSidebarOpen, isSidebarOpen,
         prevParams.set("departmentId", departmentId);
         return prevParams;
       });
-      // setSearchParams({
-      //   departmentId,
-      //   page: 1,
-      //   exhibitionId
-      // });
     }
     setIsSidebarOpen((prev) => !prev);
   };

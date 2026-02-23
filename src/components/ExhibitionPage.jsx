@@ -6,8 +6,6 @@ import { removeArtworkFromExhibition } from "../utils/local-storage-calls";
 import { toast } from "react-toastify";
 import { MdAccountBalance } from "react-icons/md";
 
-
-
 export const ExhibitionPage = () => {
   const { id } = useParams();
   const [exhibition, setExhibition] = useState(null);

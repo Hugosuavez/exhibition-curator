@@ -16,7 +16,6 @@ export const MetArtwork = ({ artwork,
 
 
   const departmentId = searchParams.get("departmentId") || null;
-  // const department = searchParams.get("department") || null;
   const currentPage = parseInt(searchParams.get("page") || 1, 10);
 
 
@@ -25,34 +24,9 @@ export const MetArtwork = ({ artwork,
     queryFn: () => fetchMetArtwork(departmentId),
   });
 
-  // NOTE: Trying without refetch
-  // const { data, isLoading, error, refetch } = useQuery({
-  //   queryKey: ["met-artworks", departmentId],
-  //   queryFn: () => fetchMetArtwork(departmentId),
-  // });
-
-  // useEffect(() => {
-  //   refetch();
-  // }, [searchParams, refetch]);
-
-
   const currentObjectIDs = retrievePageFromFullArray(data, currentPage);
-  // const itemsPerPage = 10;
-
-  // const startIndex = (currentPage - 1) * itemsPerPage;
-  // const endIndex = startIndex + itemsPerPage;
-
-  // const sortedObjectIDs = [...(data?.objectIDs || [])].sort((a, b) => a - b);
-
-  // const currentObjectIDs = sortedObjectIDs
-  //   ? sortedObjectIDs.slice(startIndex, endIndex)
-  //   : [];
-
 
   const totalPages = calculateTotalPages(data);
-  // const totalPages = data?.objectIDs
-  //   ? Math.ceil(data.objectIDs.length / 10)
-  //   : 0;
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -94,7 +68,6 @@ export const MetArtwork = ({ artwork,
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}
-              departmentId={departmentId}
             />
           </main>
           {/* </section> */}

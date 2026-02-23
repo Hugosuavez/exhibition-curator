@@ -9,8 +9,6 @@ export const HarvardArtworkDetails = () => {
   const { objectID } = useParams();
   const { search } = useLocation();
 
-
-
   const { data, isLoading, error } = useQuery({
     queryKey: ["harvard-artwork-details", objectID],
     queryFn: () => fetchHarvardArtworkDetails(objectID),

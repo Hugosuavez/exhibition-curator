@@ -19,7 +19,6 @@ export const MetArtworkDetails = () => {
   if (isLoading) return <p>Loading artwork details...</p>;
   if (error) return <p>Error fetching artwork details: {error.message}</p>;
 
-  // Use the image if available; fallback to the placeholder
   const imageUrl =
     data.primaryImage || data.primaryImageSmall || NoImagePlaceholder;
 

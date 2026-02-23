@@ -13,18 +13,9 @@ export const CuratePage = () => {
   const [exhibition, setExhibition] = useState(null);
   const [loading, setLoading] = useState(true);
   const [artwork, setArtwork] = useState(null)
-  
+
   const [searchParams, setSearchParams] = useSearchParams();
-  
-
   const currentMuseum = searchParams.get("museum") || "harvard";
-  const [museumToggle, setMuseumToggle] = useState(currentMuseum || "harvard");
-  // const departmentId = searchParams.get("departmentId");
-  // if(departmentId){setMuseumToggle(true)}
-
-  console.log(searchParams.get("museum"), "<--Params");
-  console.log(museumToggle, "<--toggle");
-
 
   useEffect(() => {
     const fetchExhibition = () => {
@@ -36,7 +27,7 @@ export const CuratePage = () => {
       setExhibition(selectedExhibition);
       setArtwork(selectedExhibition.artworks)
       setLoading(false);
-     
+
       setSearchParams(prevParams => {
         prevParams.set("exhibitionId", id);
         return prevParams;
@@ -48,7 +39,6 @@ export const CuratePage = () => {
 
 
   const handleToggle = (museum) => {
-    // setMuseumToggle(toggle);
     setSearchParams({ exhibitionId: id, museum });
   }
 
@@ -74,9 +64,7 @@ export const CuratePage = () => {
         </Link>
       </header>
       <main className="curate-container">
-
         <section className="curate-preview">
-          {/* <div className="home-button">Archivist!</div> */}
           <div className="exhibition-title">Preview of {exhibition.name}</div>
           <Link to={`/exhibition/${id}`} className="gallery-link">Gallery View</Link>
           <CuratePreview artwork={artwork} setArtwork={setArtwork} exhibition={exhibition} />

@@ -13,17 +13,15 @@ export const HarvardArtworkCard = ({
   setArtwork,
   exhibition
 }) => {
+
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
-
   const exhibitionId = exhibition.id
 
-  //new function for direct add to art preview in curate page
   const addArtwork = (newArt) => {
     const updatedExhibition = getExhibitionById(exhibitionId);
 
-    //ERROR HANDLING
     const foundMetArt = updatedExhibition.artworks.find(
       (art) => art.objectID !== undefined && art.objectID === newArt.objectID
     );
@@ -37,16 +35,12 @@ export const HarvardArtworkCard = ({
       return;
     }
 
-
     setArtwork([...artwork, newArt]);
     addArtworkToExhibition(exhibition.id, newArt);
-
   }
 
 
   const handleDetailsClick = (artwork) => {
-
-
     navigate(
       `/harvard-artwork-details/${artwork.objectid}?${searchParams.toString()}`
     );
@@ -56,9 +50,6 @@ export const HarvardArtworkCard = ({
   const title = regex.test(record.title)
     ? record.title.slice(1, -1)
     : record.title;
-
-  
-  // const imageUrl = record?.images[0].iiifbaseuri + "/full/full/0/default.jpg" || NoImagePlaceholder;
 
   const imageUrl = record?.primaryimageurl || NoImagePlaceholder;
   

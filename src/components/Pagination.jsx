@@ -2,15 +2,10 @@ import { useSearchParams } from "react-router-dom";
 
 export const Pagination = ({
   currentPage,
-  totalPages,
-  departmentId,
-  classification,
+  totalPages
 }) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const exhibitionId = searchParams.get("exhibitionId") || null;
- 
-
 
   const updatePage = (newPage) => {
   setSearchParams(prevParams => {

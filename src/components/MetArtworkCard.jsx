@@ -13,7 +13,7 @@ export const MetArtworkCard = ({ id, artwork,
   exhibition }) => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  
+
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["artwork-details", id],
@@ -22,33 +22,27 @@ export const MetArtworkCard = ({ id, artwork,
 
   const exhibitionId = exhibition.id
 
-   //new function for direct add to art preview in curate page
-    const addArtwork = (newArt) => {
- 
+  const addArtwork = (newArt) => {
+
     const updatedExhibition = getExhibitionById(exhibitionId);
 
-    //ERROR HANDLING
-      const foundMetArt = updatedExhibition.artworks.find(
-        (art) => art.objectID !== undefined && art.objectID === newArt.objectID
-      );
-  
-      const foundHarvardArt = updatedExhibition.artworks.find(
-        (art) => art.objectid !== undefined && art.objectid === newArt.objectid
-      );
-  
-      if (foundMetArt || foundHarvardArt) {
-        // setErrorMessage("Selected artwork already added to exhibition");
-      toast.error("Selected artwork already added to exhibition!");
-  
-        return;
-      }    
+    const foundMetArt = updatedExhibition.artworks.find(
+      (art) => art.objectID !== undefined && art.objectID === newArt.objectID
+    );
 
-      setArtwork([...artwork, newArt])
-          
-      addArtworkToExhibition(exhibition.id, newArt);
-          
-      // toast.success("Artwork successfully added!");
-      }
+    const foundHarvardArt = updatedExhibition.artworks.find(
+      (art) => art.objectid !== undefined && art.objectid === newArt.objectid
+    );
+
+    if (foundMetArt || foundHarvardArt) {
+      toast.error("Selected artwork already added to exhibition!");
+      return;
+    }
+
+    setArtwork([...artwork, newArt])
+
+    addArtworkToExhibition(exhibition.id, newArt);
+  }
 
 
   const handleDetailsClick = (artwork) => {
@@ -63,7 +57,7 @@ export const MetArtworkCard = ({ id, artwork,
 
   const imageUrl =
     data.primaryImage || data.primaryImageSmall || NoImagePlaceholder;
-  
+
 
   return (
     <li key={data.objectID} className="artwork-card-cb">

@@ -39,7 +39,7 @@ export const HarvardDepartments = ({
 
   return (
     <nav className={`departments-sidebar ${isSidebarOpen ? "open" : ""}`}>
-      
+
       <section className={"dpmt-button-container-harv"}>
         {data?.records.map((classification) => {
           return (

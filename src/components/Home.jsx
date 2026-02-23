@@ -25,7 +25,6 @@ export const Home = () => {
       );
       return updatedExhibitions;
     });
-    // toast.success("Exhibition deleted!");
   };
 
 
@@ -33,7 +32,7 @@ export const Home = () => {
 
   const handleCreateExhibition = () => {
     if (newExhibitionName.trim() === "") {
-      toast.error("Please enter a name for exhibition") 
+      toast.error("Please enter a name for exhibition")
       return;
     }
 
@@ -49,7 +48,6 @@ export const Home = () => {
     const newExhibition = createExhibition(newExhibitionName);
 
     setExhibitions([...exhibitions, newExhibition]);
-    // toast.success("Exhibition added successfully!");
 
     setNewExhibitionName("");
   };
@@ -58,36 +56,35 @@ export const Home = () => {
     <main className="home-container">
       <header className="home-header">
         <div className="header-title">
-        <h1>
-          <span>ARCHI</span>
-          <span className="header-colour">VIST!</span>
-        </h1>
-        <h2>Your very own exhibition curator</h2>
+          <h1>
+            <span>ARCHI</span>
+            <span className="header-colour">VIST!</span>
+          </h1>
+          <h2>Your very own exhibition curator</h2>
         </div>
-        <MdAccountBalance size={"1.5rem"}/>
+        <MdAccountBalance size={"1.5rem"} />
       </header>
-        <div className="saved-exhibitions-header">
-          <h2>Exhibitions</h2>
-          <form className="create-exhibition-container">
-            <input
-              className="exhibition-name-input"
-              type="text"
-              id="create-exhibition"
-              placeholder="Exhibition Name"
-              value={newExhibitionName}
-              onChange={(e) => {
-                setNewExhibitionName(e.target.value);
-              }}
-              maxLength={20}
-              // required
-            />
-            <button type="submit" onClick={handleCreateExhibition}>Create</button>
-          </form>
-        </div>
-        <ExhibitionCarousel
-          exhibitions={exhibitions}
-          onDelete={handleDeleteExhibition}
-        />
+      <div className="saved-exhibitions-header">
+        <h2>Exhibitions</h2>
+        <form className="create-exhibition-container">
+          <input
+            className="exhibition-name-input"
+            type="text"
+            id="create-exhibition"
+            placeholder="Exhibition Name"
+            value={newExhibitionName}
+            onChange={(e) => {
+              setNewExhibitionName(e.target.value);
+            }}
+            maxLength={20}
+          />
+          <button type="submit" onClick={handleCreateExhibition}>Create</button>
+        </form>
+      </div>
+      <ExhibitionCarousel
+        exhibitions={exhibitions}
+        onDelete={handleDeleteExhibition}
+      />
     </main>
   );
 };

@@ -65,7 +65,6 @@ export const HarvardArtwork = ({setArtwork, artwork, exhibition}) => {
               <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
-                classification={classification}
               />
             </main>
           )}

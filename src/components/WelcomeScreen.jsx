@@ -36,7 +36,6 @@ export const WelcomeScreen = () => {
         const newExhibition = createExhibition(newExhibitionName);
 
         setExhibitions([...exhibitions, newExhibition]);
-        // toast.success("Exhibition added successfully!");
 
         setNewExhibitionName("");
         navigate(`/curate/${newExhibition.id}`)
