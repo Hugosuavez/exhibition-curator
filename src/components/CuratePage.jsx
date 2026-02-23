@@ -12,10 +12,18 @@ export const CuratePage = () => {
   const { id } = useParams();
   const [exhibition, setExhibition] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [museumToggle, setMuseumToggle] = useState(null);
   const [artwork, setArtwork] = useState(null)
+  
   const [searchParams, setSearchParams] = useSearchParams();
+  
 
+  const currentMuseum = searchParams.get("museum") || "harvard";
+  const [museumToggle, setMuseumToggle] = useState(currentMuseum || "harvard");
+  // const departmentId = searchParams.get("departmentId");
+  // if(departmentId){setMuseumToggle(true)}
+
+  console.log(searchParams.get("museum"), "<--Params");
+  console.log(museumToggle, "<--toggle");
 
 
   useEffect(() => {
@@ -39,9 +47,9 @@ export const CuratePage = () => {
   }, [id]);
 
 
-  const handleToggle = (toggle) => {
-    setMuseumToggle(toggle);
-    setSearchParams({ exhibitionId: id });
+  const handleToggle = (museum) => {
+    // setMuseumToggle(toggle);
+    setSearchParams({ exhibitionId: id, museum });
   }
 
   if (loading) return <p>Loading...</p>;
@@ -74,9 +82,9 @@ export const CuratePage = () => {
           <CuratePreview artwork={artwork} setArtwork={setArtwork} exhibition={exhibition} />
         </section>
         <section className="curate-browse">
-          <button className={`met-link ${museumToggle ? "met-toggle" : ""}`} onClick={() => handleToggle(true)}>Metropolitan Museum of Art</button>
-          <button className={`harvard-link ${museumToggle ? "" : "harvard-toggle"}`} onClick={() => handleToggle(false)}>Harvard Art Museums</button>
-          {museumToggle ? <MetArtwork exhibition={exhibition} setArtwork={setArtwork} artwork={artwork} /> : <HarvardArtwork exhibition={exhibition} setArtwork={setArtwork} artwork={artwork} />}
+          <button className={`met-link ${currentMuseum === "met" ? "met-toggle" : ""}`} onClick={() => handleToggle("met")}>Metropolitan Museum of Art</button>
+          <button className={`harvard-link ${currentMuseum === "harvard" ? "harvard-toggle" : ""}`} onClick={() => handleToggle("harvard")}>Harvard Art Museums</button>
+          {currentMuseum === "met" ? <MetArtwork exhibition={exhibition} setArtwork={setArtwork} artwork={artwork} /> : <HarvardArtwork exhibition={exhibition} setArtwork={setArtwork} artwork={artwork} />}
         </section>
       </main>
     </div>

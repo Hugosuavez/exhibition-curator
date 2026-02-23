@@ -16,17 +16,25 @@ export const MetDepartments = ({ setDepartment, setIsSidebarOpen, isSidebarOpen,
     if (!department) return;
 
 
-    if(department === "all"){
+    if (department === "all") {
       setDepartment("")
-      setSearchParams({page: 1, exhibitionId})
+      setSearchParams(prevParams => {
+        prevParams.set("page", 1);
+        return prevParams;
+      });
+      // setSearchParams({ page: 1, exhibitionId })
     } else {
       const departmentId = department.departmentId;
-
-    setSearchParams({
-      departmentId,
-      page: 1,
-      exhibitionId
-    }); 
+      setSearchParams(prevParams => {
+        prevParams.set("page", 1);
+        prevParams.set("departmentId", departmentId);
+        return prevParams;
+      });
+      // setSearchParams({
+      //   departmentId,
+      //   page: 1,
+      //   exhibitionId
+      // });
     }
     setIsSidebarOpen((prev) => !prev);
   };

@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { MetDepartments } from "./MetDepartments";
 import { Pagination } from "./Pagination";
+import { calculateTotalPages, retrievePageFromFullArray } from "../utils/pagination-utils";
 
 export const MetArtwork = ({ artwork,
   setArtwork,
@@ -24,6 +25,7 @@ export const MetArtwork = ({ artwork,
     queryFn: () => fetchMetArtwork(departmentId),
   });
 
+  // NOTE: Trying without refetch
   // const { data, isLoading, error, refetch } = useQuery({
   //   queryKey: ["met-artworks", departmentId],
   //   queryFn: () => fetchMetArtwork(departmentId),
@@ -33,20 +35,24 @@ export const MetArtwork = ({ artwork,
   //   refetch();
   // }, [searchParams, refetch]);
 
-  const itemsPerPage = 10;
 
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
+  const currentObjectIDs = retrievePageFromFullArray(data, currentPage);
+  // const itemsPerPage = 10;
 
-  const sortedObjectIDs = [...(data?.objectIDs || [])].sort((a, b) => a - b);
+  // const startIndex = (currentPage - 1) * itemsPerPage;
+  // const endIndex = startIndex + itemsPerPage;
 
-  const currentObjectIDs = sortedObjectIDs
-    ? sortedObjectIDs.slice(startIndex, endIndex)
-    : [];
+  // const sortedObjectIDs = [...(data?.objectIDs || [])].sort((a, b) => a - b);
 
-  const totalPages = data?.objectIDs
-    ? Math.ceil(data.objectIDs.length / itemsPerPage)
-    : 0;
+  // const currentObjectIDs = sortedObjectIDs
+  //   ? sortedObjectIDs.slice(startIndex, endIndex)
+  //   : [];
+
+
+  const totalPages = calculateTotalPages(data);
+  // const totalPages = data?.objectIDs
+  //   ? Math.ceil(data.objectIDs.length / 10)
+  //   : 0;
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
