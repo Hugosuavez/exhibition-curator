@@ -6,18 +6,19 @@ export const Pagination = ({
   departmentId,
   classification,
 }) => {
+
   const [searchParams, setSearchParams] = useSearchParams();
   const exhibitionId = searchParams.get("exhibitionId") || null;
-  console.log(searchParams);
+ 
+
+
   const updatePage = (newPage) => {
-    const params = {exhibitionId};
-    if (departmentId) {
-      params.departmentId = departmentId;
-      params.department = searchParams.get("department") || null;
-    }
-    if (classification) params.classificationId = classification;
-    params.page = newPage;
-    setSearchParams(params);
+  setSearchParams(prevParams => {
+  prevParams.set("page", newPage);
+  return prevParams;
+});
+
+
   };
 
   const handleNext = () => {

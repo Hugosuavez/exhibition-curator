@@ -18,14 +18,20 @@ export const MetArtwork = ({ artwork,
   // const department = searchParams.get("department") || null;
   const currentPage = parseInt(searchParams.get("page") || 1, 10);
 
-  const { data, isLoading, error, refetch } = useQuery({
+
+  const { data, isLoading, error } = useQuery({
     queryKey: ["met-artworks", departmentId],
     queryFn: () => fetchMetArtwork(departmentId),
   });
 
-  useEffect(() => {
-    refetch();
-  }, [searchParams, refetch]);
+  // const { data, isLoading, error, refetch } = useQuery({
+  //   queryKey: ["met-artworks", departmentId],
+  //   queryFn: () => fetchMetArtwork(departmentId),
+  // });
+
+  // useEffect(() => {
+  //   refetch();
+  // }, [searchParams, refetch]);
 
   const itemsPerPage = 10;
 

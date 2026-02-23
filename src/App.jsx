@@ -17,8 +17,8 @@ function App() {
         <Routes>
           <Route path="/" element={<WelcomeScreen />} />
           <Route path="/home" element={<Home/>} />
-          <Route path="/met" element={<MetArtwork />} />
-          <Route path="/harvard" element={<HarvardArtwork />} />
+          {/* <Route path="/met" element={<MetArtwork />} />
+          <Route path="/harvard" element={<HarvardArtwork />} /> */}
           <Route
             path="/met-artwork-details/:objectID"
             element={<MetArtworkDetails />}

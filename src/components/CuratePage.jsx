@@ -16,7 +16,7 @@ export const CuratePage = () => {
   const [artwork, setArtwork] = useState(null)
   const [searchParams, setSearchParams] = useSearchParams();
 
-  
+
 
   useEffect(() => {
     const fetchExhibition = () => {
@@ -28,7 +28,12 @@ export const CuratePage = () => {
       setExhibition(selectedExhibition);
       setArtwork(selectedExhibition.artworks)
       setLoading(false);
-      setSearchParams({exhibitionId: id})
+     
+      setSearchParams(prevParams => {
+        prevParams.set("exhibitionId", id);
+        return prevParams;
+      });
+
     };
     fetchExhibition();
   }, [id]);
@@ -36,7 +41,7 @@ export const CuratePage = () => {
 
   const handleToggle = (toggle) => {
     setMuseumToggle(toggle);
-    setSearchParams({exhibitionId: id});
+    setSearchParams({ exhibitionId: id });
   }
 
   if (loading) return <p>Loading...</p>;
@@ -54,10 +59,10 @@ export const CuratePage = () => {
               VIST!
             </span>
           </h1>
-        <h2>Your very own exhibition curator</h2>
+          <h2>Your very own exhibition curator</h2>
         </div>
         <Link className="home-link" to="/home">
-        <MdAccountBalance size={"1.5rem"}/>
+          <MdAccountBalance size={"1.5rem"} />
         </Link>
       </header>
       <main className="curate-container">

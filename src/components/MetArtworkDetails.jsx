@@ -2,12 +2,14 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMetArtworkDetails } from "../utils/met-api-calls";
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLocation } from "react-router-dom";
 
 export const MetArtworkDetails = () => {
   const { objectID } = useParams();
   const [searchParams] = useSearchParams();
   const exhibitionId = searchParams.get("exhibitionId") || null;
+  const { search } = useLocation();
+
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["artwork-details", objectID],
@@ -23,7 +25,8 @@ export const MetArtworkDetails = () => {
 
   return (
     <article className="artwork-details-container">
-      <Link to={`/curate/${exhibitionId}?${searchParams.toString()}`}>Back to collection</Link>
+      <Link to={{pathname:`/curate/${exhibitionId}`,
+        search: `${search}`}}>Back to collection</Link>
       <h1 className="artwork-title">{data.title}</h1>
       <section className="artwork-image-container">
         <img

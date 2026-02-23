@@ -2,11 +2,14 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchHarvardArtworkDetails } from "../utils/harvard-api-calls";
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useLocation } from "react-router-dom";
 
 export const HarvardArtworkDetails = () => {
   const [searchParams] = useSearchParams();
   const { objectID } = useParams();
+  const { search } = useLocation();
+
+
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["harvard-artwork-details", objectID],
@@ -29,7 +32,11 @@ export const HarvardArtworkDetails = () => {
 
   return (
     <main className="artwork-details-container">
-      <Link to={`/curate/${exhibitionId}?${searchParams.toString()}`}>Back to Collection</Link>
+      <Link to={
+        {pathname:`/curate/${exhibitionId}`,
+        search: `${search}`}}>
+          Back to Collection
+        </Link>
       <h1>{title}</h1>
       <section className="artwork-image-container">
         <img
