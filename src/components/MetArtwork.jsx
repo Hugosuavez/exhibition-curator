@@ -40,12 +40,6 @@ export const MetArtwork = ({ artwork,
       {error && <p>Error fetching artworks: {error.message}</p>}
       {data && data.objectIDs && (
         <main className="browse-page">
-          {/* <Link to="/" className="link">
-            Home
-          </Link> */}
-
-
-          {/* <section className="content-wrapper"> */}
           <button className="toggle-sidebar-btn" onClick={toggleSidebar}>
             {isSidebarOpen ? "Close Departments" : "Search Departments"}
           </button>
@@ -59,7 +53,7 @@ export const MetArtwork = ({ artwork,
 
           <main className="artworks-content">
             {department && <h3 className="department-title">{department}</h3>}
-            {/* Loop through the objectIDs and fetch artwork details */}
+
             {currentObjectIDs.map((id) => (
               <MetArtworkCard key={id} id={id} artwork={artwork}
                 setArtwork={setArtwork} exhibition={exhibition} />
