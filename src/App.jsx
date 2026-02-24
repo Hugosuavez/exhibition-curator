@@ -1,10 +1,10 @@
 import "./App.css";
-import { MetArtwork } from "./components/MetArtwork";
+import { MetExhibits } from "./components/MetExhibits";
 import { Routes, Route } from "react-router-dom";
 import { Home } from "./components/Home";
-import { HarvardArtwork } from "./components/HarvardArtwork";
-import { MetArtworkDetails } from "./components/MetArtworkDetails";
-import { HarvardArtworkDetails } from "./components/HarvardArtworkDetails";
+import { HarvardExhibits } from "./components/HarvardExhibits";
+import { MetExhibitDetails } from "./components/MetExhibitDetails";
+import { HarvardExhibitDetails } from "./components/HarvardExhibitDetails";
 import { ExhibitionPage } from "./components/ExhibitionPage";
 import { ToastContainer } from "react-toastify";
 import { CuratePage } from "./components/CuratePage";
@@ -21,11 +21,11 @@ function App() {
           <Route path="/harvard" element={<HarvardArtwork />} /> */}
           <Route
             path="/met-artwork-details/:objectID"
-            element={<MetArtworkDetails />}
+            element={<MetExhibitDetails />}
           />
           <Route
             path="/harvard-artwork-details/:objectID"
-            element={<HarvardArtworkDetails />}
+            element={<HarvardExhibitDetails />}
           />
           <Route path="/exhibition/:id" element={<ExhibitionPage />} />
           <Route path="/curate/:id" element={<CuratePage />} />

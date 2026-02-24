@@ -3,7 +3,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export const ExhibitionCarousel = ({
+export const SavedExhibitions = ({
   exhibitions,
   onDelete,
 }) => {

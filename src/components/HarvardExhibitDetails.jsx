@@ -4,7 +4,7 @@ import { fetchHarvardArtworkDetails } from "../utils/harvard-api-calls";
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
 import { Link, useSearchParams, useLocation } from "react-router-dom";
 
-export const HarvardArtworkDetails = () => {
+export const HarvardExhibitDetails = () => {
   const [searchParams] = useSearchParams();
   const { objectID } = useParams();
   const { search } = useLocation();

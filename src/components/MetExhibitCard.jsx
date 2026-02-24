@@ -8,7 +8,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
 
-export const MetArtworkCard = ({ id, artwork,
+export const MetExhibitCard = ({ id, artwork,
   setArtwork,
   exhibition }) => {
   const [searchParams] = useSearchParams();

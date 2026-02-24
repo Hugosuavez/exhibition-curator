@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { ArtworkCarousel } from "./ArtworkCarousel";
+import { Gallery } from "./Gallery";
 import { Link } from "react-router-dom";
 import { removeArtworkFromExhibition } from "../utils/local-storage-calls";
 import { toast } from "react-toastify";
@@ -70,7 +70,7 @@ export const ExhibitionPage = () => {
       </div>
       </header>
 
-      <ArtworkCarousel
+      <Gallery
         artworks={exhibition.artworks || []}
         exhibition={exhibition}
         handleRemove={handleRemove}
