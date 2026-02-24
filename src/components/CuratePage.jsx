@@ -12,7 +12,7 @@ export const CuratePage = () => {
   const { id } = useParams();
   const [exhibition, setExhibition] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [artwork, setArtwork] = useState(null);
+  const [artwork, setArtwork] = useState(null)
 
   const [searchParams, setSearchParams] = useSearchParams();
   const currentMuseum = searchParams.get("museum") || "harvard";
