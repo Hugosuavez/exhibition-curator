@@ -29,7 +29,7 @@ export const addArtworkToExhibition = (exhibitionId, artwork) => {
   const exhibitions = getExhibitions();
   const updatedExhibitions = exhibitions.map((exhibition) =>
     exhibition.id === exhibitionId
-      ? { ...exhibition, artworks: [...exhibition.artworks, artwork] }
+      ? { ...exhibition, artworks: [artwork, ...exhibition.artworks] }
       : exhibition
   );
   saveExhibitions(updatedExhibitions);

@@ -39,7 +39,7 @@ export const MetArtworkCard = ({ id, artwork,
       return;
     }
 
-    setArtwork([...artwork, newArt])
+    setArtwork([newArt, ...artwork])
 
     addArtworkToExhibition(exhibition.id, newArt);
   }
