@@ -1,6 +1,6 @@
 ## ARCHIVIST! An Exhibition Curation Platform
 
-A web application that allows users to curate exhibitions by selecting artwork from **The Met Museum** and **Harvard Art Museums** APIs. Users can browse, search, and organize artworks into custom exhibitions.
+A web application that allows users to curate exhibitions by selecting exhibits from **The Met Museum** and **Harvard Art Museums** APIs. Users can browse, search, and create custom exhibitions.
 
 ## Visit the hosted application
 https://hugosuavez.github.io/exhibition-curator/
@@ -9,10 +9,10 @@ NOTE - Currently experiencing issues displaying images from the Harvard API on S
 
 ## Features
 
-- Search and browse artwork from **The Met Museum** and **Harvard Art Museums** APIs.
+- Search and browse exhibits from **The Met Museum** and **Harvard Art Museums** APIs.
 - Create, edit, and delete exhibitions.
-- Add or remove artwork from exhibitions.
-- View detailed artwork information.
+- Add or remove exhibit from exhibitions.
+- View detailed exhibit information.
 - Responsive design for various screen sizes.
 
 ## Installation & Setup
