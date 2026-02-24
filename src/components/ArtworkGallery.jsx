@@ -1,6 +1,6 @@
 import { normaliseArtwork } from "../utils/normalisation-utils";
 
-export const ArtworkCarousel = ({ artworks, exhibition }) => {
+export const ArtworkGallery = ({ artworks, exhibition }) => {
   return (
     <div>
       <h3 className="gallery-title">{exhibition.name}</h3>
