@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { removeArtworkFromExhibition } from "../utils/local-storage-calls";
 import { toast } from "react-toastify";
 import { MdAccountBalance } from "react-icons/md";
+import ShinyText from "./ShinyText";
 
 export const ExhibitionPage = () => {
   const { id } = useParams();
@@ -62,19 +63,38 @@ export const ExhibitionPage = () => {
           </h1>
         </div>
         <div className="exhibition-page-links">
-        <Link to={`/curate/${id}`} className="curate-link">Curate </Link>
-        <p> | </p>
-        <Link className="home-link" to="/home">
-          <MdAccountBalance size={"1.5rem"} className="icon" />
-        </Link>
-      </div>
+          <Link to={`/curate/${id}`} className="curate-link">Curate </Link>
+          <p> | </p>
+          <Link className="home-link" to="/home">
+            <MdAccountBalance size={"1.5rem"} className="icon" />
+          </Link>
+        </div>
       </header>
 
-      <ArtworkGallery
+      {exhibition.artworks.length > 0 ? <ArtworkGallery
         artworks={exhibition.artworks || []}
         exhibition={exhibition}
         handleRemove={handleRemove}
-      />
+      /> :
+        <div>
+          <h3 className="gallery-title">{exhibition.name}</h3>
+
+
+          <div className="shiny-text-container">
+            <ShinyText
+              text="Visit curate page to add art to exhibition"
+              speed={2}
+              delay={0}
+              color="#b5b5b5"
+              shineColor="#ffffff"
+              spread={50}
+              direction="left"
+              yoyo
+              pauseOnHover={false}
+              disabled={false}
+            />
+          </div>
+        </div>}
     </main>
   );
 };

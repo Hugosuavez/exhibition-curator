@@ -76,7 +76,8 @@ export const ArtworkGallery = ({ artworks, exhibition }) => {
               </div>
             </article>
           );
-        })}
+        })
+        }
       </main>
     </div>
   );
