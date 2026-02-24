@@ -4,10 +4,10 @@ import { useSearchParams } from "react-router-dom";
 import { HarvardDepartments } from "./HarvardDepartments";
 import { useState } from "react";
 
-import { HarvardExhibitCard } from "./HarvardExhibitCard";
+import { HarvardArtworkCard } from "./HarvardArtworkCard";
 import { Pagination } from "./Pagination";
 
-export const HarvardExhibits = ({setArtwork, artwork, exhibition}) => {
+export const HarvardArtwork = ({setArtwork, artwork, exhibition}) => {
 
   
   const [department, setDepartment] = useState(null);
@@ -54,7 +54,7 @@ export const HarvardExhibits = ({setArtwork, artwork, exhibition}) => {
             <main className="artworks-content">
               {department && <h3 className="department-title">{department}</h3>}
               {data.records.map((record) => (
-                <HarvardExhibitCard
+                <HarvardArtworkCard
                 exhibition={exhibition}
                   setArtwork={setArtwork}
                   artwork={artwork}

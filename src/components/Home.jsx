@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { SavedExhibitions } from "./SavedExhibitions";
+import { ExhibitionCarousel } from "./ExhibitionCarousel";
 import { deleteExhibition } from "../utils/local-storage-calls";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -81,7 +81,7 @@ export const Home = () => {
           <button type="submit" onClick={handleCreateExhibition}>Create</button>
         </form>
       </div>
-      <SavedExhibitions
+      <ExhibitionCarousel
         exhibitions={exhibitions}
         onDelete={handleDeleteExhibition}
       />

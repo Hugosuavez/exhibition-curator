@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { MetExhibits } from "./MetExhibits";
-import { HarvardExhibits } from "./HarvardExhibits";
+import { MetArtwork } from "./MetArtwork";
+import { HarvardArtwork } from "./HarvardArtwork";
 import { CuratePreview } from "./CuratePreview";
 import { useSearchParams } from "react-router-dom";
 import { MdAccountBalance } from "react-icons/md";
@@ -72,7 +72,7 @@ export const CuratePage = () => {
         <section className="curate-browse">
           <button className={`met-link ${currentMuseum === "met" ? "met-toggle" : ""}`} onClick={() => handleToggle("met")}>Metropolitan Museum of Art</button>
           <button className={`harvard-link ${currentMuseum === "harvard" ? "harvard-toggle" : ""}`} onClick={() => handleToggle("harvard")}>Harvard Art Museums</button>
-          {currentMuseum === "met" ? <MetExhibits exhibition={exhibition} setArtwork={setArtwork} artwork={artwork} /> : <HarvardExhibits exhibition={exhibition} setArtwork={setArtwork} artwork={artwork} />}
+          {currentMuseum === "met" ? <MetArtwork exhibition={exhibition} setArtwork={setArtwork} artwork={artwork} /> : <HarvardArtwork exhibition={exhibition} setArtwork={setArtwork} artwork={artwork} />}
         </section>
       </main>
     </div>

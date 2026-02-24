@@ -4,7 +4,7 @@ import { fetchMetArtworkDetails } from "../utils/met-api-calls";
 import NoImagePlaceholder from "../assets/No-Image-Placeholder.svg";
 import { Link, useSearchParams, useLocation } from "react-router-dom";
 
-export const MetExhibitDetails = () => {
+export const MetArtworkDetails = () => {
   const { objectID } = useParams();
   const [searchParams] = useSearchParams();
   const exhibitionId = searchParams.get("exhibitionId") || null;

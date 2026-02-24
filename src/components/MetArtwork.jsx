@@ -1,13 +1,13 @@
 import { fetchMetArtwork } from "../utils/met-api-calls";
 import { useQuery } from "@tanstack/react-query";
-import { MetExhibitCard } from "./MetExhibitCard";
+import { MetArtworkCard } from "./MetArtworkCard";
 import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { MetDepartments } from "./MetDepartments";
 import { Pagination } from "./Pagination";
 import { calculateTotalPages, retrievePageFromFullArray } from "../utils/pagination-utils";
 
-export const MetExhibits = ({ artwork,
+export const MetArtwork = ({ artwork,
   setArtwork,
   exhibition }) => {
 
@@ -55,7 +55,7 @@ export const MetExhibits = ({ artwork,
             {department && <h3 className="department-title">{department}</h3>}
 
             {currentObjectIDs.map((id) => (
-              <MetExhibitCard key={id} id={id} artwork={artwork}
+              <MetArtworkCard key={id} id={id} artwork={artwork}
                 setArtwork={setArtwork} exhibition={exhibition} />
             ))}
 

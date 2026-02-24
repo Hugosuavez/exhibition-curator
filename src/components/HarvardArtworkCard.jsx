@@ -7,7 +7,7 @@ import {
 } from "../utils/local-storage-calls";
 
 
-export const HarvardExhibitCard = ({
+export const HarvardArtworkCard = ({
   record,
   artwork,
   setArtwork,
