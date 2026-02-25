@@ -892,7 +892,11 @@ button:focus-visible {
 
   .curate-preview {
     grid-area: preview;
-    height: 80vh;
+    height: 88vh;
+  }
+
+  .curate-browse {
+    height: 88vh;
   }
 
 
