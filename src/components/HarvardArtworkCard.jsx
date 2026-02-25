@@ -52,12 +52,14 @@ export const HarvardArtworkCard = ({
     : record.title;
 
   const imageUrl = record?.primaryimageurl || NoImagePlaceholder;
+
+  const formattedImageUrl = imageUrl + "?width=1000"
   
   return (
     <li key={record.objectid} className="artwork-card-cb">
       <h2>{title || "Untitled"}</h2>
       <img
-        src={imageUrl}
+        src={formattedImageUrl}
         alt={record.title || "No title available"}
         className="artwork-image-cb"
       />
