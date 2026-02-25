@@ -5,8 +5,6 @@ A web application that allows users to curate exhibitions by selecting artwork f
 ## Visit the hosted application
 https://hugosuavez.github.io/exhibition-curator/
 
-NOTE - Currently experiencing issues displaying images from the Harvard API on Safari browser.
-
 ## Features
 
 - Search and browse artwork from **The Met Museum** and **Harvard Art Museums** APIs.
