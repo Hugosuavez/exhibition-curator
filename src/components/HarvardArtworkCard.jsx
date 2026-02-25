@@ -5,7 +5,7 @@ import {
   addArtworkToExhibition,
   getExhibitionById,
 } from "../utils/local-storage-calls";
-
+import { useState } from "react";
 
 export const HarvardArtworkCard = ({
   record,
@@ -51,10 +51,18 @@ export const HarvardArtworkCard = ({
     ? record.title.slice(1, -1)
     : record.title;
 
-  const imageUrl = record?.primaryimageurl || NoImagePlaceholder;
 
-  
-  
+
+    
+    const [imageError, setImageError] = useState(false);
+    let imageUrl;
+    if(imageError){
+      imageUrl = NoImagePlaceholder
+    } else {
+       imageUrl = record?.primaryimageurl || NoImagePlaceholder;
+    }
+
+
   return (
     <li key={record.objectid} className="artwork-card-cb">
       <h2>{title || "Untitled"}</h2>
@@ -62,6 +70,7 @@ export const HarvardArtworkCard = ({
         src={imageUrl}
         alt={record.title || "No title available"}
         className="artwork-image-cb"
+        onError={setImageError(true)}
       />
       <p>
         {record.century || "Unknown Artist"} |{" "}
