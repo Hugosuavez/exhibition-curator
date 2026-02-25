@@ -70,7 +70,7 @@ export const WelcomeScreen = () => {
                         <span> ARCHI</span>
                         <span className="header-colour">VIST!</span>
                     </h2>
-                    <form className="create-exhibition-form">
+                    <div className="create-exhibition-form">
                         <p className="welcome-label"> To begin, enter the name of your first exhibition...</p>
                         <div className="create-exhibition-welcome-screen">
                             <input
@@ -84,11 +84,10 @@ export const WelcomeScreen = () => {
                                     setNewExhibitionName(e.target.value);
                                 }}
                                 maxLength={20}
-                                required
                             />
                             <button className="create-exhibition-button-welcome-screen" type="submit" onClick={handleCreateExhibition}>Create</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
