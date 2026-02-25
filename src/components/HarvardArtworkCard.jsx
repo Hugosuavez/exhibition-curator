@@ -63,6 +63,7 @@ export const HarvardArtworkCard = ({
         alt={record.title || "No title available"}
         className="artwork-image-cb"
         key={imageUrl}
+        style={{display: 'block', minHeight: '10px'}}
       />
       <p>
         {record.century || "Unknown Artist"} |{" "}
